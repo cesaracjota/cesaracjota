@@ -42,19 +42,19 @@ const Home: React.FC<BlogPostProps> = (props) => {
 
   return (
     <Flex direction="column" align="center">
-      <Flex direction={['column', 'column']} mb={5} mt={-8} w={'180%'}>
+      <Flex position={'absolute'} direction={['column', 'column']} mb={5} mt={-8} w={'100%'}>
         <Center
           minH={250}
           opacity={1}
             _hover={{ opacity: 1 }}
           bgImage={'https://i.blogs.es/224274/javascript-large-/1366_521.jpg'}>
           <Center bg={linkColor} color='white' padding={1.5} rounded={'md'}>
-            <Text fontWeight={'900'} fontSize={'22px'}>Bienvenido<span style={{fontStyle: 'italic'}}> a mi Pagina Web</span></Text>
+            <Text fontWeight={'900'} pl={5} pr={5} fontSize={'22px'}>Bienvenido<span style={{fontStyle: 'italic'}}> a mi Pagina Web</span></Text>
           </Center>
         </Center>
       </Flex>
 
-      <Flex direction={['column', 'column', 'row']}>
+      <Flex direction={['column', 'column', 'row']} mt={250}>
         <MotionBox
           opacity="0"
           initial={{
