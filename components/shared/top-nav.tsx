@@ -168,7 +168,7 @@ export default function TopNav() {
               as={'nav'} 
               spacing={8} 
               justifyContent={'center'}
-              fontWeight="semibold"
+              fontWeight="900"
               fontSize={18}
               alignItems={'right'}
               display={{ base: 'none', md: 'flex' }}

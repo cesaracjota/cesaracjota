@@ -743,6 +743,11 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@fontsource/raleway@^4.5.8":
+  "integrity" "sha512-4aHInZYFegsrX/8/roXUoZHLfgrPGkkQaH/CYDx486RKf+5V/GIIetnVt5SO9mLdOqeqKJrpgLkL7kSf24SYug=="
+  "resolved" "https://registry.npmjs.org/@fontsource/raleway/-/raleway-4.5.8.tgz"
+  "version" "4.5.8"
+
 "@fontsource/special-elite@^4.5.7":
   "integrity" "sha512-TVTHt9/NYIDIH2Zejr3wbC6bR5GZDZ31EmG4H8r0E/QqMwrIJt7ZPSzc09lLWFpwbgXGdP17+UE/KmEMd279rg=="
   "resolved" "https://registry.npmjs.org/@fontsource/special-elite/-/special-elite-4.5.7.tgz"
@@ -1649,9 +1654,9 @@
   "version" "3.1.0"
 
 "caniuse-lite@^1.0.30001202", "caniuse-lite@^1.0.30001219", "caniuse-lite@^1.0.30001228":
-  "integrity" "sha512-pDHgRndit6p1NR2GhzMbQ6CkRrp4VKuSsqbcLeOQppYPKOYkKT/6ZvZDvKJUqcmtyWIAHuZq3SVS2vc1egCZzw=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001237.tgz"
-  "version" "1.0.30001237"
+  "integrity" "sha512-0ZFjnlCaXNOAYcV7i+TtdKBp0L/3XEU2MF/x6Du1lrh+SRX4IfzIVL4HNJg5pB2PmFb8rszIGyOvsZnqqRoc2g=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001344.tgz"
+  "version" "1.0.30001344"
 
 "ccount@^1.0.0":
   "integrity" "sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg=="

@@ -5,6 +5,7 @@ import { mode } from '@chakra-ui/theme-tools'
 import { useHoverLinkColor } from './colors'
 import { getColor } from '@chakra-ui/theme-tools'
 import '@fontsource/special-elite'
+import '@fontsource/raleway'
 
 // Re-exports
 export { useLinkColor, useHoverLinkColor, accentKeys } from './colors'
@@ -20,7 +21,8 @@ export function makeTheme(overrides: ThemeOverride = {}) {
 
 export const extendedTheme = extendTheme({
   fonts: {
-    body: `"Special Elite"`,
+    body: `"Raleway", sans-serif`,
+    head: `"Raleway", sans-serif`
   },
   styles: {
     global: (props) => ({
@@ -111,7 +113,7 @@ export const extendedTheme = extendTheme({
             color: 'blue.400',
             transition: 'color 0.15s',
             transitionTimingFunction: 'ease-out',
-            fontWeight: '500',
+            fontWeight: '900',
             _hover: {
               color: 'blue.300',
             },
@@ -119,7 +121,7 @@ export const extendedTheme = extendTheme({
           gradient: {
             bgGradient: 'linear(to-br, blue.400,blue.300)',
             bgClip: 'text',
-            fontWeight: '500',
+            fontWeight: '900',
             _hover: {
               bgGradient: 'linear(to-br, blue.500,blue.300)',
               bgClip: 'text',

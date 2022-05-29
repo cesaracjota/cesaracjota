@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/raleway": "^4.5.8",
     "@fontsource/special-elite": "^4.5.7",
     "@prisma/client": "^3.8.1",
     "@types/prismjs": "^1.16.5",

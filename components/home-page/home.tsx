@@ -10,6 +10,8 @@ import {
   UnorderedList,
   ListItem,
   Image,
+  Center,
+  AspectRatio,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { MotionBox, MotionFlex } from 'components/shared/animations/motion'
@@ -40,6 +42,18 @@ const Home: React.FC<BlogPostProps> = (props) => {
 
   return (
     <Flex direction="column" align="center">
+      <Flex direction={['column', 'column']} mb={5} mt={-8} w={'180%'}>
+        <Center
+          minH={250}
+          opacity={1}
+            _hover={{ opacity: 1 }}
+          bgImage={'https://i.blogs.es/224274/javascript-large-/1366_521.jpg'}>
+          <Center bg={linkColor} color='white' padding={1.5} rounded={'md'}>
+            <Text fontWeight={'900'} fontSize={'22px'}>Bienvenido<span style={{fontStyle: 'italic'}}> a mi Pagina Web</span></Text>
+          </Center>
+        </Center>
+      </Flex>
+
       <Flex direction={['column', 'column', 'row']}>
         <MotionBox
           opacity="0"
@@ -150,14 +164,14 @@ const Home: React.FC<BlogPostProps> = (props) => {
                   bgClip='text'
                   fontSize='4xl'
                   fontWeight='extrabold'> 
-                  Howdy !
+                  {/* //falta colocar el nombre */}
                 </Text>
               </Header>
             </MotionBox>
           </Box>
           <Box as="h2" fontSize="2xl" fontWeight="400" textAlign="justify">
             Mi nombre es{' '}
-            <Box as="strong" fontWeight="700" color={linkColor}>
+            <Box as="i" fontWeight="900" color={linkColor}>
             Cesar Augusto,
             </Box>{' '}
             soy {' '}
