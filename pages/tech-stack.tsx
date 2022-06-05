@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, ReactElement } from 'react';
 import {
   Icon,
   VStack,
   HStack,
+  Stack,
   Text,
   Tabs,
   TabList,
@@ -11,7 +12,10 @@ import {
   Tab,
   TabPanel,
   useColorModeValue,
-  SimpleGrid
+  SimpleGrid,
+  Box,
+  Flex,
+  GridItem
 } from '@chakra-ui/react';
 import { GetStaticProps, NextPage } from 'next';
 import Section from 'components/skills/section';
@@ -26,6 +30,14 @@ import { container, PageSlideFade } from 'components/shared/animations/page-tran
 import PageLayout from '../components/layouts/pageLayout';
 import { useLinkColor } from 'components/theme';
 import { SkillProps } from 'interfaces/interface';
+import {
+  FcPodiumWithSpeaker,
+  FcAutomotive,
+  FcViewDetails,
+  FcParallelTasks,
+  FcReuse,
+  FcPuzzle
+} from 'react-icons/fc';
 
 const tabList = [
   {
@@ -50,6 +62,44 @@ const tabList = [
   }
 ];
 
+interface FeatureProps {
+  title: string;
+  icon: ReactElement;
+}
+
+const Feature = ({ title, icon }: FeatureProps) => {
+  
+  const linkColor = useLinkColor()
+
+  return (
+    <Stack
+      align={'center'}
+      bg={useColorModeValue('gray.200', 'gray.800')}
+      p={2}
+      rounded={'xl'}
+      boxShadow={'md'}
+      borderLeft="4px solid"
+      borderColor={linkColor}
+    >
+      <Flex
+        w={16}
+        h={16}
+        align={'center'}
+        justify={'center'}
+        color={'white'}
+        rounded={'xl'}
+        bg={useColorModeValue('gray.300', 'gray.900')}
+        mb={1}
+      >
+        {icon}
+      </Flex>
+      <Text fontWeight={500} fontSize={'sm'}>
+        {title}
+      </Text>
+    </Stack>
+  );
+};
+
 const TechStack: NextPage<SkillProps> = ({ skills }) => {
   const bgColor = useLinkColor();
   const [skillsList, setSkillsList] = useState([]);
@@ -58,7 +108,7 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
     setSkillsList(skills);
   }, []);
 
-  const filterSkills = (tab) => {
+  const filterSkills = (tab: string | any[]) => {
     if (tab.length) setSkillsList(skills.filter((skill) => skill.type === tab));
     else setSkillsList(skills);
   };
@@ -66,19 +116,97 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
   return (
     <PageLayout title="Skills" keywords="rails, ruby, react, javascript, typescript">
       <PageSlideFade>
-        <VStack spacing={8}>
+        <VStack spacing={10}>
           <Section>
-            <VStack>
+            <VStack spacing={10}>
+              <SimpleGrid columns={{ base: 1, md: 1, lg: 2 }} spacing={5}>
+              <VStack>
+                  <Header mt={0} mb={1}>
+                    Perfíl Profesional
+                  </Header>
+                  <Text
+                    fontSize={'md'}
+                    color={useColorModeValue('gray.500', 'gray.200')}
+                    textAlign="justify"
+                  >
+                    Desarrollador Junior Front-end. Apasionado de la Programación, busco aportar en
+                    su empresa, mis conocimientos académicos de programación{' '}
+                    <strong>
+                      {' '}
+                      (Java, Javascript, Python, C#, Flutter, Kotlin,PHP, HTML5, CSS).{' '}
+                    </strong>
+                    {/* Mi capacidad de generar ideas y mi facilidad para trabajar en equipo son mis
+                    principales herramientas para trabajar y crecer como desarrollador Junior
+                    Front-end. */}
+                  </Text>
+                </VStack>
+                <VStack>
+                  <Header mt={0} mb={1}>
+                    Objetivo Profesional
+                  </Header>
+                  <Text
+                    fontSize={'md'}
+                    color={useColorModeValue('gray.500', 'gray.200')}
+                    textAlign="justify"
+                  >
+                    Mi objetivo profesional es formar parte de una empresa de desarrollo de
+                    software, que me pueda dar la oportunidad de pulir mis conocimientos, de esta
+                    manera aportar mis capacidades productivas en los procesos de la empresa.
+                  </Text>
+                </VStack>
+                </SimpleGrid>
               <Header mt={0} mb={1}>
-                Tech Stack
+                Video Currículum
+              </Header>
+
+              <Box
+                rounded={'xl'}
+                as="iframe"
+                src="https://www.youtube.com/embed/g2ammnp6Dto"
+                width="100%"
+                sx={{
+                  aspectRatio: '16/9'
+                }}
+              />
+
+              <Header mt={0} mb={1}>
+                Competencias y Fortalezas
+              </Header>
+              <Box
+                p={5}
+                bg={useColorModeValue('gray.100', 'gray.700')}
+                rounded={'lg'}
+                w={'100%'}
+                boxShadow={'lg'}
+              >
+                <SimpleGrid columns={{ base: 2, md: 3, lg: 6 }} spacing={5} alignItems={'center'}>
+                  <Feature
+                    icon={<Icon as={FcViewDetails} w={10} h={10} />}
+                    title={'Responsabilidad'}
+                  />
+                  <Feature
+                    icon={<Icon as={FcParallelTasks} w={10} h={10} />}
+                    title={'Organización'}
+                  />
+                  <Feature
+                    icon={<Icon as={FcPodiumWithSpeaker} w={10} h={10} />}
+                    title={'Autonomía'}
+                  />
+                  <Feature icon={<Icon as={FcReuse} w={10} h={10} />} title={'Proactividad'} />
+                  <Feature icon={<Icon as={FcPuzzle} w={10} h={10} />} title={'Adaptación'} />
+                  <Feature icon={<Icon as={FcAutomotive} w={10} h={10} />} title={'Flexibilidad'} />
+                </SimpleGrid>
+              </Box>
+              <Header mt={4} mb={4}>
+                Habilidades Técnicas
               </Header>
               <Text
-                fontSize={'xl'}
+                fontSize={'md'}
                 color={useColorModeValue('gray.500', 'gray.200')}
-                maxW="lg"
-                textAlign="center"
+                textAlign="justify"
               >
-                A list of my favorite tools and technologies that I use on a regular basis.
+                Una lista de herramientas y tecnologías favoritas que uso regularmente, para crear
+                softwares.
               </Text>
             </VStack>
           </Section>

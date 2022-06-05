@@ -37,7 +37,7 @@ const siteConfig = {
       },
       {
         url: "mailto:cesar.acjota@tecsup.edu.pe",
-        label: "Mail ahmad",
+        label: "Mail acjota",
         type: "gray",
         icon: <FiMail />
       }

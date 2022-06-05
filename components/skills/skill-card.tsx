@@ -20,7 +20,7 @@ const SkillCard = ({ name, image, link, description }) => {
   const { data, loading } = usePalette(image)
 
   return (
-    <MotionBox variants={item}>
+    <MotionBox variants={item} width={'100%'}>
       <MotionBox whileHover={{ y: -5 }}>
         <NextLink href={link} passHref>
           <Link isExternal>

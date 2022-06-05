@@ -65,13 +65,13 @@ export const institutes = [
 ];
 
 export const skillsArray = [
-  {
-    name: 'Ruby on Rails',
-    description: 'Web development',
-    link: 'https://rubyonrails.org/',
-    type: 'development',
-    image: '/assets/images/skills/rails.png'
-  },
+  // {
+  //   name: 'Ruby on Rails',
+  //   description: 'Web development',
+  //   link: 'https://rubyonrails.org/',
+  //   type: 'development',
+  //   image: '/assets/images/skills/rails.png'
+  // },
   {
     name: 'React',
     description: 'Web development',
@@ -79,13 +79,13 @@ export const skillsArray = [
     type: 'development',
     image: '/assets/images/skills/react.png'
   },
-  {
-    name: 'Ruby',
-    description: 'Web development, scrapping',
-    link: 'https://www.ruby-lang.org/en/',
-    type: 'development',
-    image: '/assets/images/skills/ruby.png'
-  },
+  // {
+  //   name: 'Ruby',
+  //   description: 'Web development, scrapping',
+  //   link: 'https://www.ruby-lang.org/en/',
+  //   type: 'development',
+  //   image: '/assets/images/skills/ruby.png'
+  // },
   {
     name: 'Python',
     description: 'Web development, scrapping',
@@ -142,13 +142,13 @@ export const skillsArray = [
     type: 'database',
     image: '/assets/images/skills/mysql.png'
   },
-  {
-    name: 'Redis',
-    description: 'Database',
-    link: 'https://redis.io/',
-    type: 'database',
-    image: '/assets/images/skills/redis.png'
-  },
+  // {
+  //   name: 'Redis',
+  //   description: 'Database',
+  //   link: 'https://redis.io/',
+  //   type: 'database',
+  //   image: '/assets/images/skills/redis.png'
+  // },
   {
     name: 'Heroku',
     description: 'Devops',
@@ -163,20 +163,20 @@ export const skillsArray = [
     type: 'devops',
     image: 'assets/images/skills/aws.png'
   },
-  {
-    name: 'Digital Ocean',
-    description: 'Devops',
-    link: 'https://www.digitalocean.com/',
-    type: 'devops',
-    image: '/assets/images/skills/digital-ocean.png'
-  },
-  {
-    name: 'Nginx',
-    description: 'Web server',
-    link: 'https://www.nginx.com/',
-    type: 'devops',
-    image: '/assets/images/skills/nginx.png'
-  },
+  // {
+  //   name: 'Digital Ocean',
+  //   description: 'Devops',
+  //   link: 'https://www.digitalocean.com/',
+  //   type: 'devops',
+  //   image: '/assets/images/skills/digital-ocean.png'
+  // },
+  // {
+  //   name: 'Nginx',
+  //   description: 'Web server',
+  //   link: 'https://www.nginx.com/',
+  //   type: 'devops',
+  //   image: '/assets/images/skills/nginx.png'
+  // },
   {
     name: 'Visual Studio Code',
     description: 'Code editor of choice',

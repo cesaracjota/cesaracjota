@@ -8,8 +8,8 @@ function AppLayout(props) {
   return (
     <Fragment>
       <TopNav />
-      <DottedSvgs />
-      <Box textAlign="center" fontSize="xl" w={['90%', '85%', '80%']} maxW={800} mx="auto">
+      {/* <DottedSvgs /> */}
+      <Box textAlign="center" fontSize="xl" w={['90%', '90%', '90%']} maxW={990} mx="auto">
         <Box pt={'7rem'} pb={10}>
           {props.children}
         </Box>
@@ -32,7 +32,7 @@ function DottedSvgs() {
       <Box position="relative" height="full" mx="auto" maxW="940px">
         <Box position="absolute" left="100%">
           <svg
-            className={`${styles.dottedRightTransform} ${styles.dottedColor}`}
+            className={`${styles.dottedRightTransform} `}
             color="rgba(55,65,81, 1)"
             width="404"
             height="784"

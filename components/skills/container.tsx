@@ -5,8 +5,8 @@ export const Container = props => (
   <Box
     textAlign="center"
     fontSize="xl"
-    w={["90%", "85%", "80%"]}
-    maxW={800}
+    w={["95%", "95%", "95%"]}
+    maxW={990}
     mx="auto"
     {...props}
   />

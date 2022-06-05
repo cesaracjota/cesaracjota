@@ -11,7 +11,10 @@ import {
   ListItem,
   Image,
   Center,
-  AspectRatio,
+  Tag,
+  Avatar,
+  AvatarBadge,
+  TagLabel,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { MotionBox, MotionFlex } from 'components/shared/animations/motion'
@@ -21,7 +24,8 @@ import { useLinkColor } from 'components/theme'
 import PopularArticles from './PopularArticles'
 import { BlogPostProps } from 'interfaces/interface'
 import { newContent } from 'data/data'
-import { FaLocationArrow } from "react-icons/fa";
+import { FaLocationArrow } from 'react-icons/fa'
+import VideoPresentation from './VideoPresentation'
 
 const ANIMATION_DURATION = 0.3
 const ORANGE = '#ff9400'
@@ -54,7 +58,7 @@ const Home: React.FC<BlogPostProps> = (props) => {
         </Center>
       </Flex>
 
-      <Flex direction={['column', 'column', 'row']} mt={250}>
+      <Flex direction={['column', 'column', 'row']} mt={260}>
         <MotionBox
           opacity="0"
           initial={{
@@ -71,32 +75,36 @@ const Home: React.FC<BlogPostProps> = (props) => {
           m="auto"
           mb={[10, 10, 'auto']}
         >
-          <MotionBox whileHover={{ scale: 1.05 }} rounded="full" shadow="lg">
-            {/* <Avatar
+          <MotionBox whileHover={{ scale: 1.2 }} shadow="full">
+            <Avatar
               size={'2xl'}
-              showBorder={true}
+              cursor={'pointer'}
+              boxShadow={'xl'}
               borderColor={'transparent'}
-              outline={'dashed'}
               outlineColor={'gray.500'}
               src={'https://avatars.githubusercontent.com/u/81894363?v=4'}
-            /> */}
-            <Image
-              boxSize='150px'
+            >
+              <AvatarBadge boxSize='0.9em' bg='green.500' />
+            </Avatar>
+            {/* <Image
+              boxSize='130px'
+              rounded={'full'}
+              w={'100%'}
               borderRadius={'xl'}
-              outline={'thick double'}
+              // outline={'thick double'}
               outlineColor={linkColor}
               fallbackSrc={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'}
               src={'https://avatars.githubusercontent.com/u/81894363?v=4'}
               alt='Cesar Augusto Acjota Merma'
-            />
+            /> */}
           </MotionBox>
         </MotionBox>
         <MotionFlex
           position="relative"
           ml={['auto', 'auto', 10]}
           m={['auto', 'initial']}
-          w={['100%', '100%', '80%']}
-          maxW="800px"
+          w={['95%', '95%', '95%']}
+          maxW="990px"
           opacity="0"
           justify="center"
           direction="column"
@@ -172,7 +180,7 @@ const Home: React.FC<BlogPostProps> = (props) => {
           <Box as="h2" fontSize="2xl" fontWeight="400" textAlign="justify">
             Mi nombre es{' '}
             <Box as="i" fontWeight="900" color={linkColor}>
-            Cesar Augusto,
+            Cesar Augusto, Acjota Merma
             </Box>{' '}
             soy {' '}
             <Box as="span" whiteSpace="nowrap">
@@ -216,9 +224,22 @@ const Home: React.FC<BlogPostProps> = (props) => {
         }}
         zIndex={1}
       >
-        <Box mt={10}>
+        <Box mt={1}>
+          <VideoPresentation />
           <ContentBox linkColor={linkColor} />
-          <PopularArticles posts={posts} />
+          {/* <PopularArticles posts={posts} /> */}
+        </Box>
+        <Box mt={10}>
+        <Tag size='lg' bg={'blue.600'} borderRadius='full' boxShadow={'2xl'}>
+          <Avatar
+            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw0E4lC06yZypKcVpongcNU_U5obaHLEeQ-M0ocADfarathgbhpbdE7kpF50fZVis0-RQ&usqp=CAU'
+            size='xs'
+            name='Cesar Augusto'
+            ml={-1}
+            mr={2}
+          />
+          <TagLabel fontSize="sm" color={'white'}>"Si puedes imaginar, lo puedes programar"</TagLabel>
+        </Tag>
         </Box>
       </MotionBox>
     </Flex>
@@ -228,7 +249,7 @@ const Home: React.FC<BlogPostProps> = (props) => {
 const ContentBox = ({ linkColor }) => {
   return (
     <Stack
-      mb={10}
+      mb={5}
       padding={4}
       align="start"
       borderLeft="4px solid"

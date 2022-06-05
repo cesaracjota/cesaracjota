@@ -1,44 +1,34 @@
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
-  Button,
   Text,
   Link,
   IconButton,
   useDisclosure,
   useColorModeValue,
-  Menu,
-  MenuButton,
-  MenuList,
   MenuItem,
   Stack,
   Icon,
-  Tooltip
 } from '@chakra-ui/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { ColorModeSwitcher } from '../theme/ColorModeSwitcher';
 import { AiTwotoneThunderbolt } from 'react-icons/ai';
-import { BiChevronDown } from 'react-icons/bi';
 import { CgArrowsExchange } from 'react-icons/cg';
 import { BsCheckCircle } from 'react-icons/bs';
-import { MdSupervisorAccount, MdTimeline } from 'react-icons/md';
+import { MdTimeline } from 'react-icons/md';
 import { BsBook } from 'react-icons/bs';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { AccentPicker } from 'components/theme/Accent';
 import { useLinkColor } from 'components/theme';
-import { MotionBox } from 'components/shared/animations/motion';
-import { AiFillHome } from 'react-icons/ai'
 import { colors } from '../theme/colors';
 import path from 'path';
-import { FaGithub } from "react-icons/fa";
 
 const webLinks = [
   { name: 'Inicio', path: '/'},
-  { name: 'Perfil', path: '/perfil' },
+  { name: 'Perfil', path: '/tech-stack' },
   { name: 'Proyectos', path: '/projects' },
   { name: 'Blog', path: '/blog' },
   { name: 'Contacto', path: '/changelog' },
@@ -46,7 +36,7 @@ const webLinks = [
 
 const mobileLinks = [
   { name: 'Inicio', path: '/'},
-  { name: 'Perfil Profesional', path: '/' },
+  { name: 'Perfil Profesional', path: '/tech-stack' },
   { name: 'Proyectos', path: '/projects' },
   { name: 'Blog', path: '/blog' },
   { name: 'Contacto', path: '/changelog' },
@@ -101,6 +91,7 @@ interface MenuLinkProps {
 const MenuLink = (props: MenuLinkProps) => {
   const iconsObj = {
     '/tech-stack': <Icon as={AiTwotoneThunderbolt} size={18} color={props.color} />,
+    '/perfil': <Icon as={AiTwotoneThunderbolt} size={18} color={props.color} />,
     '/open-source': <Icon as={BsBook} size={18} color={props.color} />,
     '/achievements': <Icon as={BsCheckCircle} size={18} color={props.color} />,
     '/projects': <Icon as={MdTimeline} size={18} color={props.color} />,
@@ -153,8 +144,8 @@ export default function TopNav() {
           h={20}
           alignItems={'center'}
           justifyContent={'space-between'}
-          w={['100%', '90%', '83%']}
-          maxW={800}
+          w={['95%', '95%', '95%']}
+          maxW={990}
           mx="auto"
         >
           <IconButton
@@ -199,8 +190,8 @@ export default function TopNav() {
         {isOpen ? (
           <Box
             pb={4}
-            w={['100%', '100%', '80%']}
-            maxW={800}
+            w={['100%', '100%', '95%']}
+            maxW={990}
             display={['inherit', 'inherit', 'none']}
           >
             <Stack as={'nav'} spacing={5} >

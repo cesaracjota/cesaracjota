@@ -14,10 +14,10 @@ const Header = ({
   ...props
 }: PropsWithChildren<Props>) => (
   <Box
-    as="h1"
+    as="h2"
     mt={10}
     mb={6}
-    fontSize="3xl"
+    fontSize="xl"
     lineHeight="shorter"
     fontWeight="bold"
     {...props}
