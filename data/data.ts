@@ -1,20 +1,29 @@
 export const companies = [
   {
-    title: 'Phaedra Solutions',
-    alt: 'PS image',
-    role: 'Senior Software Engineer',
-    skills: ['ruby', 'rails', 'typescript', 'javascript', 'react', 'aws'],
-    period: '2019 - Present',
-    logo: '/assets/images/logos/phaedra.jpeg'
-  },
-  {
-    title: 'Brainx Technologies',
-    alt: 'BT image',
-    role: 'Software Engineer',
-    skills: ['ruby', 'rails', 'javascript', 'python'],
-    period: '2018 - 2019',
-    logo: '/assets/images/logos/brainxtech.png'
-  },
+    title: "Nativa E.I.R.L",
+    alt: "Brainplow image",
+    link: "https://www.universidadperu.com/empresas/corporacion-nativa.php",
+    role: "Software Developer",
+    skills: ["javascript", "php", "laravel", "postgresql"],
+    period: "2021 - 2022",
+    logo: 'assets/images/logos/NATIVA.jpg'
+  }
+  // {
+  //   title: 'Phaedra Solutions',
+  //   alt: 'PS image',
+  //   role: 'Senior Software Engineer',
+  //   skills: ['ruby', 'rails', 'typescript', 'javascript', 'react', 'aws'],
+  //   period: '2019 - Present',
+  //   logo: '/assets/images/logos/phaedra.jpeg'
+  // },
+  // {
+  //   title: 'Brainx Technologies',
+  //   alt: 'BT image',
+  //   role: 'Software Engineer',
+  //   skills: ['ruby', 'rails', 'javascript', 'python'],
+  //   period: '2018 - 2019',
+  //   logo: '/assets/images/logos/brainxtech.png'
+  // },
   // {
   //   title: "Codenya Studio",
   //   alt: "CS image",
@@ -23,42 +32,45 @@ export const companies = [
   //   period: "2018 - Present",
   //   logo: '/assets/images/logos/codenya.png'
   // },
-  {
-    title: 'Brainplow',
-    alt: 'Brainplow image',
-    role: 'Software Engineer',
-    skills: ['javascript', 'python', 'angular'],
-    period: '2017 - 2018',
-    logo: '/assets/images/logos/brainplow.jpg'
-  }
+  // {
+  //   title: 'Brainplow',
+  //   alt: 'Brainplow image',
+  //   role: 'Software Engineer',
+  //   skills: ['javascript', 'python', 'angular'],
+  //   period: '2017 - 2018',
+  //   logo: '/assets/images/logos/brainplow.jpg'
+  // }
 ];
 
 export const institutes = [
   {
-    short_title: 'FAST - NUCES',
-    title: 'National University of Computer and Emerging Sciences',
-    alt: 'Nuces image',
-    role: "Bachelor's Degree in Computer Science",
-    skills: ['project management', 'web development', 'data structures'],
-    period: '2013 - 2017',
-    startingYear: '2013',
-    logo: '/assets/images/logos/fast.png',
+    short_title: "FAST - NUCES",
+    title: "TECSUP",
+    alt: "Tecsup image",
+    link: "https://www.tecsup.edu.pe/",
+    role: "Bachelor's Degree in Software Developer",
+    skills: ["project management", "web development", "data structures"],
+    period: "2019 - 2022",
+    startingYear: "2019",
+    logo: "assets/images/logos/TECSUP.png",
     awards: [
       {
-        title: 'Speed Programming Battle',
-        description: 'Won speed programming battle which held at FAST - NUCES.',
-        date: 'May 1, 2015'
-      },
-      {
-        title: 'Silver Medal',
+        title: "Speed Programming Battle",
         description:
-          'This medal was awarded to me by FAST - NUCES for getting a CGPA of 3.9 in 2nd semester.',
-        date: 'May 1, 2014'
+          "Won speed programming battle which held at FAST - NUCES.",
+        date: "May 1, 2015"
       },
       {
-        title: 'Speed Programming Battle',
-        description: 'Won speed programming battle which held at FAST - NUCES.',
-        date: 'Nov 1, 2013'
+        title: "Silver Medal",
+        description:
+          "This medal was awarded to me by FAST - NUCES for getting a CGPA of 3.9 in 2nd semester.",
+        date: "May 1, 2014"
+      },
+      {
+        title: "Speed Programming Battle",
+        description:
+          "Won speed programming battle which held at FAST - NUCES.",
+        date: "Nov 1, 2013"
       }
     ]
   }

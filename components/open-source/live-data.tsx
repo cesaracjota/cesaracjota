@@ -14,12 +14,12 @@ const LiveData = () => {
   const [isLargerThan720] = useMediaQuery('(min-width: 720px)')
   const [isLargerThan982] = useMediaQuery('(min-width: 982px)')
 
-  let columnWidth = 390
+  let columnWidth = "100%"
   if (isLargerThan982) {
-    columnWidth = 390
+    columnWidth = "50%"
   } else {
     if (isLargerThan720) {
-      columnWidth = 300
+      columnWidth = "50%"
     } else {
       // columnWidth = "100%";
     }
@@ -34,7 +34,7 @@ const LiveData = () => {
   }, [])
 
   return (
-    <PageSlideFade>
+    <PageSlideFade >
       {loading ? (
         <SimpleGrid columns={[1, 1, 2]} spacing={4} mt={4}>
           <CardSkeleton />

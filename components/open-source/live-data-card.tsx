@@ -42,7 +42,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
         size="xl"
         py={2}
         px={[2, 4]}
-        mt={2}
+        mt={4}
         rounded="xl"
         borderWidth="1px"
         bg={useColorModeValue('white', 'gray.800')}
@@ -52,7 +52,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
           textDecoration: 'none',
         }}
       >
-        <VStack overflow="hidden" align="start" spacing={1}>
+        <VStack overflow="hidden" align="start" spacing={1} w={'100%'}>
           <VStack spacing={1} align="start" w="100%">
             <Flex
               justifyContent={'space-between'}

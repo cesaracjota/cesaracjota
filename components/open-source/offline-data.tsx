@@ -11,7 +11,7 @@ const OfflineData = ({ repositories }) => {
   return (
     <PageSlideFade>
       <StaggerChildren>
-        <SimpleGrid columns={[2, 2, 3]} spacing={4} mt={12}>
+        <SimpleGrid columns={[2, 2, 3]} spacing={4} mt={12} w={'100%'}>
           {repositories.map((repo, index) => (
             <MotionBox whileHover={{ y: -5 }} key={index}>
               <RepositoryCard

@@ -1,44 +1,37 @@
-import * as React from 'react'
-import {
-  VStack,
-  Text,
-  useColorModeValue,
-  HStack,
-  IconButton,
-  Tooltip,
-} from '@chakra-ui/react'
-import { PageSlideFade } from 'components/shared/animations/page-transitions'
-import Header from 'components/shared/header'
-import { RiSignalTowerLine, RiWifiOffLine } from 'react-icons/ri'
-import OfflineData from 'components/open-source/offline-data'
-import LiveData from 'components/open-source/live-data'
-import { repositories } from 'data/repositories'
-import useSound from 'use-sound'
-import PageLayout from 'components/layouts/pageLayout'
+import * as React from 'react';
+import { VStack, Text, useColorModeValue, HStack, IconButton, Tooltip } from '@chakra-ui/react';
+import { PageSlideFade } from 'components/shared/animations/page-transitions';
+import Header from 'components/shared/header';
+import { RiSignalTowerLine, RiWifiOffLine } from 'react-icons/ri';
+import OfflineData from 'components/open-source/offline-data';
+import LiveData from 'components/open-source/live-data';
+import { repositories } from 'data/repositories';
+import useSound from 'use-sound';
+import PageLayout from 'components/layouts/pageLayout';
 
-const TURQUOISE = '#06b6d4'
+const TURQUOISE = '#06b6d4';
 
 const iconProps = {
   variant: 'ghost',
   size: 'md',
-  isRound: true,
-}
+  isRound: true
+};
 
 const RepositoriesList = ({ repositories }) => {
-  const [activeTab, setActiveTab] = React.useState('live')
+  const [activeTab, setActiveTab] = React.useState('live');
 
   const [play] = useSound('/assets/audios/lightswitch.mp3', {
     volume: 0.05,
     sprite: {
       on: [0, 300],
-      off: [500, 300],
-    },
-  })
+      off: [500, 300]
+    }
+  });
 
   const handleClick = (type) => {
-    activeTab === 'live' ? play({ id: 'on' }) : play({ id: 'off' })
-    setActiveTab(type)
-  }
+    activeTab === 'live' ? play({ id: 'on' }) : play({ id: 'off' });
+    setActiveTab(type);
+  };
 
   return (
     <PageLayout title="Open-source" keywords="A list of open source projects">
@@ -46,7 +39,7 @@ const RepositoriesList = ({ repositories }) => {
         <VStack align="start" spacing={3}>
           <HStack justifyContent={'space-between'} width={'100%'}>
             <Header underlineColor={TURQUOISE} mt={0} mb={0}>
-              Open Source
+              Proyectos y Colaboraciones
             </Header>
             <HStack>
               <Tooltip hasArrow label="Live github repos" placement="top">
@@ -73,30 +66,23 @@ const RepositoriesList = ({ repositories }) => {
               </Tooltip>
             </HStack>
           </HStack>
-          <Text
-            color={useColorModeValue('gray.500', 'gray.200')}
-            textAlign="left"
-          >
-            This page lists some of the open source repositories I have
-            published or contributed to.
+          <Text color={useColorModeValue('gray.500', 'gray.200')} textAlign="left">
+            Esta página enumera algunos de los repositorios de código abierto en los que he
+            publicado o contribuido.
           </Text>
         </VStack>
-        {activeTab === 'live' ? (
-          <LiveData />
-        ) : (
-          <OfflineData repositories={repositories} />
-        )}
+        {activeTab === 'offline' ? <LiveData /> : <OfflineData repositories={repositories} />}
       </PageSlideFade>
     </PageLayout>
-  )
-}
+  );
+};
 
 export function getStaticProps() {
   return {
     props: {
-      repositories,
-    },
-  }
+      repositories
+    }
+  };
 }
 
-export default RepositoriesList
+export default RepositoriesList;

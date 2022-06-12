@@ -29,17 +29,17 @@ import path from 'path';
 const webLinks = [
   { name: 'Inicio', path: '/'},
   { name: 'Perfil', path: '/tech-stack' },
-  { name: 'Proyectos', path: '/projects' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contacto', path: '/changelog' },
+  { name: 'Proyectos', path: '/about' },
+  { name: 'Actualidad', path: '/blog' },
+  { name: 'Contacto', path: '/developer-story'},
 ];
 
 const mobileLinks = [
   { name: 'Inicio', path: '/'},
   { name: 'Perfil Profesional', path: '/tech-stack' },
-  { name: 'Proyectos', path: '/projects' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contacto', path: '/changelog' },
+  { name: 'Proyectos', path: '/about' },
+  { name: 'Noticias / Actualidad', path: '/blog' },
+  { name: 'Contacto', path: '/developer-story' },
 ];
 
 interface NavLinkProps {

@@ -1,6 +1,6 @@
 export const repositories = [
   {
-    title: 'Portfolio1',
+    title: 'Mi portafolio',
     description: 'Portfolio app to show my skills and experience.',
     cover: '/assets/images/repositories/portfolio-v2.png',
     technologies: ['Nextjs', 'react', 'chakraUi'],
