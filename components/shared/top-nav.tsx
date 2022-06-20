@@ -31,7 +31,7 @@ const webLinks = [
   { name: 'Perfil', path: '/tech-stack' },
   { name: 'Proyectos', path: '/about' },
   { name: 'Actualidad', path: '/blog' },
-  { name: 'Contacto', path: '/developer-story'},
+  { name: 'Networking', path: '/networking' }
 ];
 
 const mobileLinks = [
@@ -39,7 +39,7 @@ const mobileLinks = [
   { name: 'Perfil Profesional', path: '/tech-stack' },
   { name: 'Proyectos', path: '/about' },
   { name: 'Noticias / Actualidad', path: '/blog' },
-  { name: 'Contacto', path: '/developer-story' },
+  { name: 'Networking', path: '/developer-story' },
 ];
 
 interface NavLinkProps {
