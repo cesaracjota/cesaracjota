@@ -26,6 +26,7 @@ import { BlogPostProps } from 'interfaces/interface'
 import { newContent } from 'data/data'
 import { FaLocationArrow } from 'react-icons/fa'
 import VideoPresentation from './VideoPresentation'
+import Resume from 'pages/resume'
 
 const ANIMATION_DURATION = 0.3
 const ORANGE = '#ff9400'
@@ -200,10 +201,8 @@ const Home: React.FC<BlogPostProps> = (props) => {
           😊
           </Box>
           
-          <Box as="h2" fontSize="1xl" fontWeight="700" mt={5} textAlign="right">
-            <Link href="https://drive.google.com/file/d/1BkSAxJcV7yMnjnVegSnRIwo-oIA3aNTR/view?usp=sharing" isExternal>
-              <Button colorScheme={linkColor} outlineColor={linkColor} variant='outline' size='md' rightIcon={<FaLocationArrow />}>Mi CV</Button>
-            </Link>
+          <Box display={'flex'} width="100%" as="h2" fontSize="1xl" fontWeight="700" mt={5} textAlign="right">
+            <Resume />
           </Box>
         </MotionFlex>
       </Flex>

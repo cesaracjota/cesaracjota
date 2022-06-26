@@ -1,54 +1,63 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, Key, useEffect, useState } from 'react';
 import {
   Stack,
   Input,
   InputGroup,
   InputRightElement,
   Icon,
+  Text,
   Heading,
-  useColorModeValue,
-} from '@chakra-ui/react'
-import PostCard from 'components/blog/card'
-import {
-  PageSlideFade,
-  StaggerChildren,
-} from 'components/shared/animations/page-transitions'
-import Header from 'components/shared/header'
-import { MotionBox } from 'components/shared/animations/motion'
-import { GetServerSideProps } from 'next'
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { motion, AnimatePresence } from 'framer-motion'
-import PageLayout from 'components/layouts/pageLayout'
-import { BiSearch } from 'react-icons/bi'
-import { getDbPosts, getDevtoPosts } from 'lib/fetchPosts'
+  useColorModeValue
+} from '@chakra-ui/react';
+import PostCard from 'components/blog/card';
+import { PageSlideFade, StaggerChildren } from 'components/shared/animations/page-transitions';
+import Header from 'components/shared/header';
+import { MotionBox } from 'components/shared/animations/motion';
+import { GetServerSideProps } from 'next';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { motion, AnimatePresence } from 'framer-motion';
+import PageLayout from 'components/layouts/pageLayout';
+import { BiSearch } from 'react-icons/bi';
+import { getDbPosts, getDevtoPosts } from 'lib/fetchPosts';
+import { BlogPost } from 'interfaces/interface';
 
-const TURQUOISE = '#06b6d4'
+const TURQUOISE = '#06b6d4';
 
 const Posts = ({ posts }) => {
-  const [searchValue, setSearchValue] = useState('')
-  const { dbPosts, isLoading } = getDbPosts()
+  const [searchValue, setSearchValue] = useState('');
+  const { dbPosts, isLoading } = getDbPosts();
 
-  const filteredBlogPosts = posts.filter((data) => {
-    const searchContent = data.title + data.description
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
+  const filteredBlogPosts = posts.filter((data: { title: any; description: any }) => {
+    const searchContent = data.title + data.description;
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
+  });
   filteredBlogPosts?.sort(
-    (a, b) => +new Date(b.published_at) - +new Date(a.published_at)
-  )
+    (a: { published_at: string | number | Date }, b: { published_at: string | number | Date }) =>
+      +new Date(b.published_at) - +new Date(a.published_at)
+  );
 
-  const getPostLikes = (post) => {
-    const p = dbPosts?.filter((p) => p.slug === post.slug)[0]
-    return p?.likes || 0
-  }
+  const getPostLikes = (post: BlogPost) => {
+    const p = dbPosts?.filter((p) => p.slug === post.slug)[0];
+    return p?.likes || 0;
+  };
 
   return (
     <Fragment>
       <PageLayout title="Blog" description="A list of all articles and posts!">
         <PageSlideFade>
           <Header underlineColor={TURQUOISE} mt={0} mb={6}>
-            Featured Articles
+            PERFIL PROFESIONAL (pitch)
+          </Header>
+          <Text mb={6} textAlign="justify" fontSize={'sm'}>
+            Soy desarrollador de software, he desarrollado diferentes proyectos usando Frameworks o
+            librerías tanto para en el lado backend y también frontend, como: Angular, React, Spring
+            Boot, Django, Laravel. Así como el manejo de diferentes bases de datos, conocimientos
+            básicos en Cloud Computing, diseño UI/UX.
+          </Text>
+          <Header underlineColor={TURQUOISE} mt={0} mb={6}>
+            ARTÍCULOS Y NOTICIAS DESTACADAS
           </Header>
           <InputGroup maxW="30rem">
             <Input
@@ -68,22 +77,22 @@ const Posts = ({ posts }) => {
                     No articles found
                   </Heading>
                 )}
-                {filteredBlogPosts.map((post, i) => (
+                {filteredBlogPosts.map((post: BlogPost, i: Key) => (
                   <motion.div
                     initial="hidden"
                     animate="visible"
                     variants={{
                       hidden: (i) => ({
                         opacity: 0,
-                        y: -30 * i,
+                        y: -30 * i
                       }),
                       visible: (i) => ({
                         opacity: 1,
                         y: 0,
                         transition: {
-                          delay: i * 0.1,
-                        },
-                      }),
+                          delay: i * 0.1
+                        }
+                      })
                     }}
                     custom={i}
                     key={post.slug}
@@ -103,29 +112,23 @@ const Posts = ({ posts }) => {
         </PageSlideFade>
       </PageLayout>
     </Fragment>
-  )
-}
+  );
+};
 
-const root = process.cwd()
+const root = process.cwd();
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let devtoPosts = await getDevtoPosts()
+  let devtoPosts = await getDevtoPosts();
 
-  const paths = fs
-    .readdirSync(path.join(root, 'data', 'posts'))
-    .map((p) => p.replace(/\.mdx/, ''))
-  const localPosts = []
+  const paths = fs.readdirSync(path.join(root, 'data', 'posts')).map((p) => p.replace(/\.mdx/, ''));
+  const localPosts = [];
   paths.map((p) => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join(root, 'data', 'posts', `${p}.mdx`),
-      'utf-8'
-    )
-    const { data: frontmatter } = matter(markdownWithMeta)
+    const markdownWithMeta = fs.readFileSync(path.join(root, 'data', 'posts', `${p}.mdx`), 'utf-8');
+    const { data: frontmatter } = matter(markdownWithMeta);
     const devPost = devtoPosts.filter(
       (data) =>
-        !data.canonical_url.includes('dev.to') &&
-        data.canonical_url.split('/blog/')[1] === p
-    )[0]
+        !data.canonical_url.includes('dev.to') && data.canonical_url.split('/blog/')[1] === p
+    )[0];
 
     localPosts.push({
       slug: p,
@@ -133,31 +136,27 @@ export const getServerSideProps: GetServerSideProps = async () => {
       description: frontmatter.description,
       published_at: frontmatter.published_at,
       comments_count:
-        (frontmatter.comments_count
-          ? frontmatter.comments_count
-          : devPost?.comments_count) || 0,
+        (frontmatter.comments_count ? frontmatter.comments_count : devPost?.comments_count) || 0,
       public_reactions_count:
         (frontmatter.public_reactions_count
           ? frontmatter.public_reactions_count
           : devPost?.public_reactions_count) || 0,
-      tag_list: frontmatter.tags,
-    })
-  })
+      tag_list: frontmatter.tags
+    });
+  });
 
-  devtoPosts = devtoPosts.filter((data) =>
-    data.canonical_url.includes('dev.to')
-  )
-  const posts = [...localPosts, ...devtoPosts]
+  devtoPosts = devtoPosts.filter((data) => data.canonical_url.includes('dev.to'));
+  const posts = [...localPosts, ...devtoPosts];
 
   if (!posts) {
     return {
-      notFound: true,
-    }
+      notFound: true
+    };
   }
 
   return {
-    props: { posts },
-  }
-}
+    props: { posts }
+  };
+};
 
-export default Posts
+export default Posts;

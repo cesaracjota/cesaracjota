@@ -24,6 +24,7 @@ import PageLayout from 'components/layouts/pageLayout'
 import { Tags } from 'components/shared/Tags'
 import RepositoriesList from './open-source'
 import { repositories } from 'data/repositories'
+import { Key } from 'react'
 
 interface CardProps {
   title: string
@@ -61,7 +62,6 @@ const Card = (props: CardProps) => {
               fallbackSrc={'/assets/images/placeholder.png'}
               src={logo}
               alt={alt}
-              showBorder={true}
               border={'2px'}
             />
             <Stack spacing={2} pl={3} align="left">
@@ -157,7 +157,7 @@ const About = ({ companies, institutes }) => {
             mx={[1, 1, 0, 0]}
             mt={12}
           >
-            {companies.map((company, index) => (
+            {companies.map((company: { title: string; role: string; link: string; skills: string[]; period: string; logo: string }, index: Key) => (
               <MotionBox whileHover={{ y: -5 }} key={index}>
                 <Card
                   key={index}
@@ -189,7 +189,7 @@ const About = ({ companies, institutes }) => {
             mx={[1, 1, 0, 0]}
             mt={12}
           >
-            {institutes.map((institute, index) => (
+            {institutes.map((institute: { title: string; role: string; link: string; skills: string[]; period: string; logo: string }, index: Key) => (
               <MotionBox whileHover={{ y: -5 }} key={index}>
                 <Card
                   key={index}

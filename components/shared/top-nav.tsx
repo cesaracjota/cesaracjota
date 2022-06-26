@@ -10,6 +10,9 @@ import {
   MenuItem,
   Stack,
   Icon,
+  Image,
+  Img,
+  Avatar,
 } from '@chakra-ui/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
@@ -25,6 +28,7 @@ import { AccentPicker } from 'components/theme/Accent';
 import { useLinkColor } from 'components/theme';
 import { colors } from '../theme/colors';
 import path from 'path';
+import { MotionBox } from './animations/motion';
 
 const webLinks = [
   { name: 'Inicio', path: '/'},
@@ -137,14 +141,14 @@ export default function TopNav() {
         css={{
           // para especificar el background de la cabecera, para ajustar el transparente
           backdropFilter: 'saturate(180%) blur(3px)',
-          backgroundColor: useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(26, 32, 44, 0.8)')
+          backgroundColor: useColorModeValue('rgba(255, 255, 255, 0.95)', 'rgba(26, 32, 44, 0.95)')
         }}
       >
         <Flex
           h={20}
           alignItems={'center'}
           justifyContent={'space-between'}
-          w={['95%', '95%', '95%']}
+          w={['95%', '95%', '93%']}
           maxW={990}
           mx="auto"
         >
@@ -155,13 +159,22 @@ export default function TopNav() {
             display={['inherit', 'inherit', 'none']}
             onClick={isOpen ? onClose : onOpen}
           />
+          <Box
+            display={['inherit', 'inherit', 'inherit']}
+            ml={-2}
+          >
+          <NextLink href={'/'} passHref>
+            <Image boxSize={14} 
+            src='/assets/images/cesaracjota.png'
+            cursor='pointer'
+            />
+          </NextLink>
+          </Box>
             <HStack 
-              as={'nav'} 
-              spacing={8} 
-              justifyContent={'center'}
-              fontWeight="900"
-              fontSize={18}
-              alignItems={'right'}
+              as={'nav'}
+              spacing={8}
+              fontWeight="500"
+              fontSize={16}
               display={{ base: 'none', md: 'flex' }}
             >
               {webLinks.map((link, index) => (
@@ -190,7 +203,7 @@ export default function TopNav() {
         {isOpen ? (
           <Box
             pb={4}
-            w={['100%', '100%', '95%']}
+            w={['95%', '95%', '95%']}
             maxW={990}
             display={['inherit', 'inherit', 'none']}
           >

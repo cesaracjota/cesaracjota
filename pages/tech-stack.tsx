@@ -15,7 +15,10 @@ import {
   SimpleGrid,
   Box,
   Flex,
-  GridItem
+  GridItem,
+  Link,
+  Button,
+  Image
 } from '@chakra-ui/react';
 import { GetStaticProps, NextPage } from 'next';
 import Section from 'components/skills/section';
@@ -38,6 +41,9 @@ import {
   FcReuse,
   FcPuzzle
 } from 'react-icons/fc';
+import { FaLocationArrow } from 'react-icons/fa';
+
+import Resume from './resume';
 
 const tabList = [
   {
@@ -68,14 +74,12 @@ interface FeatureProps {
 }
 
 const Feature = ({ title, icon }: FeatureProps) => {
-  
-  const linkColor = useLinkColor()
+  const linkColor = useLinkColor();
 
   return (
     <Stack
       align={'center'}
       bg={useColorModeValue('gray.200', 'gray.800')}
-      p={2}
       rounded={'xl'}
       boxShadow={'md'}
       borderLeft="4px solid"
@@ -102,6 +106,7 @@ const Feature = ({ title, icon }: FeatureProps) => {
 
 const TechStack: NextPage<SkillProps> = ({ skills }) => {
   const bgColor = useLinkColor();
+  const linkColor = useLinkColor();
   const [skillsList, setSkillsList] = useState([]);
 
   React.useEffect(() => {
@@ -119,10 +124,10 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
         <VStack spacing={10}>
           <Section>
             <VStack spacing={10}>
-              <SimpleGrid columns={{ base: 1, md: 1, lg: 2 }} spacing={5}>
-              <VStack>
+              <SimpleGrid columns={{ base: 1, md: 1, lg: 2 }} spacing={10}>
+                <VStack>
                   <Header mt={0} mb={1}>
-                    Perfíl Profesional
+                    PERFÍL PROFESIONAL
                   </Header>
                   <Text
                     fontSize={'md'}
@@ -133,7 +138,7 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                     su empresa, mis conocimientos académicos de programación{' '}
                     <strong>
                       {' '}
-                      (Java, Javascript, Python, C#, Flutter, Kotlin,PHP, HTML5, CSS).{' '}
+                      (Java, Javascript, Python, C#, Flutter, Kotlin,PHP, HTML5, CSS, GitHub).{' '}
                     </strong>
                     {/* Mi capacidad de generar ideas y mi facilidad para trabajar en equipo son mis
                     principales herramientas para trabajar y crecer como desarrollador Junior
@@ -142,7 +147,7 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                 </VStack>
                 <VStack>
                   <Header mt={0} mb={1}>
-                    Objetivo Profesional
+                    OBJETIVO PROFESIONAL
                   </Header>
                   <Text
                     fontSize={'md'}
@@ -154,9 +159,10 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                     manera aportar mis capacidades productivas en los procesos de la empresa.
                   </Text>
                 </VStack>
-                </SimpleGrid>
+              </SimpleGrid>
+              <Resume />
               <Header mt={0} mb={1}>
-                Video Currículum
+                VIDEO CURRÍCULUM
               </Header>
 
               <Box
@@ -170,7 +176,7 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
               />
 
               <Header mt={0} mb={1}>
-                Competencias y Fortalezas
+                COMPETENCIAS Y FORTALEZAS
               </Header>
               <Box
                 p={5}
@@ -197,8 +203,25 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                   <Feature icon={<Icon as={FcAutomotive} w={10} h={10} />} title={'Flexibilidad'} />
                 </SimpleGrid>
               </Box>
+              <Header mt={0} mb={1}>
+                TARJETA DE PRESENTACIÓN
+              </Header>
+              <Box
+                p={5}
+                bg={useColorModeValue('gray.100', 'gray.700')}
+                rounded={'2xl'}
+                w={'full'}
+                boxShadow={'2xl'}
+              >
+                <Image
+                  src='/assets/images/presentacion.png'
+                  rounded={'2xl'}
+                  boxShadow={'md'}
+                />
+              </Box>
+
               <Header mt={4} mb={4}>
-                Habilidades Técnicas
+                HABILIDADES TÉCNICAS
               </Header>
               <Text
                 fontSize={'md'}
@@ -243,7 +266,6 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                           name={tool.name}
                           description={tool.description}
                           image={tool.image}
-                          // platform={"web"}
                           link={tool.link}
                         />
                       ))}
@@ -259,7 +281,6 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                           name={tool.name}
                           description={tool.description}
                           image={tool.image}
-                          // platform={"web"}
                           link={tool.link}
                         />
                       ))}
@@ -275,7 +296,6 @@ const TechStack: NextPage<SkillProps> = ({ skills }) => {
                           name={tool.name}
                           description={tool.description}
                           image={tool.image}
-                          // platform={"web"}
                           link={tool.link}
                         />
                       ))}
