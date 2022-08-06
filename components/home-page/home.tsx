@@ -223,8 +223,8 @@ const Home: React.FC<BlogPostProps> = (props) => {
         }}
         zIndex={1}
       >
-        <Box mt={1}>
-          <VideoPresentation />
+        <Box mt={4}>
+          {/* <VideoPresentation /> */}
           <ContentBox linkColor={linkColor} />
           {/* <PopularArticles posts={posts} /> */}
         </Box>
