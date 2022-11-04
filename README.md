@@ -1,54 +1,46 @@
 <div align="center">
-  <h1><a href="https://c-acjota.web.app" target="_blank">Cesar Acjota</a></h1>
-  My personal portfolio
+  <img src="https://profile-counter.glitch.me/cesaracjota/count.svg?"  />
 </div>
 
-## Built with
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [Chakra UI](https://chakra-ui.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Highlight Blog Content**: [prismjs](https://prismjs.com/)
-- **Markdown Processor**: [remark](https://remark.js.org/)
-- **ORM**: [prisma](https://www.prisma.io/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **Api's**:
-  - [Dev.to](https://dev.to/api)
-  - [Github](https://api.github.com)
+###
 
-## Overview
+<h1 align="left">Hey 👋 What's up?</h1>
 
-- `components/*` - Contains all components related to pages (blog, projects, about, etc).
-  - `shared/*` - All reusable components like header, footer etc.
-  - `layouts/*` - The different page layouts.
-  -  `theme/*` - Manage theme of site. 
-- `data/*` - Data that used for blog posts, projects etc.
-- `lib/*` - Collection of helpful utilities or code for external services like devto api.
-- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction).
-- `pages/blog/*` - Static pre-rendered blog pages using MDX.
-- `pages/*` - All other static pages.
-- `prisma/*` - My Prisma schema, which uses a Postgresql database.
-- `public/*` - Static assets including audios, fonts and images.
+###
 
-## View and copy code of your favourite components
-[TemplatesKart website](https://templateskart.com/projects/my-website)
+<p align="left">My name is Cesar Acjota, I'm a Software Developer, from Cusco - Perú.</p>
 
-## Running Locally
+###
 
-```sh
-git clone
-cd myPortfolio && yarn install
-yarn dev
-```
+<h2 align="left">About me</h2>
 
-The above commands will start the application on [http://localhost:3000/](http://localhost:3000)
+###
 
+<p align="left">✨ Creating bugs since ...<br>📚 I'm currently working at the project<br>🎯 Goals: Find a work out side of my country</p>
 
-<!-- ## Screens
-### Home 
-![Home Screen](/public/assets/images/screens/home_page.png)
-### Blog
-![Skills Screen](/public/assets/images/screens/blog_page.png) -->
+###
 
-## Cloning / Forking
+<h2 align="left">I code with</h2>
 
-### c-acjota
+###
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" width="52" alt="typescript logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" width="52" alt="react logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40" width="52" alt="nextjs logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg" height="40" width="52" alt="storybook logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" width="52" alt="nodejs logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" height="40" width="52" alt="nestjs logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="40" width="52" alt="jest logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" height="40" width="52" alt="angularjs logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" height="40" width="52" alt="dart logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" height="40" width="52" alt="figma logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filezilla/filezilla-plain.svg" height="40" width="52" alt="filezilla logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="40" width="52" alt="postgresql logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" width="52" alt="python logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" height="40" width="52" alt="redux logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height="40" width="52" alt="spring logo"  />
+</div>
+
+![Snake animation](https://github.com/cesaracjota/cesaracjota/blob/output/github-contribution-grid-snake.svg)
