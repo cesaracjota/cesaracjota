@@ -8,7 +8,7 @@
 
 ###
 
-<p align="left">My name is Cesar Acjota, I'm a Software Developer, from Cusco - Perú.</p>
+<p align="left">My name is Cesar Acjota, I'm a Software Developer, from Arequipa - Perú. 🇵🇪 </p>
 
 ###
 
