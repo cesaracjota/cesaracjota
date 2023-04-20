@@ -2,7 +2,6 @@ import React from 'react'
 import {
     Box,
     Flex,
-    Heading,
     Image,
     Link,
     Stack,
@@ -122,8 +121,8 @@ const SidebarContent = (props) => {
                 <Flex px="2" py="12px" direction={'row'} alignItems="left">
                     <Stack spacing={2} direction="row">
                         <Image src={LOGO} maxW={8} w="8" h="8" alt={'Agyl Academy'} />
-                        <Heading alignSelf={'center'} as={'h2'} size={'md'} fontWeight={'extrabold'}>AGYL</Heading>
-                        <Heading size={'sm'} alignSelf="center" fontWeight={'normal'}>academy</Heading>
+                        {/* <Heading alignSelf={'center'} as={'h2'} size={'md'} fontWeight={'extrabold'}>AGYL</Heading>
+                        <Heading size={'sm'} alignSelf="center" fontWeight={'normal'}>academy</Heading> */}
                     </Stack>
                 </Flex>
                 <Flex

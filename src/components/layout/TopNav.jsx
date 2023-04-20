@@ -1,11 +1,8 @@
 import {
     Box,
-    Button,
-    ButtonGroup,
     Container,
     Flex,
     HStack,
-    Heading,
     IconButton,
     Image,
     Stack,
@@ -15,7 +12,8 @@ import {
     Drawer,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton
+    DrawerCloseButton,
+    useColorModeValue
 } from '@chakra-ui/react'
 import { FiMenu } from 'react-icons/fi';
 import { ColorModeSwitcher } from '../../theme/ColorModeSwitcher';
@@ -24,7 +22,7 @@ import "@fontsource/fira-sans-condensed";
 import { NavLink } from 'react-router-dom';
 import SidebarContent from './Sidebar';
 
-export const Navbar = (props) => {
+export const TopNav = (props) => {
 
     const isDesktop = useBreakpointValue({
         base: false,
@@ -34,19 +32,21 @@ export const Navbar = (props) => {
     return (
         <Box
             as="nav"
-            boxShadow="base"
             role="navigation"
-            bg="#fffffff0"
-            _dark={{ bg: 'primary.1000', borderBottomWidth: '.5px', borderColor: 'gray.900' }}
             pos={{ base: "fixed", md: "fixed" }}
             zIndex="2"
             top="0"
             align="space-between"
             w="full"
+            css={{
+                backdropFilter: 'saturate(50%) blur(8px)',
+                backgroundColor: useColorModeValue('rgba(255, 255, 255, .7)', 'rgba(36, 36, 36, .7)')
+            }}
+
         >
             <Container
-                py={2}
-                maxW={'8xl'}
+                py={3}
+                maxW={'4xl'}
             >
                 <HStack spacing="10" justify="space-between">
                     {isDesktop ? (
@@ -54,24 +54,40 @@ export const Navbar = (props) => {
                             <Link as={NavLink} to={'/'} alignSelf="center">
                                 <Stack spacing={0} direction="row" alignSelf={'center'}>
                                     <Image src={LOGO} w={'full'} h={'full'} maxW={10} alignSelf={'center'} alt={'Agyl Academy'} />
-                                    <Heading fontSize="md" as="h1" fontWeight={'black'} alignSelf={'center'} noOfLines={1}>AGYL <span style={{ fontWeight: 'normal', fontSize: '12px', alignSelf: 'center' }}>academy</span></Heading>
+                                    {/* <Heading fontSize="md" as="h1" fontWeight={'black'} alignSelf={'center'} noOfLines={1}>CESAR <span style={{ fontWeight: 'normal', fontSize: '12px', alignSelf: 'center' }}>acjota</span></Heading> */}
                                 </Stack>
                             </Link>
-                            <ButtonGroup variant="link" spacing="8">
+                            {/* <ButtonGroup variant="link" spacing="8">
                                 {props.menus?.map((item, index) => (
                                     <Link as={NavLink} key={index} to={item.path} alignSelf={'center'}>
                                         <Button fontFamily={`"Fira Sans Condensed", sans-serif`} textColor="gray.600" _dark={{ color: 'gray.200' }}>{item.name}</Button>
                                     </Link>
                                 ))}
-                            </ButtonGroup>
+                            </ButtonGroup> */}
+                            <Drawer
+                                isOpen={props.isOpen}
+                                onClose={props.onClose}
+                                placement="right"
+                                size="sm"
+                                isFullHeight
+                            >
+                                <DrawerOverlay />
+                                <DrawerContent justifyContent={'center'} justify="center" alignItems={'center'}>
+                                <DrawerCloseButton size={'lg'}/>
+                                    <SidebarContent w="full" borderRight="none" />
+                                </DrawerContent>
+                            </Drawer>
                             <HStack spacing="3">
                                 <ColorModeSwitcher />
                                 <Divider orientation='vertical' h={6} />
-                                <Link href='https://sga.vercel.app' isExternal>
-                                    <Button variant="ghost" colorScheme="gray" textColor={'gray.600'} _dark={{ color: 'white' }} fontWeight="bold" fontFamily={`"Fira Sans Condensed", sans-serif`}>
-                                        Ingresar
-                                    </Button>
-                                </Link>
+                                <IconButton
+                                    variant="ghost"
+                                    icon={<FiMenu fontSize="1.25rem" />}
+                                    size={'md'}
+                                    rounded={'full'}
+                                    aria-label="Open Menu"
+                                    onClick={props.onOpen}
+                                />
                             </HStack>
                         </Flex>
                     ) : (
@@ -79,9 +95,9 @@ export const Navbar = (props) => {
                             <Drawer
                                 isOpen={props.isOpen}
                                 onClose={props.onClose}
-                                placement="top"
-                                size="full"
-                                isFullHeight
+                                placement="right"
+                                size="lg"
+                                // isFullHeight
                             >
                                 <DrawerOverlay />
                                 <DrawerContent justifyContent={'center'} justify="center" alignItems={'center'}>
@@ -92,8 +108,8 @@ export const Navbar = (props) => {
                             <Link as={NavLink} to={'/'} alignSelf="center">
                                 <Stack spacing={1} direction="row">
                                     <Image src={LOGO} maxW={8} w="8" h="8" alt={'Agyl Academy'} />
-                                    <Heading textAlign='center' alignSelf="center" as={'h2'} size={'sm'} fontWeight={'extrabold'}>AGYL</Heading>
-                                    <Heading size={'xs'} alignSelf="center" fontWeight={'normal'}>academy</Heading>
+                                    {/* <Heading textAlign='center' alignSelf="center" as={'h2'} size={'sm'} fontWeight={'extrabold'}>CESAR</Heading>
+                                    <Heading size={'xs'} alignSelf="center" fontWeight={'normal'}>Acjota</Heading> */}
                                 </Stack>
                             </Link>
                             <Stack spacing={1} direction="row">
