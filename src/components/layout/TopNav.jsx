@@ -13,7 +13,6 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useColorModeValue
 } from '@chakra-ui/react'
 import { FiMenu } from 'react-icons/fi';
 import { ColorModeSwitcher } from '../../theme/ColorModeSwitcher';
@@ -21,6 +20,8 @@ import LOGO from '../../assets/img/logo.svg';
 import "@fontsource/fira-sans-condensed";
 import { NavLink } from 'react-router-dom';
 import SidebarContent from './Sidebar';
+import LanguageMenu from '../../helpers/LanguageMenu';
+import { useEffect, useState } from 'react';
 
 export const TopNav = (props) => {
 
@@ -29,20 +30,40 @@ export const TopNav = (props) => {
         lg: true,
     });
 
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.pageYOffset > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
         <Box
             as="nav"
             role="navigation"
-            pos={{ base: "fixed", md: "fixed" }}
+            pos={{ base: "fixed", lg: "fixed" }}
+            bg={scrolled ? "primary.100" : "transparent"}
             zIndex="2"
             top="0"
             align="space-between"
             w="full"
             css={{
-                backdropFilter: 'saturate(50%) blur(8px)',
-                backgroundColor: useColorModeValue('rgba(255, 255, 255, .7)', 'rgba(36, 36, 36, .7)')
+                backdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'saturate(50%) blur(8px)',
+                backgroundColor: scrolled ? 'primary.100' : 'rgba(0,0,0,0)',
             }}
-
+            _dark={{
+                bg: scrolled ? "primary.100" : "transparent",
+            }}
+            transition="background-color 0.5s linear"
         >
             <Container
                 py={3}
@@ -53,17 +74,9 @@ export const TopNav = (props) => {
                         <Flex justify="space-between" flex="1">
                             <Link as={NavLink} to={'/'} alignSelf="center">
                                 <Stack spacing={0} direction="row" alignSelf={'center'}>
-                                    <Image src={LOGO} w={'full'} h={'full'} maxW={10} alignSelf={'center'} alt={'Agyl Academy'} />
-                                    {/* <Heading fontSize="md" as="h1" fontWeight={'black'} alignSelf={'center'} noOfLines={1}>CESAR <span style={{ fontWeight: 'normal', fontSize: '12px', alignSelf: 'center' }}>acjota</span></Heading> */}
+                                    <Image src={LOGO} w={'full'} h={'full'} maxW={10} alignSelf={'center'} alt={'Cesar Acjota'} />
                                 </Stack>
                             </Link>
-                            {/* <ButtonGroup variant="link" spacing="8">
-                                {props.menus?.map((item, index) => (
-                                    <Link as={NavLink} key={index} to={item.path} alignSelf={'center'}>
-                                        <Button fontFamily={`"Fira Sans Condensed", sans-serif`} textColor="gray.600" _dark={{ color: 'gray.200' }}>{item.name}</Button>
-                                    </Link>
-                                ))}
-                            </ButtonGroup> */}
                             <Drawer
                                 isOpen={props.isOpen}
                                 onClose={props.onClose}
@@ -73,12 +86,14 @@ export const TopNav = (props) => {
                             >
                                 <DrawerOverlay />
                                 <DrawerContent justifyContent={'center'} justify="center" alignItems={'center'}>
-                                <DrawerCloseButton size={'lg'}/>
+                                    <DrawerCloseButton size={'lg'} />
                                     <SidebarContent w="full" borderRight="none" />
                                 </DrawerContent>
                             </Drawer>
                             <HStack spacing="3">
-                                <ColorModeSwitcher />
+                                <LanguageMenu scrolled = { scrolled } />
+                                <Divider orientation='vertical' h={6} />
+                                <ColorModeSwitcher scrolled = { scrolled } />
                                 <Divider orientation='vertical' h={6} />
                                 <IconButton
                                     variant="ghost"
@@ -87,6 +102,15 @@ export const TopNav = (props) => {
                                     rounded={'full'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
+                                    colorScheme={
+                                        scrolled ? "whiteAlpha" : "gray"
+                                    }
+                                    _dark={{
+                                        color: 'white',
+                                    }}
+                                    color={
+                                        scrolled ? "white" : "black"
+                                    }
                                 />
                             </HStack>
                         </Flex>
@@ -97,11 +121,11 @@ export const TopNav = (props) => {
                                 onClose={props.onClose}
                                 placement="right"
                                 size="lg"
-                                // isFullHeight
+                            // isFullHeight
                             >
                                 <DrawerOverlay />
                                 <DrawerContent justifyContent={'center'} justify="center" alignItems={'center'}>
-                                <DrawerCloseButton size={'lg'}/>
+                                    <DrawerCloseButton size={'lg'} />
                                     <SidebarContent w="full" borderRight="none" />
                                 </DrawerContent>
                             </Drawer>
@@ -113,7 +137,8 @@ export const TopNav = (props) => {
                                 </Stack>
                             </Link>
                             <Stack spacing={1} direction="row">
-                                <ColorModeSwitcher />
+                                <LanguageMenu scrolled = { scrolled } />
+                                <ColorModeSwitcher scrolled = { scrolled } />
                                 <IconButton
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}
@@ -121,6 +146,15 @@ export const TopNav = (props) => {
                                     rounded={'full'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
+                                    colorScheme={
+                                        scrolled ? "whiteAlpha" : "gray"
+                                    }
+                                    _dark={{
+                                        color: 'white',
+                                    }}
+                                    color={
+                                        scrolled ? "white" : "black"
+                                    }
                                 />
                             </Stack>
                         </Flex>

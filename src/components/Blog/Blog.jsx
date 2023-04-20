@@ -11,7 +11,7 @@ const Blog = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: 'xl', md: '2xl' }}
+                    fontSize={{ base: 'xl', lg: '2xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"

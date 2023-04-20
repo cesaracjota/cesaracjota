@@ -3,6 +3,7 @@ import React from 'react';
 import { Footer } from './Footer';
 import SidebarContent from './Sidebar';
 import { TopNav } from './TopNav';
+import ScrollTopButton from './ScrollTopButton';
 
 const Index = ({ componente: Component }) => {
 
@@ -34,6 +35,7 @@ const Index = ({ componente: Component }) => {
                     {Component}
                 </Container>
             </Flex>
+            <ScrollTopButton />
             <Footer />
         </Flex>
     )

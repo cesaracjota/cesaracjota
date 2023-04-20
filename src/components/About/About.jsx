@@ -1,13 +1,18 @@
 import React from 'react';
 import { Heading, chakra, Stack, Image, Button, Icon } from '@chakra-ui/react';
 import { BsArrowUpRight } from 'react-icons/bs';
+import CV from '../../assets/pdf/CV.pdf';
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+
+    const { t } = useTranslation();
+
     return (
         <>
             <Stack
-                direction={{ base: 'column', md: 'row' }}
-                spacing={{ base: 4, md: 6 }}
+                direction={{ base: 'column', lg: 'row' }}
+                spacing={{ base: 4, lg: 6 }}
                 mb={4}
             >
                 <Stack
@@ -20,26 +25,23 @@ const About = () => {
                     }}
                     alignSelf={'center'}
                 >
-                    <Heading fontWeight={'extrabold'} size={{ base: 'lg', lg: '2xl' }} textAlign={{ base: 'center', md: 'start' }}>
-                        Hi, I’m <span style={{ fontWeight: 'bold', color: '#8612fa', textDecoration: 'underline' }}>Cesar Acjota.</span>
+                    <Heading fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
+                        {t("welcomeMessage")} <span style={{ fontWeight: 'extrabold', color: '#8612fa' }}>Cesar Acjota.</span>
                     </Heading>
-
                     <chakra.p textAlign={'justify'} fontSize={{base: 16, lg: 20}}>
-                        I’m a full-stack engineer, a designer, and a content creator.
-                        I work at Sentry.io as a Developer Advocate, and I’m an egghead.io instructor.
-                        I do regular live streams on my YouTube channel
+                        {t("presentationMessage")}
                     </chakra.p>
                     <Stack
                         direction={{
                             base: 'row',
-                            md: 'row',
+                            lg: 'row',
                         }}
                         spacing={[2,4]}
                         justifyContent={'space-between'}
                         display={'flex'}
                         alignSelf={{
                             base: 'center',
-                            md: 'flex-start',
+                            lg: 'flex-start',
                         }}
                         w={'full'}
                     >
@@ -65,7 +67,7 @@ const About = () => {
                                     bg: 'twitter.700'
                                 }
                             }}
-                            variant={'ghost'}
+                            variant={'outline'}
                         >
                             Twitter
                         </Button>
@@ -91,7 +93,7 @@ const About = () => {
                                     bg: 'gray.700'
                                 }
                             }}
-                            variant={'ghost'}
+                            variant={'outline'}
                         >
                             GitHub
                         </Button>
@@ -111,29 +113,57 @@ const About = () => {
                             size={{ base: 'sm', lg: 'md' }}
                             colorScheme='red'
                             _dark={{
-                                bg: 'red.800',
+                                bg: 'red.600',
                                 color: 'white',
                                 _hover: {
                                     bg: 'red.700'
                                 }
                             }}
-                            variant={'ghost'}
+                            variant={'outline'}
                         >
                             YouTube
                         </Button>
                     </Stack>
+                    <Button
+                            w="full"
+                            as="a"
+                            href={CV}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            rightIcon={
+                                <Icon
+                                    as={BsArrowUpRight}
+                                    w={5}
+                                    h={5}
+                                />
+                            }
+                            size={{ base: 'sm', lg: 'md' }}
+                            colorScheme='purple'
+                            _dark={{
+                                bg: 'purple.600',
+                                color: 'white',
+                                _hover: {
+                                    bg: 'purple.700'
+                                }
+                            }}
+                            variant={'outline'}
+                        >
+                            Resumé
+                    </Button>
                 </Stack>
 
                 <Image
                     rounded={'full'}
-                    height={{ base: '250px', sm: '250px', md: '250px' }}
-                    width={{ base: '250px', sm: '250px', md: '250px' }}
+                    height={{ base: '250px', sm: '250px', lg: '250px' }}
+                    width={{ base: '250px', sm: '250px', lg: '250px' }}
                     objectFit={'cover'}
-                    src={'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
-                    alt={'Author'}
+                    src={'https://avatars.githubusercontent.com/u/81894363?v=4'}
+                    border= '8px solid rgba(134, 18, 250, .28)'
+                    boxShadow={'base'}
+                    alt={'Cesar Acjota Merma'}
                     alignSelf={{
                         base: 'center',
-                        md: 'flex-end',
+                        lg: 'flex-end',
                     }}
                 />
 
