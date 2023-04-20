@@ -14,6 +14,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "framer-motion": "^6.5.1",
+    "i18next": "^22.4.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flagkit": "^2.0.4",
