@@ -9,7 +9,6 @@ import {
     MenuItem,
     MenuList,
 } from "@chakra-ui/react";
-import { FiGlobe } from "react-icons/fi";
 import Flag from "react-flagkit";
 import { AiOutlineReload } from "react-icons/ai";
 
@@ -35,7 +34,8 @@ function LanguageMenu({ scrolled }) {
             >
                 <MenuButton
                     as={IconButton}
-                    icon={<FiGlobe fontSize="1.25rem" />}
+                    icon={<Flag country={selectedLanguage === "en" ? 'US' : "ES"} size={'sm'} />}
+                    // icon={<FiGlobe fontSize="1.25rem" />}
                     size={'md'}
                     rounded={'full'}
                     variant="ghost"

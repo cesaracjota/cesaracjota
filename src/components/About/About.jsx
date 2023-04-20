@@ -146,7 +146,7 @@ const About = () => {
                                     bg: 'purple.700'
                                 }
                             }}
-                            variant={'outline'}
+                            variant={'solid'}
                         >
                             Resumé
                     </Button>
