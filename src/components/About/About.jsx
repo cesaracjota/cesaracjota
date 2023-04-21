@@ -12,8 +12,9 @@ const About = () => {
         <>
             <Stack
                 direction={{ base: 'column', lg: 'row' }}
-                spacing={{ base: 4, lg: 6 }}
+                spacing={{ base: 4, lg: 10 }}
                 mb={4}
+                id='about'
             >
                 <Stack
                     direction={'column'}
@@ -148,7 +149,7 @@ const About = () => {
                             }}
                             variant={'solid'}
                         >
-                            Resumé
+                            {t("resume")}
                     </Button>
                 </Stack>
 
@@ -158,13 +159,9 @@ const About = () => {
                     width={{ base: '250px', sm: '250px', lg: '250px' }}
                     objectFit={'cover'}
                     src={'https://avatars.githubusercontent.com/u/81894363?v=4'}
-                    border= '8px solid rgba(134, 18, 250, .28)'
-                    boxShadow={'base'}
-                    alt={'Cesar Acjota Merma'}
-                    alignSelf={{
-                        base: 'center',
-                        lg: 'flex-end',
-                    }}
+                    boxShadow={'rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;'}
+                    alt={'Cesar Acjota'}
+                    alignSelf={'center'}
                 />
 
             </Stack>

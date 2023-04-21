@@ -48,7 +48,6 @@ const ScrollTopButton = () => {
       right="20px"
       zIndex="99"
       className="scroll-top-button"
-      isCentered="true"
 
     />
   );

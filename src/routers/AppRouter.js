@@ -1,12 +1,83 @@
-import React from 'react';
-
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
+import ProjectPage from '../pages/ProjectPage';
+import './index.css';
+import LoadingBar from 'react-top-loading-bar';
+import { Loading } from '../components/configuration/Loading';
 
 export const AppRouter = () => {
+
+    const [loading, setLoading] = useState(false);
+    const location = useLocation();
+    const [progress, setProgress] = useState(0);
+    const barColor = "#8612fa";
+
+    useEffect(() => {
+
+        setLoading(true);
+        let isCancelled = false;
+
+        const timeoutId = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        const start = performance.now();
+
+        const updateProgress = () => {
+            if (isCancelled) {
+                return;
+            }
+
+            const elapsed = performance.now() - start;
+
+            const progress = elapsed / 1000;
+
+            if (progress > 1) {
+                setProgress(progress);
+                setLoading(false);
+            } else {
+                setProgress(progress * 100);
+            }
+        };
+
+        const progressIntervalId = setInterval(updateProgress, 100);
+
+        return () => {
+            isCancelled = true;
+            clearTimeout(timeoutId);
+            clearInterval(progressIntervalId);
+            setLoading(false);
+            setProgress(0);
+        };
+
+    }, [location.pathname]);
+
     return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-        </Routes>
+        <>
+            {loading && (
+                <div className="loader-container">
+                    <LoadingBar
+                        color={barColor}
+                        progress={progress}
+                        height={5}
+                        onLoaderFinished={() => setProgress(0)}
+                    />
+                    <div className="loader">
+                        <Loading />
+                    </div>
+                </div>
+            )}
+            {
+                !loading && (
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/projects" element={<ProjectPage />} />
+
+                    </Routes>
+                )
+            }
+        </>
+
     );
 }

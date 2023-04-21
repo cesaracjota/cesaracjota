@@ -13,7 +13,10 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
+    DrawerFooter,
+    ButtonGroup,
 } from '@chakra-ui/react'
+import { useEffect, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { ColorModeSwitcher } from '../../theme/ColorModeSwitcher';
 import LOGO from '../../assets/img/logo.svg';
@@ -21,7 +24,7 @@ import "@fontsource/fira-sans-condensed";
 import { NavLink } from 'react-router-dom';
 import SidebarContent from './Sidebar';
 import LanguageMenu from '../../helpers/LanguageMenu';
-import { useEffect, useState } from 'react';
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 export const TopNav = (props) => {
 
@@ -81,19 +84,68 @@ export const TopNav = (props) => {
                                 isOpen={props.isOpen}
                                 onClose={props.onClose}
                                 placement="right"
-                                size="sm"
+                                size="xs"
                                 isFullHeight
                             >
                                 <DrawerOverlay />
-                                <DrawerContent justifyContent={'center'} justify="center" alignItems={'center'}>
+                                <DrawerContent _dark={{ bg: 'primary.1000' }}>
                                     <DrawerCloseButton size={'lg'} />
-                                    <SidebarContent w="full" borderRight="none" />
+                                    <SidebarContent />
+                                    <DrawerFooter>
+                                        <Stack
+                                            direction="row"
+                                            spacing="3"
+                                            align="center"
+                                            justify="center"
+                                            display={'flex'}
+                                            w={'full'}
+                                        >
+                                            <ButtonGroup>
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="Youtube"
+                                                    icon={<FaYoutube fontSize="1.6rem" />}
+                                                    colorScheme='red'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="Instagram"
+                                                    icon={<FaInstagram fontSize="1.6rem" />}
+                                                    colorScheme='purple'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="LinkedIn"
+                                                    icon={<FaLinkedin fontSize="1.6rem" />}
+                                                    colorScheme='linkedin'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="WhatsApp"
+                                                    icon={<FaWhatsapp fontSize="1.6rem" />}
+                                                    colorScheme='whatsapp'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                            </ButtonGroup>
+                                        </Stack>
+                                    </DrawerFooter>
                                 </DrawerContent>
                             </Drawer>
                             <HStack spacing="3">
-                                <LanguageMenu scrolled = { scrolled } />
+                                <LanguageMenu scrolled={scrolled} />
                                 <Divider orientation='vertical' h={6} />
-                                <ColorModeSwitcher scrolled = { scrolled } />
+                                <ColorModeSwitcher scrolled={scrolled} />
                                 <Divider orientation='vertical' h={6} />
                                 <IconButton
                                     variant="ghost"
@@ -121,24 +173,71 @@ export const TopNav = (props) => {
                                 onClose={props.onClose}
                                 placement="right"
                                 size="lg"
-                            // isFullHeight
+                                // isFullHeight
                             >
                                 <DrawerOverlay />
-                                <DrawerContent justifyContent={'center'} justify="center" alignItems={'center'}>
+                                <DrawerContent _dark={{ bg: 'primary.1000' }}>
                                     <DrawerCloseButton size={'lg'} />
                                     <SidebarContent w="full" borderRight="none" />
+                                    <DrawerFooter>
+                                    <Stack
+                                            direction="row"
+                                            spacing="3"
+                                            align="center"
+                                            justify="center"
+                                            display={'flex'}
+                                            w={'full'}
+                                        >
+                                            <ButtonGroup>
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="Youtube"
+                                                    icon={<FaYoutube fontSize="1.6rem" />}
+                                                    colorScheme='red'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="Instagram"
+                                                    icon={<FaInstagram fontSize="1.6rem" />}
+                                                    colorScheme='purple'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="LinkedIn"
+                                                    icon={<FaLinkedin fontSize="1.6rem" />}
+                                                    colorScheme='linkedin'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                                <IconButton
+                                                    as="a"
+                                                    href="#"
+                                                    aria-label="WhatsApp"
+                                                    icon={<FaWhatsapp fontSize="1.6rem" />}
+                                                    colorScheme='whatsapp'
+                                                    variant="ghost"
+                                                    size="lg"
+                                                />
+                                            </ButtonGroup>
+                                        </Stack>
+                                    </DrawerFooter>
                                 </DrawerContent>
                             </Drawer>
                             <Link as={NavLink} to={'/'} alignSelf="center">
                                 <Stack spacing={1} direction="row">
-                                    <Image src={LOGO} maxW={8} w="8" h="8" alt={'Agyl Academy'} />
-                                    {/* <Heading textAlign='center' alignSelf="center" as={'h2'} size={'sm'} fontWeight={'extrabold'}>CESAR</Heading>
-                                    <Heading size={'xs'} alignSelf="center" fontWeight={'normal'}>Acjota</Heading> */}
+                                    <Image src={LOGO} maxW={8} w="8" h="8" alt={'Cesar Acjota'} />
                                 </Stack>
                             </Link>
                             <Stack spacing={1} direction="row">
-                                <LanguageMenu scrolled = { scrolled } />
-                                <ColorModeSwitcher scrolled = { scrolled } />
+                                <LanguageMenu scrolled={scrolled} />
+                                <ColorModeSwitcher scrolled={scrolled} />
                                 <IconButton
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}

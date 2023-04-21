@@ -5,7 +5,7 @@ import SidebarContent from './Sidebar';
 import { TopNav } from './TopNav';
 import ScrollTopButton from './ScrollTopButton';
 
-const Index = ({ componente: Component }) => {
+const Index = ({ componente: Component, loading, progress }) => {
 
     const sidebar = useDisclosure();
 

@@ -3,7 +3,7 @@ import About from '../About/About'
 import { Divider } from '@chakra-ui/react'
 import Blog from '../Blog/Blog'
 
-const Home = () => {
+const Home = ({ loading }) => {
     return (
         <>
             <About />

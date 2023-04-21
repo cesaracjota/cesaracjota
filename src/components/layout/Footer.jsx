@@ -8,11 +8,11 @@ export const Footer = (props) => {
             <Container
                 maxW={'4xl'}
                 py={{
-                    base: '2',
+                    base: "5rem",
                     lg: 4,
                 }}
             >
-                <Divider my={4}/>
+                <Divider mb={6}/>
                 <Stack justify="space-between" direction={{ base: "column", lg: "row" }} align="center">
                     <Text fontSize="sm" color="subtle">
                         &copy; {new Date().getFullYear()} CesarAcjota, Inc. All rights reserved.

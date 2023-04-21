@@ -19,14 +19,6 @@ export default function CardPost() {
                 p={6}
                 overflow={'hidden'}>
                 <Stack>
-                    <Text
-                        color={'purple.500'}
-                        textTransform={'uppercase'}
-                        fontWeight={800}
-                        fontSize={'sm'}
-                        letterSpacing={1.1}>
-                        Blog
-                    </Text>
                     <Heading
                         color={useColorModeValue('gray.700', 'white')}
                         fontSize={'2xl'}
@@ -40,14 +32,16 @@ export default function CardPost() {
                         et ea rebum.
                     </Text>
                 </Stack>
-                <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+                <Stack mt={6} direction={'row'} spacing={4} width={'full'} display={'flex'} justifyContent={'flex-end'}>
                     <Avatar
                         src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
                         alt={'Author'}
+                        size={'sm'}
+                        alignSelf={'center'}
                     />
-                    <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+                    <Stack direction={'column'} spacing={0} fontSize={'xs'}>
                         <Text fontWeight={600}>Achim Rolle</Text>
-                        <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
+                        <Text color={'gray.500'}>Feb 08, 2021</Text>
                     </Stack>
                 </Stack>
             </Box>
