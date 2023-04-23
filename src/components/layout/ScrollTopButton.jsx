@@ -36,7 +36,12 @@ const ScrollTopButton = () => {
       onClick={scrollToTop}
       display={showScrollButton ? "block" : "none"}
       size="lg"
-      colorScheme="purple"
+      bg="primary.100"
+      _hover={{
+        bg: "primary.100",
+        transform: "scale(1.1)",
+        transition: 'all 0.3s ease-in-out'
+      }}
       _dark={{
         bg: "primary.100",
       }}
@@ -48,7 +53,6 @@ const ScrollTopButton = () => {
       right="20px"
       zIndex="99"
       className="scroll-top-button"
-
     />
   );
 };

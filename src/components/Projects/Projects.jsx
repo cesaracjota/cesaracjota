@@ -1,10 +1,13 @@
-import { Divider, Heading, Image, Stack, useBreakpointValue } from '@chakra-ui/react';
-import React from 'react';
-import banner from '../../assets/img/banner.png';
+import { Divider, Heading, SimpleGrid, Stack, useBreakpointValue, Skeleton } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+// import banner from '../../assets/img/banner.png';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardProjects from './CardProjects';
+import GithubCard from './GithubCard';
+import { getStarredRepositories } from '../../services/api.service';
+import { t } from 'i18next';
 
 const Projects = () => {
 
@@ -12,6 +15,9 @@ const Projects = () => {
         base: false,
         lg: true,
     });
+
+    const [repos, setRepos] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const settings = {
         dots: false,
@@ -59,37 +65,23 @@ const Projects = () => {
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc.",
             image: "https://edteam-media.s3.amazonaws.com/courses/medium/006e4505-35cf-452f-8fbb-38ad86b3f3e9.png"
         },
-        {
-            id: 6,
-            title: "Proyecto 6",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc.",
-            image: "https://edteam-media.s3.amazonaws.com/courses/medium/9d726c88-9e49-4b04-ac84-7bccc32ab617.png"
-        },
-        {
-            id: 7,
-            title: "Proyecto 7",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc.",
-            image: "https://edteam-media.s3.amazonaws.com/courses/medium/0903d86f-5e06-46f2-87e6-6ad3020a6bec.png"
-        },
-        {
-            id: 8,
-            title: "Proyecto 8",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc.",
-            image: "https://edteam-media.s3.amazonaws.com/courses/medium/3cc48fa0-8327-4561-aa04-dafc3b799909.png"
-        },
-        {
-            id: 9,
-            title: "Proyecto 9",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc.",
-            image: "https://edteam-media.s3.amazonaws.com/courses/medium/39dd6eb2-bb40-409f-b95f-c21d6542bb78.png"
-        },
-        {
-            id: 10,
-            title: "Proyecto 10",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc. Sed euismod, nunc vel tincidunt lacinia, nunc nisl aliquam nisl, eu aliquam nunc nisl eu nunc.",
-            image: "https://edteam-media.s3.amazonaws.com/courses/medium/81dee8dc-1dbf-4bbc-b415-70f43d102bc1.png"
-        },
     ]
+
+    useEffect(() => {
+        setLoading(true);
+        async function loadProjects() {
+            try{
+                const data = await getStarredRepositories();
+                setRepos(data);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        loadProjects();
+
+    }, [])
 
     return (
         <>
@@ -97,11 +89,11 @@ const Projects = () => {
                 spacing={2}
                 direction="column"
             >
-                <Heading>Projects</Heading>
-                <Divider my={2} />
-                <Divider />
-                <Image src={banner} borderRadius={'2xl'} />
-
+                <Heading
+                    as="h2"
+                    size="xl"
+                    fontWeight="extrabold"
+                >{t("projects")}</Heading>
             </Stack>
             <Divider my={4} />
             <Slider {...settings}>
@@ -112,6 +104,43 @@ const Projects = () => {
                     />
                 ))}
             </Slider>
+
+            {
+                loading ? (
+                    <>
+                        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} w="full">
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                            <Skeleton height="100px" borderRadius={'2xl'}/>
+                        </SimpleGrid>
+                    </>
+                ) :
+                    (
+                        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} w="full">
+                            {repos.map((repo) => (
+                                <GithubCard
+                                    key={repo.id}
+                                    title={repo.name}
+                                    description={repo.description}
+                                    topics={
+                                        repo.topics.length > 0
+                                            ? repo.topics
+                                            : ["No topics"]
+                                    }
+                                    star={repo.stargazers_count}
+                                    fork={repo.forks_count}
+                                    url={repo.url}
+                                />
+                            ))}
+                        </SimpleGrid>
+                    )
+            }
+
         </>
     )
 }

@@ -45,15 +45,34 @@ const SidebarContent = (props) => {
     const activeLinkcolor = useColorModeValue('primary.200', 'primary.200');
     const bgActiveLinkColor = useColorModeValue('primary.100', 'primary.100');
 
+    const language = localStorage.getItem('language');
+
     const menus = [
         {
-            name: 'Home',
+            nameEN: 'Home',
+            nameES: 'Inicio',
             path: '/',
         },
         {
-            name: 'Projects',
+            nameEN: 'Projects',
+            nameES: 'Proyectos',
             path: '/projects',
         },
+        {
+            nameEN: 'About',
+            nameES: 'Acerca de',
+            path: '/about',
+        },
+        {
+            nameEN: 'Blog',
+            nameES: 'Blog',
+            path: '/blogs',
+        },
+        {
+            nameEN: 'Contact',
+            nameES: 'Contacto',
+            path: '/contact',
+        }
     ];
 
     return (
@@ -103,7 +122,7 @@ const SidebarContent = (props) => {
                     fontWeight="bold"
                     fontFamily={`"Fira Sans Condensed", sans-serif`}
                     color="primary.100"
-                    _dark={{ 
+                    _dark={{
                         color: '#ffffffa1'
                     }}
                     aria-label="Main Navigation"
@@ -119,14 +138,15 @@ const SidebarContent = (props) => {
                                 color: activeLinkcolor,
                                 fontWeight: 'extrabold',
                                 bg: bgActiveLinkColor,
-                                // borderBottom: "2px solid #8612fa",
                             }}
                             _focus={{ boxShadow: 'none' }}
                             justifyContent="center"
                             alignItems="center"
                             _hover={{ textDecoration: 'none' }}
                         >
-                            <NavItem>{item.name}</NavItem>
+                            <NavItem>
+                                {language === 'en' ? item.nameEN : item.nameES}
+                            </NavItem>
                         </Link>
                     ))}
                 </Flex>

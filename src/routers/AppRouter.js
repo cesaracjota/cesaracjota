@@ -5,13 +5,14 @@ import ProjectPage from '../pages/ProjectPage';
 import './index.css';
 import LoadingBar from 'react-top-loading-bar';
 import { Loading } from '../components/configuration/Loading';
+import BlogPage from '../pages/BlogPage';
 
 export const AppRouter = () => {
 
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const [progress, setProgress] = useState(0);
-    const barColor = "#8612fa";
+    const barColor = "#645CAA";
 
     useEffect(() => {
 
@@ -20,7 +21,7 @@ export const AppRouter = () => {
 
         const timeoutId = setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 800);
 
         const start = performance.now();
 
@@ -31,7 +32,7 @@ export const AppRouter = () => {
 
             const elapsed = performance.now() - start;
 
-            const progress = elapsed / 1000;
+            const progress = elapsed / 800;
 
             if (progress > 1) {
                 setProgress(progress);
@@ -73,7 +74,7 @@ export const AppRouter = () => {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/projects" element={<ProjectPage />} />
-
+                        <Route path="/blogs" element={<BlogPage />} />
                     </Routes>
                 )
             }

@@ -55,6 +55,11 @@ export const TopNav = (props) => {
             role="navigation"
             pos={{ base: "fixed", lg: "fixed" }}
             bg={scrolled ? "primary.100" : "transparent"}
+            boxShadow={
+                scrolled ?
+                    "0 0 10px rgba(0,0,0,0.4), 0 0 15px rgba(0,0,0,0.4)"
+                    : "none"
+            }
             zIndex="2"
             top="0"
             align="space-between"
@@ -66,7 +71,7 @@ export const TopNav = (props) => {
             _dark={{
                 bg: scrolled ? "primary.100" : "transparent",
             }}
-            transition="background-color 0.5s linear"
+            transition="background-color 0.3s linear"
         >
             <Container
                 py={3}
@@ -80,68 +85,10 @@ export const TopNav = (props) => {
                                     <Image src={LOGO} w={'full'} h={'full'} maxW={10} alignSelf={'center'} alt={'Cesar Acjota'} />
                                 </Stack>
                             </Link>
-                            <Drawer
+                            <ContentDrawer
                                 isOpen={props.isOpen}
                                 onClose={props.onClose}
-                                placement="right"
-                                size="xs"
-                                isFullHeight
-                            >
-                                <DrawerOverlay />
-                                <DrawerContent _dark={{ bg: 'primary.1000' }}>
-                                    <DrawerCloseButton size={'lg'} />
-                                    <SidebarContent />
-                                    <DrawerFooter>
-                                        <Stack
-                                            direction="row"
-                                            spacing="3"
-                                            align="center"
-                                            justify="center"
-                                            display={'flex'}
-                                            w={'full'}
-                                        >
-                                            <ButtonGroup>
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="Youtube"
-                                                    icon={<FaYoutube fontSize="1.6rem" />}
-                                                    colorScheme='red'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="Instagram"
-                                                    icon={<FaInstagram fontSize="1.6rem" />}
-                                                    colorScheme='purple'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="LinkedIn"
-                                                    icon={<FaLinkedin fontSize="1.6rem" />}
-                                                    colorScheme='linkedin'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="WhatsApp"
-                                                    icon={<FaWhatsapp fontSize="1.6rem" />}
-                                                    colorScheme='whatsapp'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                            </ButtonGroup>
-                                        </Stack>
-                                    </DrawerFooter>
-                                </DrawerContent>
-                            </Drawer>
+                            />
                             <HStack spacing="3">
                                 <LanguageMenu scrolled={scrolled} />
                                 <Divider orientation='vertical' h={6} />
@@ -168,68 +115,10 @@ export const TopNav = (props) => {
                         </Flex>
                     ) : (
                         <Flex justify="space-between" flex="1">
-                            <Drawer
+                            <ContentDrawer 
                                 isOpen={props.isOpen}
                                 onClose={props.onClose}
-                                placement="right"
-                                size="lg"
-                                // isFullHeight
-                            >
-                                <DrawerOverlay />
-                                <DrawerContent _dark={{ bg: 'primary.1000' }}>
-                                    <DrawerCloseButton size={'lg'} />
-                                    <SidebarContent w="full" borderRight="none" />
-                                    <DrawerFooter>
-                                    <Stack
-                                            direction="row"
-                                            spacing="3"
-                                            align="center"
-                                            justify="center"
-                                            display={'flex'}
-                                            w={'full'}
-                                        >
-                                            <ButtonGroup>
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="Youtube"
-                                                    icon={<FaYoutube fontSize="1.6rem" />}
-                                                    colorScheme='red'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="Instagram"
-                                                    icon={<FaInstagram fontSize="1.6rem" />}
-                                                    colorScheme='purple'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="LinkedIn"
-                                                    icon={<FaLinkedin fontSize="1.6rem" />}
-                                                    colorScheme='linkedin'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                                <IconButton
-                                                    as="a"
-                                                    href="#"
-                                                    aria-label="WhatsApp"
-                                                    icon={<FaWhatsapp fontSize="1.6rem" />}
-                                                    colorScheme='whatsapp'
-                                                    variant="ghost"
-                                                    size="lg"
-                                                />
-                                            </ButtonGroup>
-                                        </Stack>
-                                    </DrawerFooter>
-                                </DrawerContent>
-                            </Drawer>
+                            />
                             <Link as={NavLink} to={'/'} alignSelf="center">
                                 <Stack spacing={1} direction="row">
                                     <Image src={LOGO} maxW={8} w="8" h="8" alt={'Cesar Acjota'} />
@@ -261,5 +150,75 @@ export const TopNav = (props) => {
                 </HStack>
             </Container>
         </Box>
+    )
+}
+
+function ContentDrawer({ isOpen, onClose }) {
+    return (
+        <Drawer
+            isOpen={isOpen}
+            placement="right"
+            onClose={onClose}
+            size="xs"
+            isFullHeight
+        >
+            <DrawerOverlay />
+            <DrawerContent
+                _dark={{ bg: 'primary.1000' }}
+                scrollBehavior={'inside'}
+            >
+                <DrawerCloseButton size={'lg'} />
+                <SidebarContent borderRight="none" />
+                <DrawerFooter>
+                    <Stack
+                        direction="row"
+                        spacing="3"
+                        align="center"
+                        justify="center"
+                        display={'flex'}
+                        w={'full'}
+                    >
+                        <ButtonGroup>
+                            <IconButton
+                                as="a"
+                                href="#"
+                                aria-label="Youtube"
+                                icon={<FaYoutube fontSize="1.6rem" />}
+                                colorScheme='red'
+                                variant="ghost"
+                                size="lg"
+                            />
+                            <IconButton
+                                as="a"
+                                href="#"
+                                aria-label="Instagram"
+                                icon={<FaInstagram fontSize="1.6rem" />}
+                                colorScheme='purple'
+                                variant="ghost"
+                                size="lg"
+                            />
+                            <IconButton
+                                as="a"
+                                href="#"
+                                aria-label="LinkedIn"
+                                icon={<FaLinkedin fontSize="1.6rem" />}
+                                colorScheme='linkedin'
+                                variant="ghost"
+                                size="lg"
+                            />
+                            <IconButton
+                                as="a"
+                                href="#"
+                                aria-label="WhatsApp"
+                                icon={<FaWhatsapp fontSize="1.6rem" />}
+                                colorScheme='whatsapp'
+                                variant="ghost"
+                                size="lg"
+                            />
+                        </ButtonGroup>
+                    </Stack>
+                </DrawerFooter>
+            </DrawerContent>
+        </Drawer>
     )
 }

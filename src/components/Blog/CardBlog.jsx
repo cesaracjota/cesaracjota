@@ -1,50 +1,132 @@
 import {
-    Box,
-    Center,
     Heading,
     Text,
     Stack,
-    Avatar,
     useColorModeValue,
+    Icon,
+    Tooltip,
 } from '@chakra-ui/react';
+import { FaRegCommentDots } from 'react-icons/fa';
+import { RiChatHeartFill } from 'react-icons/ri';
+import { motion } from "framer-motion";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export default function CardPost() {
+export default function CardPost({ blog }) {
+
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleOpen = () => setIsOpen(!isOpen);
+
     return (
-        <Center>
-            <Box
-                w={'full'}
-                bg={useColorModeValue('white', 'primary.1000')}
-                boxShadow={'base'}
-                rounded={'md'}
-                p={6}
-                overflow={'hidden'}>
-                <Stack>
-                    <Heading
-                        color={useColorModeValue('gray.700', 'white')}
-                        fontSize={'2xl'}
-                        fontFamily={'body'}>
-                        Boost your conversion rate
-                    </Heading>
-                    <Text color={'gray.500'}>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                        et ea rebum.
-                    </Text>
-                </Stack>
-                <Stack mt={6} direction={'row'} spacing={4} width={'full'} display={'flex'} justifyContent={'flex-end'}>
-                    <Avatar
-                        src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-                        alt={'Author'}
-                        size={'sm'}
-                        alignSelf={'center'}
-                    />
-                    <Stack direction={'column'} spacing={0} fontSize={'xs'}>
-                        <Text fontWeight={600}>Achim Rolle</Text>
-                        <Text color={'gray.500'}>Feb 08, 2021</Text>
+        <motion.div layout onClick={toggleOpen}>
+
+            <Stack
+                p={4}
+                bg={useColorModeValue('purple.50', 'primary.1000')}
+                rounded="xl"
+                borderWidth="1px"
+                borderColor={useColorModeValue('gray.200', 'purple.800')}
+                h="100%"
+                textAlign="left"
+                align="start"
+                cursor="pointer"
+                shadow={'sm'}
+                _hover={{
+                    transform: "scale(1.02)",
+                    shadow: "md",
+                }}
+                transition='all 0.3s ease-in-out'
+                w="full"
+            >
+                <Stack
+                    direction={'column'}
+                    spacing={2}
+                    w="full"
+                >
+                    <Tooltip
+                        label={blog?.title}
+                        placement="top"
+                        hasArrow
+                        bg='primary.100'
+                        color="white"
+                    >
+                        <Stack direction={'row'} justifyContent={'space-between'} w="full">
+                            <Heading
+                                as={Link}
+                                to={blog?.url}
+                                target='_blank'
+                                color={useColorModeValue('purple.600', 'purple.600')}
+                                fontSize={'xl'}
+                                fontWeight="extrabold"
+                                w="full"
+                                noOfLines={1}
+                            >
+                                {blog?.title}
+                            </Heading>
+                            <Stack
+                                direction={'row'}
+                                width={'full'}
+                                display={'flex'}
+                                justifyContent={'flex-end'}
+                                alignItems={'center'}
+                                alignSelf={'center'}
+                                _dark={{
+                                    color: 'purple.600'
+                                }}
+                                fontWeight="bold"
+                            >
+                                <Text>
+                                    {blog?.positive_reactions_count}
+                                </Text>
+                                <Icon
+                                    as={RiChatHeartFill}
+                                    viewBox="0 0 24 24"
+                                    w={5}
+                                    h={5}
+                                />
+                                <Text>
+                                    {blog?.comments_count}
+                                </Text>
+                                <Icon
+                                    as={FaRegCommentDots}
+                                    viewBox="0 0 24 24"
+                                    w={5}
+                                    h={5}
+                                />
+                            </Stack>
+                        </Stack>
+                    </Tooltip>
+                    <Stack
+                        direction={'row'}
+                        width={'full'}
+                        display={'flex'}
+                        justifyContent={'space-between'}
+                    >
+                        <Stack>
+                            <Text
+                                color={'gray.700'}
+                                fontWeight="bold"
+                                _dark={{
+                                    color: 'purple.100'
+                                }}
+                            >
+                                {blog?.published_at}
+                            </Text>
+                            <Text
+                                color={'gray.600'}
+                                _dark={{
+                                    color: 'white'
+                                }}
+                                fontSize={'17px'}
+                                fontWeight={'semibold'}
+                                noOfLines={1}
+                            >
+                                {blog?.description}
+                            </Text>
+                        </Stack>
                     </Stack>
                 </Stack>
-            </Box>
-        </Center>
+            </Stack>
+        </motion.div>
     );
 }

@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { HashLoader  } from "react-spinners";
 
-export function Loading({ progress }) {
+export function Loading() {
     return (
         <Flex
             w="100%"
@@ -18,7 +18,7 @@ export function Loading({ progress }) {
             }}
         >
             <HashLoader
-                color="#8612fa"
+                color="#645CAA"
                 loading={true}
                 size={200}
             />

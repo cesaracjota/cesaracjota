@@ -2,5 +2,9 @@
     "welcomeMessage": "Hola, Soy",
     "presentationMessage": "Soy un desarrollador full-stack, diseñador y creador de contenidos que trabaja en AgylCode.io como fundador. Hago transmisiones en vivo regulares en mi canal de YouTube.",
     "reload": "Actualizar",
-    "resume": "Curriculum vitae"
+    "resume": "Curriculum vitae",
+    "popular_articles": "Artículos Populares",
+    "more_articles": "Más Artículos",
+    "projects": "Proyectos",
+    "more_blogs": "Más Blogs"
 }
