@@ -37,7 +37,7 @@ function LanguageMenu({ scrolled }) {
                     icon={<Flag country={selectedLanguage === "en" ? 'US' : "ES"} size={'sm'} />}
                     // icon={<FiGlobe fontSize="1.25rem" />}
                     size={'md'}
-                    rounded={'full'}
+                    rounded={'lg'}
                     variant="ghost"
                     colorScheme={
                         scrolled ? "whiteAlpha" : "gray"
@@ -56,17 +56,16 @@ function LanguageMenu({ scrolled }) {
                         bg: "primary.1000",
                         color: 'white',
                     }}
-
                 >
                     <MenuItem
                         icon={<Flag country="US" />}
                         _dark={{ 
                             bg:selectedLanguage === "en" ? "primary.100" : "transparent",
-                            color:selectedLanguage === "en" ? "primary.200" : "inherit",
+                            color:selectedLanguage === "en" ? "white" : "inherit",
                             _hover: { bg: "primary.100" } 
                         }}
                         bg={selectedLanguage === "en" ? "primary.100" : "transparent"}
-                        color={selectedLanguage === "en" ? "primary.200" : "inherit"}
+                        color={selectedLanguage === "en" ? "white" : "inherit"}
                         onClick={() => handleChangeLanguage("en")}
                         fontWeight={'bold'}
                     >
@@ -75,11 +74,11 @@ function LanguageMenu({ scrolled }) {
                     <MenuItem
                         _dark={{ 
                             bg:selectedLanguage === "es" ? "primary.100" : "transparent",
-                            color:selectedLanguage === "es" ? "primary.200" : "inherit",
+                            color:selectedLanguage === "es" ? "white" : "inherit",
                             _hover: { bg: "primary.100" } 
                         }}
                         bg={selectedLanguage === "es" ? "primary.100" : "transparent"}
-                        color={selectedLanguage === "es" ? "primary.200" : "inherit"}
+                        color={selectedLanguage === "es" ? "white" : "inherit"}
                         icon={<Flag country="ES" />}
                         onClick={() => handleChangeLanguage("es")}
                         fontWeight={'bold'}
@@ -93,7 +92,7 @@ function LanguageMenu({ scrolled }) {
                             bg: "primary.1000", 
                             _hover: { bg: "primary.900",
                             _selected: { 
-                                bg: "primary.200" 
+                                bg: "white" 
                             }
                         } }}
                         fontWeight={'bold'}

@@ -81,8 +81,9 @@ export default function CardPost({ blog }) {
                                 <Icon
                                     as={RiChatHeartFill}
                                     viewBox="0 0 24 24"
-                                    w={5}
-                                    h={5}
+                                    color="red.500"
+                                    w={6}
+                                    h={6}
                                 />
                                 <Text>
                                     {blog?.comments_count}
@@ -90,8 +91,9 @@ export default function CardPost({ blog }) {
                                 <Icon
                                     as={FaRegCommentDots}
                                     viewBox="0 0 24 24"
-                                    w={5}
-                                    h={5}
+                                    color="primary.100"
+                                    w={6}
+                                    h={6}
                                 />
                             </Stack>
                         </Stack>

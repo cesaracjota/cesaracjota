@@ -98,7 +98,7 @@ export const TopNav = (props) => {
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}
                                     size={'md'}
-                                    rounded={'full'}
+                                    rounded={'lg'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
                                     colorScheme={
@@ -131,7 +131,7 @@ export const TopNav = (props) => {
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}
                                     size={'md'}
-                                    rounded={'full'}
+                                    rounded={'lg'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
                                     colorScheme={
@@ -169,7 +169,9 @@ function ContentDrawer({ isOpen, onClose }) {
             >
                 <DrawerCloseButton size={'lg'} />
                 <SidebarContent borderRight="none" />
-                <DrawerFooter>
+                <DrawerFooter
+                    boxShadow={'none'}
+                >
                     <Stack
                         direction="row"
                         spacing="3"

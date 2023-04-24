@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { Heading, Stack } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Skeleton, Stack } from '@chakra-ui/react'
 import { t } from 'i18next'
 import { fetchBlogs } from '../../services/api.service';
 import CardPost from './CardBlog';
+import { ToastChakra } from '../../helpers/toast';
 
 const Blogs = () => {
 
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         async function loadBlogs() {
             try {
                 const data = await fetchBlogs("erinposting", 15);
                 setBlogs(data);
+                setLoading(false);
             } catch (error) {
                 console.error(error);
+                ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
             }
         }
 
@@ -38,9 +43,22 @@ const Blogs = () => {
                 {t("more_blogs")}
             </Heading>
             {
-                blogs.map((blog) => {
-                    return <CardPost key={blog.id} blog={blog} />
-                })
+                loading ? (
+                    <SimpleGrid columns={1} spacing={4} w="full">
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                        <Skeleton height="100px" borderRadius={'xl'} />
+                    </SimpleGrid>
+                ) : (
+                    blogs.map((blog) => {
+                        return <CardPost key={blog.id} blog={blog} />
+                    })
+                )
             }
         </Stack>
     )

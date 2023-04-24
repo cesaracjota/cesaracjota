@@ -42,7 +42,7 @@ const NavItem = (props) => {
 
 const SidebarContent = (props) => {
 
-    const activeLinkcolor = useColorModeValue('primary.200', 'primary.200');
+    const activeLinkcolor = useColorModeValue('white', 'white');
     const bgActiveLinkColor = useColorModeValue('primary.100', 'primary.100');
 
     const language = localStorage.getItem('language');
@@ -51,17 +51,17 @@ const SidebarContent = (props) => {
         {
             nameEN: 'Home',
             nameES: 'Inicio',
-            path: '/',
-        },
-        {
-            nameEN: 'Projects',
-            nameES: 'Proyectos',
-            path: '/projects',
+            path: '/' || '/home',
         },
         {
             nameEN: 'About',
             nameES: 'Acerca de',
             path: '/about',
+        },
+        {
+            nameEN: 'Projects',
+            nameES: 'Proyectos',
+            path: '/projects',
         },
         {
             nameEN: 'Blog',
@@ -72,6 +72,11 @@ const SidebarContent = (props) => {
             nameEN: 'Contact',
             nameES: 'Contacto',
             path: '/contact',
+        },
+        {
+            nameEN: 'Content',
+            nameES: 'Contenido',
+            path: '/contenido',
         }
     ];
 
@@ -85,9 +90,10 @@ const SidebarContent = (props) => {
                 alignItems="center"
                 justifyContent="center"
                 width="100%"
-                _dark={{ bg: 'primary.1000', color: 'primary.200' }}
+                _dark={{ bg: 'primary.1000', color: 'white' }}
                 color="primary.1000"
-                boxShadow={'base'}
+                borderBottomWidth={'1px'}
+                // boxShadow={'base'}
                 sx={{
                     '&::-webkit-scrollbar': {
                         width: '4px',

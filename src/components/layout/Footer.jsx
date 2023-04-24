@@ -4,7 +4,7 @@ import "@fontsource/fira-sans-condensed";
 
 export const Footer = (props) => {
     return (
-        <Box as="footer" role="contentinfo" bg="primary.200" _dark={{ bg: 'primary.900', color: 'gray.100' }} fontFamily={`"Fira Sans Condensed", sans-serif`} {...props}>
+        <Box as="footer" role="contentinfo" bg="white" _dark={{ bg: 'primary.900', color: 'gray.100' }} fontFamily={`"Fira Sans Condensed", sans-serif`} {...props}>
             <Container
                 maxW={'4xl'}
                 py={{

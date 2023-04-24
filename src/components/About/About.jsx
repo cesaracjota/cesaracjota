@@ -45,8 +45,8 @@ const About = () => {
                                 }}
                                 alignSelf={'center'}
                             >
-                                <Heading fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
-                                    {t("welcomeMessage")} <span style={{ fontWeight: 'extrabold', color: '#8612fa' }}>Cesar Acjota.</span>
+                                <Heading as={'h1'} fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
+                                    {t("welcomeMessage")} <Text as={'span'} color="primary.100" fontWeight={'extrabold'}>Cesar Acjota.</Text>
                                 </Heading>
                                 <chakra.p textAlign={'justify'} fontSize={{ base: 16, lg: 20 }}>
                                     {t("presentationMessage")}
@@ -79,17 +79,17 @@ const About = () => {
                                             />
                                         }
                                         size={{ base: 'sm', lg: 'md' }}
-                                        colorScheme='twitter'
+                                        colorScheme='linkedin'
                                         _dark={{
-                                            bg: 'twitter.600',
+                                            bg: 'linkedin.600',
                                             color: 'white',
                                             _hover: {
-                                                bg: 'twitter.700'
+                                                bg: 'linkedin.700'
                                             }
                                         }}
                                         variant={'outline'}
                                     >
-                                        Twitter
+                                        Linkedin
                                     </Button>
                                     <Button
                                         w="full"
@@ -186,7 +186,7 @@ const About = () => {
                                 }}
                                 alignSelf={'center'}
                             >
-                                <Heading fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
+                                <Heading as={'h1'} fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
                                     {t("welcomeMessage")} <Text as={'span'} color="primary.100" fontWeight={'extrabold'}>Cesar Acjota.</Text>
                                 </Heading>
                                 <chakra.p textAlign={'justify'} fontSize={{ base: 16, lg: 20 }}>
@@ -209,7 +209,7 @@ const About = () => {
                                     <Button
                                         w="full"
                                         as="a"
-                                        href="https://twitter.com/cesar_acjota"
+                                        href="https://www.linkedin.com/in/cesaracjota/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         rightIcon={
@@ -220,17 +220,17 @@ const About = () => {
                                             />
                                         }
                                         size={{ base: 'sm', lg: 'md' }}
-                                        colorScheme='twitter'
+                                        colorScheme='linkedin'
                                         _dark={{
-                                            bg: 'twitter.600',
+                                            bg: 'linkedin.600',
                                             color: 'white',
                                             _hover: {
-                                                bg: 'twitter.700'
+                                                bg: 'linkedin.700'
                                             }
                                         }}
                                         variant={'solid'}
                                     >
-                                        Twitter
+                                        Linkedin
                                     </Button>
                                     <Button
                                         w="full"

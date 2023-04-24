@@ -12,7 +12,7 @@ export function Loading() {
             top="0"
             left="0"
             zIndex="999"
-            bg={'primary.200'}
+            bg={'white'}
             _dark={{
                 bg: 'primary.900'
             }}

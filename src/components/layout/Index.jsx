@@ -23,7 +23,8 @@ const Index = ({ componente: Component, loading, progress }) => {
     return (
         <Flex 
             direction="column" 
-            flex="1" bg={'primary.200'} 
+            flex="1"
+            bg={'white'} 
             _dark={{ bg: 'primary.900' }}
             minH="100vh"
             overflow="hidden"

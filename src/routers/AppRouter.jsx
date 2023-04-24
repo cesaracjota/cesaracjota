@@ -6,6 +6,11 @@ import './index.css';
 import LoadingBar from 'react-top-loading-bar';
 import { Loading } from '../components/configuration/Loading';
 import BlogPage from '../pages/BlogPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import PrivateRoutes from './PrivateRoutes';
+import PublicRoute from './PublicRoute';
+import AdminPage from '../pages/admin/AdminPage';
+import LoginPage from '../pages/auth/Login';
 
 export const AppRouter = () => {
 
@@ -72,13 +77,20 @@ export const AppRouter = () => {
             {
                 !loading && (
                     <Routes>
+                        <Route element={<PrivateRoutes />} >
+                            <Route path="/admin" element={<AdminPage />} />
+                            <Route path="/admin/dashboard" element={<AdminPage />} />
+                        </Route>
+                        <Route element={<PublicRoute />}>
+                            <Route path="/auth/login" element={<LoginPage />} />
+                        </Route>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/projects" element={<ProjectPage />} />
                         <Route path="/blogs" element={<BlogPage />} />
+                        <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 )
             }
         </>
-
     );
 }

@@ -1,21 +1,26 @@
-import { Button, Heading, Stack, Link } from '@chakra-ui/react'
+import { Button, Heading, Stack, Link, SimpleGrid, Skeleton } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import CardPost from './CardBlog';
 import { fetchBlogs } from '../../services/api.service';
 import { FaMousePointer } from 'react-icons/fa';
 import { t } from 'i18next';
+import { ToastChakra } from '../../helpers/toast';
 
 const Blog = () => {
 
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         async function loadBlogs() {
             try {
                 const data = await fetchBlogs("cesaracjota", 2);
                 setBlogs(data);
+                setLoading(false);
             } catch (error) {
                 console.error(error);
+                ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
             }
         }
 
@@ -40,9 +45,17 @@ const Blog = () => {
                     {t("popular_articles")}
                 </Heading>
                 {
-                    blogs.map((blog) => {
-                        return <CardPost key={blog.id} blog={blog} />
-                    })
+                    loading ? (
+                        <SimpleGrid columns={1} spacing={4} w="full">
+                            <Skeleton height="100px" borderRadius={'2xl'} />
+                            <Skeleton height="100px" borderRadius={'2xl'} />
+                            <Skeleton height="100px" borderRadius={'2xl'} />
+                        </SimpleGrid>
+                    ) : (
+                        blogs.map((blog) => {
+                            return <CardPost key={blog.id} blog={blog} />
+                        })
+                    )
                 }
                 <Stack
                     direction={'row'}
