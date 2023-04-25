@@ -23,9 +23,22 @@ const theme = extendTheme({
       800: '#ffffff33',
       900: '#242424',
       1000: '#1a1a1a',
-      1100: '#121212',
+      1100: '#0f0f0f',
       1200: '#0a0a0a',
     },
+  },
+
+  styles: {
+    global: (props) => ({
+      body: {
+        bg: props.colorMode === "purple"
+            ? "purple.500"
+            : props.colorMode === "dark"
+            ? "gray.800"
+            : "white",
+        color: props.colorMode === "dark" ? "white" : "gray.800",
+      },
+    }),
   },
 })
 

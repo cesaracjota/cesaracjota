@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
     Box,
     Button,
-    Center,
     FormControl,
     FormLabel,
     Heading,
@@ -28,7 +27,7 @@ import Logo from '../../assets/img/logo.svg';
 import { FaRegUser } from 'react-icons/fa';
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { FiLock } from 'react-icons/fi';
-import { Loading } from '../../components/configuration/Loading';
+// import { Loading } from '../../components/configuration/Loading';
 // import { Spinner } from 'react-loading-io/dist/Spinner';
 
 const LoginPage = () => {
@@ -68,26 +67,28 @@ const LoginPage = () => {
             window.localStorage.removeItem('usuario_correo');
         }
         dispatch(login(userData)).then(() => {
-            navigate('/admin');
+            navigate('/admin/dashboard');
         })
     };
 
     const [showPassword, setShowPassword] = useState(false);
     const handleShowClick = () => setShowPassword(!showPassword);
 
-    const content = (isLoading) ? (
-        <Center h={'100vh'} w={'full'} bg={bgAuth} _dark={'primary.900'}>
-            <Stack spacing={4} px={4} direction="column" align={'center'}>
-                <Text fontSize="xl" fontWeight="bold">
-                    {' '}
-                    Iniciando Sesión ...{' '}
-                </Text>
-                <div className="loader">
-                        <Loading />
-                </div>
-            </Stack>
-        </Center>
-    ) : (
+    // const content = (isLoading) ? (
+    //     <Center h={'100vh'} w={'full'} bg={bgAuth} _dark={'primary.900'}>
+    //         <Stack spacing={4} px={4} direction="column" align={'center'}>
+    //             <Text fontSize="xl" fontWeight="bold">
+    //                 {' '}
+    //                 Iniciando Sesión ...{' '}
+    //             </Text>
+    //             <div className="loader">
+    //                 <Loading />
+    //             </div>
+    //         </Stack>
+    //     </Center>
+    // ) : (
+
+    return (
         <form onSubmit={handleLogin}>
             <HStack display="flex" justify={'center'} w={'full'} h={'100vh'} bg={bgAuth} py={{ base: 14, lg: 16 }}>
                 <Flex w={{ base: 450, md: 500, lg: 550 }} h="full" alignSelf={'center'}>
@@ -104,7 +105,7 @@ const LoginPage = () => {
                                         pointerEvents="none"
                                         color="gray.500"
                                         _dark={{ color: 'gray.400' }}
-                                        children={ <FaRegUser color="gray.500" fontSize={18} /> }
+                                        children={<FaRegUser color="gray.500" fontSize={18} />}
                                     />
                                     <Input
                                         type="email"
@@ -124,14 +125,14 @@ const LoginPage = () => {
                                         children={<FiLock color="gray.500" fontSize={20} />}
                                     />
                                     <Input
-                                        type={ showPassword ? "text" : "password" }
+                                        type={showPassword ? "text" : "password"}
                                         placeholder='Ingrese su contraseña'
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <InputRightElement width="3rem">
-                                    <Button h="1.75rem" color={'white'} bg="primary.100" _hover={{ bg: 'primary.100' }} size="sm" onClick={handleShowClick} >
-                                        {showPassword ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
-                                    </Button>
+                                        <Button h="1.75rem" color={'white'} bg="primary.100" _hover={{ bg: 'primary.100' }} size="sm" onClick={handleShowClick} >
+                                            {showPassword ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
+                                        </Button>
                                     </InputRightElement>
                                 </InputGroup>
                             </FormControl>
@@ -140,7 +141,7 @@ const LoginPage = () => {
                                     defaultChecked={!correoUsuario ? false : true}
                                     value={checked}
                                     onChange={(e) => setChecked(e.target.checked)}
-                                    isDisabled = {correoUsuario ? true : false}
+                                    isDisabled={correoUsuario ? true : false}
                                     colorScheme='purple'
                                 >
                                     Recuerdame
@@ -155,11 +156,13 @@ const LoginPage = () => {
                                     bg={'primary.100'}
                                     color={'white'}
                                     _hover={{ bg: 'primary.100' }}
-                                    _dark={{ 
-                                        bg: "primary.100", 
-                                        color: "white", 
-                                        _hover: { 
-                                            bg: "primary.100" 
+                                    isLoading={isLoading ? true : false}
+                                    loadingText={'Iniciando Sesión...'}
+                                    _dark={{
+                                        bg: "primary.100",
+                                        color: "white",
+                                        _hover: {
+                                            bg: "primary.100"
                                         }
                                     }}
                                     type="submit"
@@ -168,17 +171,15 @@ const LoginPage = () => {
                                     Iniciar Sesión
                                 </Button>
                             </FormControl>
-                            <Heading fontSize="sm" color="purple.600" _dark={{ color: 'gray.400' }}>
-                                ¿No tiene una cuenta? <Text as={NavLink} to="/" color="primary.100" _dark={{ color: 'gray.400' }} _hover={{ color: "purple.800", fontWeight: 'bold' }}>Regrese</Text>
+                            <Heading fontSize="sm" color="black" _dark={{ color: 'white' }}>
+                                ¿No tiene una cuenta? <Text as={NavLink} to="/" color="primary.100" _dark={{ color: 'primary.100' }} _hover={{ color: "purple.800", fontWeight: 'bold' }}>Regrese</Text>
                             </Heading>
                         </Stack>
                     </Box>
                 </Flex>
             </HStack>
         </form>
-    );
-
-    return content;
+    )
 };
 
 export default LoginPage;

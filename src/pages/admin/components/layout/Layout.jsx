@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
+
 function Layout({ children }) {
     const [isOpen, setIsOpen] = useState(true);
 
@@ -19,6 +20,7 @@ function Layout({ children }) {
                 bgColor: "primary.1100",
                 color: "white"
             }}
+            fontFamily={'Roboto, Arial, sans-serif'}
         >
             <Header onToggle={handleToggle} isOpen={isOpen} />
             <Sidebar isOpen={isOpen} />
@@ -29,10 +31,13 @@ function Layout({ children }) {
                 _dark={{
                     bg: "primary.1100"
                 }}
-                p={4}
+                px={
+                    isOpen ? 3 : 6
+                }
+                py={2}
                 ml={{
                     base: 0,
-                    lg: isOpen ? "64" : "0"
+                    lg: isOpen ? "60" : "0"
                 }}
                 transition=".08s ease-out"
                 mt={{

@@ -1,25 +1,34 @@
-import { Flex, Spacer, IconButton, Icon, Drawer, DrawerOverlay, DrawerContent, useDisclosure, Text, Stack, DrawerCloseButton, Avatar, DrawerHeader, DrawerBody, Box, Heading, Tooltip, FormLabel, Switch, Button, DrawerFooter, useColorModeValue, useColorMode, HStack } from "@chakra-ui/react";
+import { Flex, Spacer, IconButton, Icon, Drawer, DrawerOverlay, DrawerContent, useDisclosure, Text, Stack, DrawerCloseButton, Avatar, DrawerHeader, DrawerBody, Box, Heading, Tooltip, FormLabel, Switch, Button, DrawerFooter, useColorModeValue, useColorMode, HStack, Image } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../../../theme/ColorModeSwitcher";
-import { BiLeftIndent, BiRightIndent } from "react-icons/bi";
-import { RiMenu4Fill } from "react-icons/ri";
+import { RiFullscreenFill, RiMenu4Fill } from "react-icons/ri";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiEdit2, FiLogOut } from "react-icons/fi";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { logout, reset } from "../../../../features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import logoYT from "../../../../assets/img/youtube-logo.png";
 
-function Header({ onToggle, isOpen }) {
+function Header({ onToggle }) {
 
     const sidebar = useDisclosure();
 
     const user = useSelector(state => state.auth.user);
 
+    const handleFullScreen = () => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            document.documentElement.requestFullscreen();
+        }
+    }
+
     return (
         <Flex
             as="header"
             _dark={{
-                bgColor: "#1e1e1e",
+                bgColor: "primary.1100",
                 color: "primary.100"
             }}
             bg="white"
@@ -27,18 +36,18 @@ function Header({ onToggle, isOpen }) {
                 base: "fixed",
                 lg: "sticky"
             }}
-            borderBottomWidth={'0.01px'}
             top="0"
             left="0"
             right="0"
             zIndex="sticky"
-            p={4}
-            py={2}
+            px={5}
+            py={2.5}
             align="center"
-            ml={{
-                base: 0,
-                lg: isOpen ? "64" : "0"
-            }}
+            justify="space-between"
+            // ml={{
+            //     base: 0,
+            //     lg: isOpen ? "60" : "0"
+            // }}
             transition=".08s ease-out"
         >
             <IconButton
@@ -46,30 +55,30 @@ function Header({ onToggle, isOpen }) {
                     base: "none",
                     lg: "inline-flex"
                 }}
+                size={'md'}
+                rounded={'full'}
                 onClick={() => { onToggle(); }}
-                variant="solid"
-                bg="primary.100"
-                _hover={{
-                    bg: "primary.200"
-                }}
-                color={'white'}
-                _dark={{
-                    bgColor: "primary.1000",
-                    color: "primary.100",
-                    _hover: {
-                        bgColor: "primary.900"
-                    },
-                    borderWidth: "1px",
-                }}
+                variant="ghost"
+                colorScheme="gray"
                 aria-label="Toggle navigation"
-                icon={<Icon
-                    fontSize={20}
-                    as={
-                        isOpen ? BiLeftIndent : BiRightIndent
-                    } />}
+                icon={<Icon fontSize={24} as={HamburgerIcon} />}
+            />
+            <Image
+                src={logoYT}
+                display={{
+                    base: "none",
+                    lg: "inline-flex"
+                }}
+                alt="Logo"
+                maxW={20}
+                w="20"
+                h="auto"
+                ml={3}
             />
             <Spacer />
+
             {/* Add other header elements here */}
+
             <Drawer
                 isOpen={sidebar.isOpen}
                 onClose={sidebar.onClose}
@@ -96,23 +105,30 @@ function Header({ onToggle, isOpen }) {
                     </Stack>
                 </DrawerContent>
             </Drawer>
+
             <IconButton
                 aria-label="Menu"
                 display={{ base: "flex", lg: "none" }}
                 onClick={sidebar.onOpen}
-                fontSize="2xl"
+                fontSize="xl"
                 variant="ghost"
+                rounded={'full'}
                 icon={<RiMenu4Fill />}
-                size="lg"
             />
 
             <Flex alignSelf="center" verticalAlign={'center'} justify={'flex-end'} justifyContent={{ base: "flex-end", lg: "space-between" }} w={'full'} display="inline-flex">
                 <HStack display={{ base: "none", lg: "flex" }} ml={242}>
-                    {/* <Text fontWeight="black" fontSize="xl" marginLeft={4} textAlign="center">
-                                SISTEMA DE GESTIÓN ADMINISTRATIVA - <Text as="span" fontWeight={'black'} color="messenger.600">{'user?.usuario?.modalidad'}</Text>
-                            </Text> */}
                 </HStack>
                 <HStack spacing={4}>
+                    <IconButton
+                        aria-label="Full Screen"
+                        fontSize="xl"
+                        variant="ghost"
+                        rounded={'full'}
+                        icon={<RiFullscreenFill />}
+                        colorScheme="gray"
+                        onClick={handleFullScreen}
+                    />
                     <ColorModeSwitcher />
                     <DrawerExample user={user?.data} />
                 </HStack>
@@ -201,8 +217,8 @@ function DrawerExample({ user }) {
                 fontWeight={'bold'}
                 fontSize={'md'}
                 size={'sm'}
-                // w="8"
-                // h="8"
+                // w="10"
+                // h="10"
                 rounded="full"
                 cursor={'pointer'}
             />
@@ -238,7 +254,7 @@ function DrawerExample({ user }) {
                         <Stack mt={4} spacing={6} alignSelf={'center'}>
                             <Stack spacing={2} direction="row" justifyContent={'space-between'}>
                                 <Box>
-                                    <Heading fontSize='2xl' fontWeight='bold' textTransform={'capitalize'}>{user?.name}</Heading>
+                                    <Heading fontSize='xl' fontWeight='bold' textTransform={'capitalize'}>{user?.name}</Heading>
                                     <Text fontSize='md'>{user?.email}</Text>
                                 </Box>
                                 <Box alignSelf={'center'}>

@@ -19,18 +19,18 @@ const NavItem = (props) => {
     return (
         <Flex
             py="8px"
-            px="10"
+            px="16"
             cursor="pointer"
             _hover={{
                 bg: bgActiveLinkColor,
                 color: activeLinkcolor,
+                borderRadius: 'lg'
             }}
             textAlign={'center'}
             justifyContent="center"
             alignItems="center"
             role="group"
             fontWeight="semibold"
-            transition=".3s ease-in"
             scrollMarginY={10}
             {...rest}
         >
@@ -148,6 +148,7 @@ const SidebarContent = (props) => {
                             _focus={{ boxShadow: 'none' }}
                             justifyContent="center"
                             alignItems="center"
+                            borderRadius={'lg'}
                             _hover={{ textDecoration: 'none' }}
                         >
                             <NavItem>

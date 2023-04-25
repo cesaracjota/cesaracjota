@@ -98,7 +98,7 @@ export const TopNav = (props) => {
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}
                                     size={'md'}
-                                    rounded={'lg'}
+                                    rounded={'full'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
                                     colorScheme={
