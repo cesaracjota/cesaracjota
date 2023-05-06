@@ -39,4 +39,4 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height="40" width="52" alt="spring logo"  />
 </div>
 
-![Snake animation](https://github.com/cesaracjota/cesaracjota/blob/output/github-contribution-grid-snake.svg)
+<!-- ![Snake animation](https://github.com/cesaracjota/cesaracjota/blob/output/github-contribution-grid-snake.svg) -->
