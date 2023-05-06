@@ -4,9 +4,7 @@ import Index from '../components/Layout/Index';
 
 const HomePage = () => {
     return (
-        <>
-            <Index componente={<Home />} />
-        </>
+        <Index componente={<Home />} />
     )
 }
 

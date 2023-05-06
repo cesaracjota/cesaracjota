@@ -20,7 +20,6 @@ export default function CardPost({ blog }) {
 
     return (
         <motion.div layout onClick={toggleOpen}>
-
             <Stack
                 p={4}
                 bg={useColorModeValue('purple.50', 'primary.1000')}
