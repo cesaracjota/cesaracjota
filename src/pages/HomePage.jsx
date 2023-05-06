@@ -1,5 +1,5 @@
 import React from 'react';
-import Index from '../components/Layout/Index';
+import Index from '../components/layout/Index';
 import Inicio from '../components/Inicio/Inicio';
 
 const HomePage = () => {
