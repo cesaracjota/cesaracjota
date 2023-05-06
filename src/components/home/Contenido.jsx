@@ -1,8 +1,8 @@
 import React from 'react';
 import { Heading, chakra, Stack, Image, Button, Icon, useBreakpointValue, Text } from '@chakra-ui/react';
 import { BsArrowUpRight } from 'react-icons/bs';
-import CV from '../../assets/pdf/CV.pdf';
 import { useTranslation } from "react-i18next";
+import CV from '../../assets/pdf/CV.pdf';
 
 const Contenido = () => {
 
