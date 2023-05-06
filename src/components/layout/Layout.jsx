@@ -5,7 +5,7 @@ import SidebarContent from './Sidebar';
 import { TopNav } from './TopNav';
 import ScrollTopButton from './ScrollTopButton';
 
-const Index = ({ componente: Component }) => {
+const Layout = ({ componente: Component }) => {
 
     const sidebar = useDisclosure();
 
@@ -31,4 +31,4 @@ const Index = ({ componente: Component }) => {
     )
 }
 
-export default Index;
+export default Layout;

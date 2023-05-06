@@ -1,10 +1,10 @@
-import React from 'react'
-import Index from '../components/Layout/Index'
-import Blogs from '../components/Blog/Blogs'
+import React from 'react';
+import Blogs from '../components/Blog/Blogs';
+import Layout from '../components/Layout/Layout';
 
 const BlogPage = () => {
     return (
-        <Index componente={<Blogs />} />
+        <Layout componente={<Blogs />} />
     )
 }
 

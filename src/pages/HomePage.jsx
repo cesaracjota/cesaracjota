@@ -1,10 +1,10 @@
 import React from 'react';
-import Index from '../components/layout/Index';
 import Inicio from '../components/Inicio/Inicio';
+import Layout from '../components/Layout/Layout';
 
 const HomePage = () => {
     return (
-        <Index componente={<Inicio />} />
+        <Layout componente={<Inicio />} />
     )
 }
 

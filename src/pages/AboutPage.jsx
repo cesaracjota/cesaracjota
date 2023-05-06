@@ -1,10 +1,10 @@
-import React from 'react'
-import Index from '../components/Layout/Index'
+import React from 'react';
 import About from '../components/About/About'
+import Layout from '../components/Layout/Layout'
 
 const AboutPage = () => {
   return (
-    <Index componente={<About />} />
+    <Layout componente={<About />} />
   )
 }
 

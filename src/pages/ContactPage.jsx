@@ -1,10 +1,10 @@
-import React from 'react'
-import Index from '../components/Layout/Index';
-import Contact from '../components/Contact/Contact'
+import React from 'react';
+import Contact from '../components/Contact/Contact';
+import Layout from '../components/Layout/Layout';
 
 const ContactPage = () => {
   return (
-    <Index componente={<Contact />} />
+    <Layout componente={<Contact />} />
   )
 }
 
