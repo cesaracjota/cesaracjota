@@ -3,14 +3,14 @@ import { Divider } from '@chakra-ui/react'
 import Blog from '../Blog/Blog'
 import Contenido from './Contenido'
 
-const Home = () => {
+const Inicio = () => {
     return (
         <>
             <Contenido />
-            {/* <Divider />
-            <Blog /> */}
+            <Divider />
+            <Blog />
         </>
     )
 }
 
-export default Home
+export default Inicio
