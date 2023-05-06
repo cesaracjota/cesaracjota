@@ -6,9 +6,16 @@ import "@fontsource/space-grotesk"
 import "@fontsource/fira-sans"
 
 const theme = extendTheme({
+  breakpoints: {
+    base: "0px",
+    sm: "30em",
+    md: "48em",
+    lg: "62em",
+    xl: "80em",
+  },
   fonts: {
     heading: `"Cal Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,	
-  	body: `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
+  	body: `BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
   },
   colors: {
     primary: {
@@ -22,24 +29,14 @@ const theme = extendTheme({
       700: '#ffffff1f',
       800: '#ffffff33',
       900: '#242424',
-      1000: '#1a1a1a',
-      1100: '#0f0f0f',
-      1200: '#0a0a0a',
+      1000: '#282828',
+      1100: '#1f1f1f',
+      1200: '#1a1a1a',
+      1300: '#121212',
+      1400: '#0c0c0c',
     },
   },
-
-  styles: {
-    global: (props) => ({
-      body: {
-        bg: props.colorMode === "purple"
-            ? "purple.500"
-            : props.colorMode === "dark"
-            ? "gray.800"
-            : "white",
-        color: props.colorMode === "dark" ? "white" : "gray.800",
-      },
-    }),
-  },
 })
+
 
 export default theme;

@@ -11,6 +11,7 @@ import { RiChatHeartFill } from 'react-icons/ri';
 import { motion } from "framer-motion";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export default function CardPost({ blog }) {
 
@@ -112,7 +113,7 @@ export default function CardPost({ blog }) {
                                     color: 'purple.100'
                                 }}
                             >
-                                {blog?.published_at}
+                                { moment(blog?.published_at).format('DD/MM/YYYY - H:mm:ss') }
                             </Text>
                             <Text
                                 color={'gray.600'}

@@ -35,9 +35,8 @@ function LanguageMenu({ scrolled }) {
                 <MenuButton
                     as={IconButton}
                     icon={<Flag country={selectedLanguage === "en" ? 'US' : "ES"} size={'sm'} />}
-                    // icon={<FiGlobe fontSize="1.25rem" />}
                     size={'md'}
-                    rounded={'lg'}
+                    rounded={'full'}
                     variant="ghost"
                     colorScheme={
                         scrolled ? "whiteAlpha" : "gray"
@@ -96,7 +95,8 @@ function LanguageMenu({ scrolled }) {
                             }
                         } }}
                         fontWeight={'bold'}
-                        onClick={() => window.location.reload()}>
+                        onClick={() => window.location.reload()}
+                    >
                         {t("reload")}
                     </MenuItem>
                 </MenuList>

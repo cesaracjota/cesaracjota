@@ -54,9 +54,9 @@ const SidebarContent = (props) => {
             path: '/' || '/home',
         },
         {
-            nameEN: 'About',
-            nameES: 'Acerca de',
-            path: '/about',
+            nameEN: 'About Me',
+            nameES: 'Acerca de mi',
+            path: '/about-me',
         },
         {
             nameEN: 'Projects',
@@ -76,7 +76,12 @@ const SidebarContent = (props) => {
         {
             nameEN: 'Content',
             nameES: 'Contenido',
-            path: '/contenido',
+            path: '/content',
+        },
+        {
+            nameEN: 'Admin',
+            nameES: 'Admin',
+            path: '/admin/dashboard',
         }
     ];
 
@@ -93,7 +98,6 @@ const SidebarContent = (props) => {
                 _dark={{ bg: 'primary.1000', color: 'white' }}
                 color="primary.1000"
                 borderBottomWidth={'1px'}
-                // boxShadow={'base'}
                 sx={{
                     '&::-webkit-scrollbar': {
                         width: '4px',
@@ -152,7 +156,7 @@ const SidebarContent = (props) => {
                             _hover={{ textDecoration: 'none' }}
                         >
                             <NavItem>
-                                {language === 'en' ? item.nameEN : item.nameES}
+                                { language === 'en' ? item.nameEN : item.nameES }
                             </NavItem>
                         </Link>
                     ))}

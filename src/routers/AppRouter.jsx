@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import ProjectPage from '../pages/ProjectPage';
-import './index.css';
 import LoadingBar from 'react-top-loading-bar';
-// import { Loading } from '../components/configuration/Loading';
 import BlogPage from '../pages/BlogPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import PrivateRoutes from './PrivateRoutes';
 import PublicRoute from './PublicRoute';
-import AdminPage from '../pages/admin/pages/DashboardPage';
+import UsuarioPage from '../admin/pages/UsuarioPage';
+import CalendarioPage from '../admin/pages/CalendarioPage';
+import ArchivosPage from '../admin/pages/ArchivosPage';
+import ConfiguracionPage from '../admin/pages/ConfiguracionPage';
+import AboutPage from '../pages/AboutPage';
+import ContactPage from '../pages/ContactPage';
+import ContentPage from '../pages/ContentPage';
+import AdminPage from '../admin/pages/AdminPage';
 import LoginPage from '../pages/auth/Login';
-import UsuarioPage from '../pages/admin/pages/UsuarioPage';
-import CalendarioPage from '../pages/admin/pages/CalendarioPage';
-import ArchivosPage from '../pages/admin/pages/ArchivosPage';
-import ConfiguracionPage from '../pages/admin/pages/ConfiguracionPage';
+import CertificadoPage from '../admin/pages/CertificadoPage';
+import './index.css';
+import MensajePage from '../admin/pages/MensajePage';
 
 export const AppRouter = () => {
 
@@ -73,15 +77,8 @@ export const AppRouter = () => {
                         height={5}
                         onLoaderFinished={() => setProgress(0)}
                     />
-                    {/* <div className="loader">
-                        <Loading />
-                    </div> */}
                 </div>
             )}
-            {/* {
-                !loading && (
-                )
-            } */}
             <Routes>
                 <Route element={<PrivateRoutes />} >
                     <Route path="/admin/dashboard" element={<AdminPage />} />
@@ -89,6 +86,8 @@ export const AppRouter = () => {
                     <Route path="/admin/calendario" element={<CalendarioPage />} />
                     <Route path="/admin/configuracion" element={<ConfiguracionPage />} />
                     <Route path="/admin/archivos" element={<ArchivosPage />} />
+                    <Route path="/admin/certificados" element={<CertificadoPage />} />
+                    <Route path="/admin/mensajes" element={<MensajePage />} />
                 </Route>
                 <Route element={<PublicRoute />}>
                     <Route path="/auth/login" element={<LoginPage />} />
@@ -96,6 +95,9 @@ export const AppRouter = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectPage />} />
                 <Route path="/blogs" element={<BlogPage />} />
+                <Route path="/about-me" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/content" element={<ContentPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </>

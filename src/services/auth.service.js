@@ -22,7 +22,7 @@ const login = async (userData) => {
 
         if(response.data) {
             localStorage.setItem("user", JSON.stringify(response.data));
-            ToastChakra('BIENVENIDO A LA PLATAFORMA - SGA', 'CARGANDO LOS DATOS ...', 'loading', 3500);
+            ToastChakra('BIENVENIDO A LA PLATAFORMA', 'CARGANDO LOS DATOS ...', 'loading', 3500);
             return response.data;
         }
     
@@ -32,8 +32,9 @@ const login = async (userData) => {
 const logout = () => {
     ToastChakra('CERRANDO SESIÓN ...', 'HASTA PRONTO, TE ESPERAMOS!', 'loading', 2000);
     localStorage.removeItem("user");
-    localStorage.removeItem("chakra-ui-color-mode");
-    // window.location.reload();
+    localStorage.removeItem("expanded_value");
+    // localStorage.removeItem("chakra-ui-color-mode");
+    window.location.reload();
 }
 
 const authService = {

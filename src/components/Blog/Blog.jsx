@@ -52,7 +52,7 @@ const Blog = () => {
                             <Skeleton height="100px" borderRadius={'2xl'} />
                         </SimpleGrid>
                     ) : (
-                        blogs.map((blog) => {
+                        blogs?.map((blog) => {
                             return <CardPost key={blog.id} blog={blog} />
                         })
                     )

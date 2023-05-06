@@ -4,9 +4,9 @@ import "@fontsource/fira-sans-condensed";
 
 export const Footer = (props) => {
     return (
-        <Box as="footer" role="contentinfo" bg="white" _dark={{ bg: 'primary.900', color: 'gray.100' }} fontFamily={`"Fira Sans Condensed", sans-serif`} {...props}>
+        <Box as="footer" role="contentinfo" bg="white" _dark={{ bg: 'primary.1200', color: 'gray.100' }} fontFamily={`"Fira Sans Condensed", sans-serif`} {...props}>
             <Container
-                maxW={'4xl'}
+                maxW={'6xl'}
                 py={{
                     base: "5rem",
                     lg: 4,
@@ -15,7 +15,7 @@ export const Footer = (props) => {
                 <Divider mb={6}/>
                 <Stack justify="space-between" direction={{ base: "column", lg: "row" }} align="center">
                     <Text fontSize="sm" color="subtle">
-                        &copy; {new Date().getFullYear()} CesarAcjota, Inc. All rights reserved.
+                        &copy; {new Date().getFullYear()} Made with ❤️ by Cesar Acjota, Team @AgylCode
                     </Text>
                     <ButtonGroup>
                         <IconButton

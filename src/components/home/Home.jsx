@@ -1,12 +1,12 @@
 import React from 'react'
-import About from '../About/About'
 import { Divider } from '@chakra-ui/react'
 import Blog from '../Blog/Blog'
+import Contenido from './Contenido'
 
 const Home = ({ loading }) => {
     return (
         <>
-            <About />
+            <Contenido />
             <Divider />
             <Blog />
         </>

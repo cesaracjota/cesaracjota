@@ -25,14 +25,14 @@ const Index = ({ componente: Component, loading, progress }) => {
             direction="column" 
             flex="1"
             bg={'white'} 
-            _dark={{ bg: 'primary.900' }}
+            _dark={{ bg: 'primary.1200' }}
             minH="100vh"
             overflow="hidden"
         >
             <SidebarContent menu={menus} display={'none'} />
             <TopNav menus={menus} isOpen={sidebar.isOpen} onClose={sidebar.onClose} onOpen={sidebar.onOpen}/>
             <Flex as="main" role="main" direction="column" flex="1" py="5">
-                <Container flex="1" maxW={'4xl'} mt={12}>
+                <Container flex="1" maxW={'6xl'} mt={12}>
                     {Component}
                 </Container>
             </Flex>

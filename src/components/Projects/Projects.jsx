@@ -121,7 +121,7 @@ const Projects = () => {
                 ) :
                     (
                         <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} w="full">
-                            {repos.map((repo) => (
+                            {repos?.map((repo) => (
                                 <GithubCard
                                     key={repo.id}
                                     title={repo.name}

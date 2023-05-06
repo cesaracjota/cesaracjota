@@ -57,7 +57,7 @@ export const TopNav = (props) => {
             bg={scrolled ? "primary.100" : "transparent"}
             boxShadow={
                 scrolled ?
-                    "0 0 10px rgba(0,0,0,0.4), 0 0 15px rgba(0,0,0,0.4)"
+                    "0 0 5px rgba(0,0,0,0.4), 0 0 10px rgba(0,0,0,0.4)"
                     : "none"
             }
             zIndex="2"
@@ -71,11 +71,11 @@ export const TopNav = (props) => {
             _dark={{
                 bg: scrolled ? "primary.100" : "transparent",
             }}
-            transition="background-color 0.3s linear"
+            transition="background-color 0.1s linear"
         >
             <Container
                 py={3}
-                maxW={'4xl'}
+                maxW={'6xl'}
             >
                 <HStack spacing="10" justify="space-between">
                     {isDesktop ? (
@@ -131,7 +131,7 @@ export const TopNav = (props) => {
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}
                                     size={'md'}
-                                    rounded={'lg'}
+                                    rounded={'full'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
                                     colorScheme={

@@ -1,6 +1,6 @@
 import React from 'react';
-import Home from '../components/home/Home';
-import Index from '../components/layout/Index';
+import Home from '../components/Home/Home';
+import Index from '../components/Layout/Index';
 
 const HomePage = () => {
     return (
