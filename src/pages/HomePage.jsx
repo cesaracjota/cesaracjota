@@ -1,6 +1,6 @@
 import React from 'react';
 import Inicio from '../components/Inicio/Inicio';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Index/Layout';
 
 const HomePage = () => {
     return (

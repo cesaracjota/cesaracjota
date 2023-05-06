@@ -1,6 +1,6 @@
 import React from 'react';
 import Content from '../components/Content/Content';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Index/Layout';
 
 const ContentPage = () => {
   return (
