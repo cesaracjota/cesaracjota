@@ -9,17 +9,6 @@ const Index = ({ componente: Component }) => {
 
     const sidebar = useDisclosure();
 
-    const menus = [
-        {
-            name: '!NUEVOS CICLOS',
-            path: '/unsa',
-        },
-        {
-            name: 'BLOG',
-            path: '/blog',
-        },
-    ];
-
     return (
         <Flex 
             direction="column" 
@@ -29,8 +18,8 @@ const Index = ({ componente: Component }) => {
             minH="100vh"
             overflow="hidden"
         >
-            <SidebarContent menu={menus} display={'none'} />
-            <TopNav menus={menus} isOpen={sidebar.isOpen} onClose={sidebar.onClose} onOpen={sidebar.onOpen}/>
+            <SidebarContent display={'none'} />
+            <TopNav isOpen={sidebar.isOpen} onClose={sidebar.onClose} onOpen={sidebar.onOpen}/>
             <Flex as="main" role="main" direction="column" flex="1" py="5">
                 <Container flex="1" maxW={'6xl'} mt={12}>
                     {Component}

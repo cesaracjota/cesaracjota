@@ -51,7 +51,7 @@ const SidebarContent = (props) => {
         {
             nameEN: 'Home',
             nameES: 'Inicio',
-            path: '/' || '/home',
+            path: '/',
         },
         {
             nameEN: 'About Me',
