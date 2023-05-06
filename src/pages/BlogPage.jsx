@@ -4,9 +4,7 @@ import Blogs from '../components/Blog/Blogs'
 
 const BlogPage = () => {
     return (
-        <>
-            <Index componente={<Blogs />} />
-        </>
+        <Index componente={<Blogs />} />
     )
 }
 

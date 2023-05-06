@@ -1,5 +1,5 @@
 import React from 'react'
-import Index from '../components/Layout/Index'
+import Index from '../components/Layout/Index';
 import Contact from '../components/Contact/Contact'
 
 const ContactPage = () => {

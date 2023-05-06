@@ -1,6 +1,6 @@
-import React from 'react'
-import Index from '../components/Layout/Index';
+import React from 'react';
 import Content from '../components/Content/Content';
+import Index from '../components/Layout/Index';
 
 const ContentPage = () => {
   return (

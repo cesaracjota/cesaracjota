@@ -1,6 +1,6 @@
 import React from 'react'
-import Index from '../components/Layout/Index'
-import Projects from '../components/Projects/Projects'
+import Projects from '../components/Projects/Projects';
+import Index from '../components/Layout/Index';
 
 const ProjectPage = () => {
     return (
