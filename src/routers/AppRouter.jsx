@@ -13,7 +13,6 @@ import ArchivosPage from '../admin/pages/ArchivosPage';
 import ConfiguracionPage from '../admin/pages/ConfiguracionPage';
 import AboutPage from '../pages/AboutPage';
 import ContactPage from '../pages/ContactPage';
-import ContentPage from '../pages/ContentPage';
 import AdminPage from '../admin/pages/AdminPage';
 import LoginPage from '../pages/auth/Login';
 import CertificadoPage from '../admin/pages/CertificadoPage';
@@ -97,7 +96,7 @@ export const AppRouter = () => {
                 <Route path="/blogs" element={<BlogPage />} />
                 <Route path="/about-me" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/content" element={<ContentPage />} />
+                {/* <Route path="/content" element={<ContentPage />} /> */}
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </>

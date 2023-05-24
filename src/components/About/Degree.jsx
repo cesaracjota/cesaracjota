@@ -1,6 +1,5 @@
-import React from 'react'
-import CardDegree from './CardDegree'
-import Certifications from './Certifications';
+import React from 'react';
+import CardDegree from './CardDegree';
 
 const Degrees = () => {
 
@@ -49,8 +48,7 @@ const Degrees = () => {
 
   return (
     <>
-          <CardDegree data={data} />
-          <Certifications />
+      <CardDegree data={data} />
     </>
   )
 }

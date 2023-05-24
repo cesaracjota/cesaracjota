@@ -3,8 +3,27 @@
     "presentationMessage": "Software developer obsessed with quality and user experience. With 1 year of experience, I specialize in creating intuitive and efficient web and mobile applications. If you want to work on an exciting and challenging project, I'm ready to help you!",
     "reload": "Reload",
     "resume": "Résumé",
-    "popular_articles": "Popular Articles",
-    "more_articles": "More Articles",
+    "popular_blogs": "Popular Blogs",
     "projects": "Project",
-    "more_blogs": "More Blogs"
+    "more_blogs": "More Blogs",
+    "contacts": {
+        "title": "Contact Me",
+        "subtitle": "If you want to work on an exciting and challenging project, I'm ready to help you!",
+        "ph": {
+            "name": "Complete Name",
+            "email": "Email Include @",
+            "phone_number": "+(code) Phone Number",
+            "message_subject": "Type the subject of the message here...",
+            "message": "Type your message here..."
+        },
+        "form": {
+            "name": "Your Name",
+            "email": "Your Email",
+            "phone_number": "Your Phone Number",
+            "message_subject": "Message Subject",
+            "message": "Your Message",
+            "loadingText": "Send Message...",
+            "button_send": "Send Message"
+        }
+    }
 }

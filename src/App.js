@@ -6,6 +6,7 @@ import { I18nextProvider } from 'react-i18next';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { AppRouter } from './routers/AppRouter';
+import "./styles/globals.css";
 
 function App() {
   return (

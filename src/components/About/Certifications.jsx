@@ -31,7 +31,6 @@ const Certifications = () => {
 
             } catch (error) {
                 console.log(error);
-                // ToastChakra('Error', error.message, 'error', 1500);
             }
         }
 

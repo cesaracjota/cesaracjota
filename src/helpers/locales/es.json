@@ -3,8 +3,27 @@
     "presentationMessage": "Desarrollador de software obsesionado con la calidad y la experiencia del usuario. Con 1 año de experiencia, estoy especializado en crear aplicaciones web y móviles intuitivas y eficientes. Si quieres trabajar en un proyecto emocionante y desafiante, ¡estoy listo para ayudarte!",
     "reload": "Actualizar",
     "resume": "Curriculum vitae",
-    "popular_articles": "Artículos Populares",
-    "more_articles": "Más Artículos",
+    "popular_blogs": "Blogs Populares",
     "projects": "Proyectos",
-    "more_blogs": "Más Blogs"
+    "more_blogs": "Más Blogs",
+    "contacts": {
+        "title": "Contáctame Aquí",
+        "subtitle": "Si quieres trabajar en un proyecto emocionante y desafiante, ¡estoy listo para ayudarte!",
+        "ph": {
+            "name": "Nombre Completo",
+            "email": "Correo Electrónico Incluye @",
+            "phone_number": "+(código) Número de Teléfono",
+            "message_subject": "Escribe el asunto del mensaje aquí...",
+            "message": "Escribe tu mensaje aquí..."
+        },
+        "form": {
+            "name": "Tu Nombre",
+            "email": "Tu Correo Electrónico",
+            "phone_number": "Tu Número de Teléfono",
+            "message_subject": "Asunto del Mensaje",
+            "message": "Tu Mensaje",
+            "loadingText": "Enviando Mensaje...",
+            "button_send": "Enviar Mensaje"
+        }
+    }
 }

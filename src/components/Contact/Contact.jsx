@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createMessage } from '../../features/mensajeSlice';
 import { ToastChakra } from '../../helpers/toast';
 import { EmailIcon, InfoIcon, PhoneIcon } from '@chakra-ui/icons';
+import { t } from 'i18next';
 
 const Contact = () => {
 
@@ -71,7 +72,10 @@ const Contact = () => {
         <>
             <Stack
                 direction="column"
-                spacing={10}
+                spacing={{
+                    base: 0,
+                    lg: 10
+                }}
             >
                 <Stack
                     spacing={0}
@@ -83,18 +87,21 @@ const Contact = () => {
                         letterSpacing="tight"
                         lineHeight="shorter"
                     >
-                        Contact
+                        {t("contacts.title")}
                     </Heading>
 
                     <Stack spacing={2}>
                         <Text>
-                            To request a quoute or want to meet up for coffee, contact me directly or fill out the form and I will get back to you soon.
+                        {t("contacts.subtitle")}
                         </Text>
                     </Stack>
                 </Stack>
 
                 <Stack
-                    spacing={6}
+                    spacing={{
+                        base: 0,
+                        lg: 6
+                    }}
                     direction={{
                         base: 'column',
                         lg: 'row'
@@ -110,72 +117,75 @@ const Contact = () => {
                     />
                     <Stack spacing={2} w="full">
                         <form onSubmit={handleSave}>
-                            <Stack spacing={2}>
+                            <Stack spacing={4}>
                                 <FormControl isRequired>
                                     <FormLabel>
-                                        Your Name
+                                    {t("contacts.form.name")}
                                     </FormLabel>
                                     <InputGroup>
                                         <InputLeftElement
                                             pointerEvents='none'
                                             children={<InfoIcon color='purple.600' />}
+                                            fontSize={20}
                                         />
                                         <Input
                                             ref={usernameRef}
                                             type='text'
-                                            placeholder='complete name'
+                                            placeholder={t("contacts.ph.name")}
                                             onChange={(e) => setIndice({ ...indice, nombres_usuario: e.target.value })}
                                         />
                                     </InputGroup>
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>
-                                        Your Email
+                                    {t("contacts.form.email")}
                                     </FormLabel>
                                     <InputGroup>
                                         <InputLeftElement
                                             pointerEvents='none'
                                             children={<EmailIcon color='purple.600' />}
+                                            fontSize={20}
                                         />
                                         <Input
                                             ref={emailRef}
                                             type='email'
-                                            placeholder='email include @'
+                                            placeholder={t("contacts.ph.email")}
                                             onChange={(e) => setIndice({ ...indice, email: e.target.value })}
                                         />
                                     </InputGroup>
                                 </FormControl>
                                 <FormControl>
-                                    <FormLabel>Phone Number</FormLabel>
+                                    <FormLabel>{t("contacts.form.phone_number")}</FormLabel>
                                     <InputGroup>
                                         <InputLeftElement
                                             pointerEvents='none'
                                             children={<PhoneIcon color='purple.600' />}
+                                            fontSize={20}
                                         />
                                         <Input
                                             ref={telefonoRef}
                                             type='tel'
-                                            placeholder='+(code) Phone number'
+                                            placeholder={t("contacts.ph.phone_number")}
                                             onChange={(e) => setIndice({ ...indice, telefono: e.target.value })}
                                         />
                                     </InputGroup>
                                 </FormControl>
                                 <FormControl isRequired>
-                                    <FormLabel>Message Subject</FormLabel>
+                                    <FormLabel>{t("contacts.form.message_subject")}</FormLabel>
                                     <Input
                                         ref={asuntoRef}
                                         type='text'
                                         onChange={(e) => setIndice({ ...indice, asunto_mensaje: e.target.value })}
-                                        placeholder='type the subject of the message here...'
+                                        placeholder={t("contacts.ph.message_subject")}
                                     />
                                 </FormControl>
                                 <FormControl isRequired>
-                                    <FormLabel>Your Message</FormLabel>
+                                    <FormLabel>{t("contacts.form.message")}</FormLabel>
                                     <Textarea
                                         ref={messageRef}
                                         type='text'
                                         onChange={(e) => setIndice({ ...indice, mensaje: e.target.value })}
-                                        placeholder='type your message here...'
+                                        placeholder={t("contacts.ph.message")}
                                     />
                                 </FormControl>
                                 <Button
@@ -183,7 +193,7 @@ const Contact = () => {
                                     mt={6}
                                     colorScheme='purple'
                                     isLoading={isLoading ? true : false}
-                                    loadingText="Enviando Mensaje..."
+                                    loadingText={t("contacts.form.loadingText")}
                                     _dark={{
                                         bg: 'primary.100',
                                         _hover: {
@@ -192,7 +202,7 @@ const Contact = () => {
                                         color: '#FFF',
                                     }}
                                 >
-                                    Send Message
+                                    {t("contacts.form.button_send")}
                                 </Button>
                             </Stack>
                         </form>

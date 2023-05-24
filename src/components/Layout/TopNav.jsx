@@ -25,6 +25,7 @@ import { NavLink } from 'react-router-dom';
 import SidebarContent from './Sidebar';
 import LanguageMenu from '../../helpers/LanguageMenu';
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import redesData from '../../data/redes.json';
 
 export const TopNav = (props) => {
 
@@ -159,7 +160,10 @@ function ContentDrawer({ isOpen, onClose }) {
             isOpen={isOpen}
             placement="right"
             onClose={onClose}
-            size="xs"
+            size={{
+                base: 'full',
+                lg: 'sm',
+            }}
             isFullHeight
         >
             <DrawerOverlay />
@@ -182,8 +186,9 @@ function ContentDrawer({ isOpen, onClose }) {
                     >
                         <ButtonGroup>
                             <IconButton
-                                as="a"
-                                href="#"
+                                as={NavLink}
+                                to={redesData?.youtube?.url}
+                                target='_blank'
                                 aria-label="Youtube"
                                 icon={<FaYoutube fontSize="1.6rem" />}
                                 colorScheme='red'
@@ -191,8 +196,9 @@ function ContentDrawer({ isOpen, onClose }) {
                                 size="lg"
                             />
                             <IconButton
-                                as="a"
-                                href="#"
+                                as={NavLink}
+                                to={redesData?.instagram?.url}
+                                target='_blank'
                                 aria-label="Instagram"
                                 icon={<FaInstagram fontSize="1.6rem" />}
                                 colorScheme='purple'
@@ -200,8 +206,9 @@ function ContentDrawer({ isOpen, onClose }) {
                                 size="lg"
                             />
                             <IconButton
-                                as="a"
-                                href="#"
+                                as={NavLink}
+                                to={redesData?.linkedin?.url}
+                                target='_blank'
                                 aria-label="LinkedIn"
                                 icon={<FaLinkedin fontSize="1.6rem" />}
                                 colorScheme='linkedin'
@@ -209,8 +216,9 @@ function ContentDrawer({ isOpen, onClose }) {
                                 size="lg"
                             />
                             <IconButton
-                                as="a"
-                                href="#"
+                                as={NavLink}
+                                to={redesData?.whatsapp?.url}
+                                target='_blank'
                                 aria-label="WhatsApp"
                                 icon={<FaWhatsapp fontSize="1.6rem" />}
                                 colorScheme='whatsapp'

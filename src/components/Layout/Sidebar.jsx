@@ -64,25 +64,10 @@ const SidebarContent = (props) => {
             path: '/projects',
         },
         {
-            nameEN: 'Blog',
-            nameES: 'Blog',
+            nameEN: 'Blogs',
+            nameES: 'Blogs',
             path: '/blogs',
         },
-        {
-            nameEN: 'Contact',
-            nameES: 'Contacto',
-            path: '/contact',
-        },
-        {
-            nameEN: 'Content',
-            nameES: 'Contenido',
-            path: '/content',
-        },
-        {
-            nameEN: 'Admin',
-            nameES: 'Admin',
-            path: '/admin/dashboard',
-        }
     ];
 
     return (

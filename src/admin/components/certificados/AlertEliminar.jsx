@@ -12,13 +12,15 @@ import {
     Flex,
     Tooltip,
 } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillDelete, AiOutlineAlert } from 'react-icons/ai';
 import { deleteCertificado } from '../../../features/certificadoSlice';
 
 export const AlertaEliminar = ({ row }) => {
 
     const dispatch = useDispatch();
+
+    const { user } = useSelector((state) => state.auth);
 
     const [isOpenAlert, setIsOpenAlert] = useState(false);
 
@@ -37,7 +39,7 @@ export const AlertaEliminar = ({ row }) => {
 
     return (
         <>
-            <Tooltip hasArrow label='ELIMINAR' placement='auto'>
+            <Tooltip hasArrow label={user.usuario.role !== 'ADMIN' ? 'No tiene privilegios para realizar estas acciones' : 'Eliminar'} placement='auto'>
                 <IconButton
                     aria-label="Eliminar"
                     onClick={() => handleOpenAlert(row._id)}
@@ -48,6 +50,7 @@ export const AlertaEliminar = ({ row }) => {
                     variant={'solid'}
                     _dark={{ color: "white", bg: "red.500", _hover: { bg: "red.800" } }}
                     ml={2}
+                    isDisabled={user.usuario.role !== 'ADMIN'}
                 />
             </Tooltip>
             <AlertDialog

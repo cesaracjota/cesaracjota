@@ -30,12 +30,13 @@ import {
 import { FiCheckCircle } from 'react-icons/fi';
 import { AiFillMessage } from 'react-icons/ai';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mensajeMarcadoLeido } from '../../../features/mensajeSlice';
 
 const DetallesMensaje = ({ row }) => {
 
     const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -55,7 +56,7 @@ const DetallesMensaje = ({ row }) => {
 
     return (
         <>
-            <Tooltip hasArrow label='Ver Mensaje' placement='auto'>
+            <Tooltip hasArrow label={user.usuario.role !== 'ADMIN' ? 'No tiene privilegios para realizar esta acción' : 'Ver Mensaje'}  placement='auto'>
                 <IconButton
                     icon={<Icon as={AiFillMessage} />}
                     fontSize="2xl"
@@ -66,6 +67,7 @@ const DetallesMensaje = ({ row }) => {
                     _dark={{ color: "white", bg: "purple.500", _hover: { bg: "purple.800" } }}
                     onClick={handleModalOpen}
                     ml={2}
+                    isDisabled={user.usuario.role !== 'ADMIN'}
                 />
             </Tooltip>
 

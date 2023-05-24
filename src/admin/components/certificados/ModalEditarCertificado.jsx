@@ -18,7 +18,7 @@ import {
     Textarea,
     Tooltip,
 } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateCertificado } from '../../../features/certificadoSlice';
 // import { LockIcon } from '@chakra-ui/icons';
 import { MdEdit } from 'react-icons/md';
@@ -26,6 +26,7 @@ import { MdEdit } from 'react-icons/md';
 export const ModalEditarCertificado = ({ row }) => {
 
     const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -62,7 +63,7 @@ export const ModalEditarCertificado = ({ row }) => {
 
     return (
         <>
-            <Tooltip hasArrow label='EDITAR' placement='auto'>
+            <Tooltip hasArrow label={user.usuario.role !== 'ADMIN' ? 'No tiene privilegios para realizar estas acciones' : 'Editar'} placement='auto'>
                 <IconButton
                     icon={<Icon as={MdEdit} />}
                     fontSize="2xl"
@@ -72,6 +73,7 @@ export const ModalEditarCertificado = ({ row }) => {
                     variant={'solid'}
                     _dark={{ color: "white", bg: "yellow.500", _hover: { bg: "yellow.800" } }}
                     onClick={() => handleModalOpen(row)}
+                    isDisabled={user.usuario.role !== 'ADMIN'}
                     ml={2}
                 />
             </Tooltip>

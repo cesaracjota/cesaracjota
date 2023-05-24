@@ -42,7 +42,7 @@ const Blog = () => {
                     lineHeight="shorter"
                     my={4}
                 >
-                    {t("popular_articles")}
+                    {t("popular_blogs")}
                 </Heading>
                 {
                     loading ? (
@@ -82,7 +82,7 @@ const Blog = () => {
                         }}
                         rightIcon={<FaMousePointer />}
                     >
-                        {t("more_articles")}
+                        {t("more_blogs")}
                     </Button>
                 </Stack>
             </Stack>

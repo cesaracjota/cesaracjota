@@ -1,8 +1,11 @@
 import { Box, Container, ButtonGroup, IconButton, Stack, Text, Divider } from '@chakra-ui/react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 import "@fontsource/fira-sans-condensed";
+import redesData from '../../data/redes.json';
+import { Link } from 'react-router-dom';
 
 export const Footer = (props) => {
+
     return (
         <Box as="footer" role="contentinfo" bg="white" _dark={{ bg: 'primary.1200', color: 'gray.100' }} fontFamily={`"Fira Sans Condensed", sans-serif`} {...props}>
             <Container
@@ -19,8 +22,9 @@ export const Footer = (props) => {
                     </Text>
                     <ButtonGroup>
                         <IconButton
-                            as="a"
-                            href="#"
+                            as={Link}
+                            to={redesData?.youtube?.url}
+                            target='_blank'
                             aria-label="Youtube"
                             icon={<FaYoutube fontSize="1.6rem" />}
                             colorScheme='red'
@@ -28,8 +32,9 @@ export const Footer = (props) => {
                             size="lg"
                         />
                         <IconButton
-                            as="a"
-                            href="#"
+                            as={Link}
+                            to={redesData?.instagram?.url}
+                            target='_blank'
                             aria-label="Instagram"
                             icon={<FaInstagram fontSize="1.6rem" />}
                             colorScheme='purple'
@@ -37,8 +42,9 @@ export const Footer = (props) => {
                             size="lg"
                         />
                         <IconButton
-                            as="a"
-                            href="#"
+                            as={Link}
+                            to={redesData?.facebook?.url}
+                            target='_blank'
                             aria-label="Facebook"
                             icon={<FaFacebook fontSize="1.6rem" />}
                             colorScheme='facebook'
@@ -46,8 +52,9 @@ export const Footer = (props) => {
                             size="lg"
                         />
                         <IconButton
-                            as="a"
-                            href="#"
+                            as={Link}
+                            to={redesData?.linkedin?.url}
+                            target='_blank'
                             aria-label="LinkedIn"
                             icon={<FaLinkedin fontSize="1.6rem" />}
                             colorScheme='linkedin'
@@ -55,8 +62,9 @@ export const Footer = (props) => {
                             size="lg"
                         />
                         <IconButton
-                            as="a"
-                            href="#"
+                            as={Link}
+                            to={redesData?.twitter?.url}
+                            target='_blank'
                             aria-label="Twitter"
                             icon={<FaTwitter fontSize="1.6rem" />}
                             colorScheme='twitter'
@@ -64,8 +72,9 @@ export const Footer = (props) => {
                             size="lg"
                         />
                         <IconButton
-                            as="a"
-                            href="#"
+                            as={Link}
+                            to={redesData?.whatsapp?.url}
+                            target='_blank'
                             aria-label="WhatsApp"
                             icon={<FaWhatsapp fontSize="1.6rem" />}
                             colorScheme='whatsapp'
