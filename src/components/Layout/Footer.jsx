@@ -1,5 +1,5 @@
 import { Box, Container, ButtonGroup, IconButton, Stack, Text, Divider } from '@chakra-ui/react';
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import "@fontsource/fira-sans-condensed";
 import redesData from '../../data/redes.json';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ export const Footer = (props) => {
             <Container
                 maxW={'6xl'}
                 py={{
-                    base: "5rem",
+                    base: 6,
                     lg: 4,
                 }}
             >
@@ -43,41 +43,11 @@ export const Footer = (props) => {
                         />
                         <IconButton
                             as={Link}
-                            to={redesData?.facebook?.url}
-                            target='_blank'
-                            aria-label="Facebook"
-                            icon={<FaFacebook fontSize="1.6rem" />}
-                            colorScheme='facebook'
-                            variant="ghost"
-                            size="lg"
-                        />
-                        <IconButton
-                            as={Link}
                             to={redesData?.linkedin?.url}
                             target='_blank'
                             aria-label="LinkedIn"
                             icon={<FaLinkedin fontSize="1.6rem" />}
                             colorScheme='linkedin'
-                            variant="ghost"
-                            size="lg"
-                        />
-                        <IconButton
-                            as={Link}
-                            to={redesData?.twitter?.url}
-                            target='_blank'
-                            aria-label="Twitter"
-                            icon={<FaTwitter fontSize="1.6rem" />}
-                            colorScheme='twitter'
-                            variant="ghost"
-                            size="lg"
-                        />
-                        <IconButton
-                            as={Link}
-                            to={redesData?.whatsapp?.url}
-                            target='_blank'
-                            aria-label="WhatsApp"
-                            icon={<FaWhatsapp fontSize="1.6rem" />}
-                            colorScheme='whatsapp'
                             variant="ghost"
                             size="lg"
                         />
