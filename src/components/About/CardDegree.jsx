@@ -56,15 +56,19 @@ const CardDegree = ({ data }) => {
                         spacing={4}
                         mb={8}
                     >
-                        {/* <Stack
-                            p={4}
-                            bg={bgColor}
+                        <Image
+                            src={data?.cover_image}
+                            alt={data?.title}
+                            loading="lazy"
+                            alignSelf={'center'}
+                            h='full'
+                            w='full'
                             rounded="full"
-                            cursor="pointer"
-                            shadow={'base'}
-                            direction={{
-                                base: 'column',
-                                lg: 'row'
+                            objectFit={'cover'}
+                            shadow={'lg'}
+                            _hover={{
+                                transform: "scale(1.03)",
+                                shadow: "md",
                             }}
                             maxW={{
                                 base: '150',
@@ -74,36 +78,8 @@ const CardDegree = ({ data }) => {
                                 base: '150',
                                 lg: '200'
                             }}
-                            alignSelf={'center'}
-                            _hover={{
-                                shadow: "lg",
-                            }}
                             transition='all 0.3s ease-in-out'
-                        > */}
-                            <Image
-                                src={data?.cover_image}
-                                alt={data?.title}
-                                loading="lazy"
-                                alignSelf={'center'}
-                                h='full'
-                                w='full'
-                                rounded="full"
-                                objectFit={'cover'}
-                                shadow={'lg'}
-                                _hover={{
-                                    transform: "scale(1.03)",
-                                    shadow: "md",
-                                }}
-                                maxW={{
-                                    base: '150',
-                                    lg: '200'
-                                }}
-                                maxH={{
-                                    base: '150',
-                                    lg: '200'
-                                }}
-                                transition='all 0.3s ease-in-out'
-                            />
+                        />
                         {/* </Stack> */}
 
                         {/* card */}

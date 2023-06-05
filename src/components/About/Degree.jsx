@@ -1,5 +1,7 @@
 import React from 'react';
 import CardDegree from './CardDegree';
+import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
+import TECSUP_logo from '../../assets/img/logos/TECSUP.jpg';
 
 const Degrees = () => {
 
@@ -9,7 +11,7 @@ const Degrees = () => {
       institution: 'TECSUP',
       date: '2019 - 2022',
       url: 'https://www.tecsup.edu.pe/',
-      cover_image: 'https://scontent.faqp2-1.fna.fbcdn.net/v/t1.18169-9/13720_481974808521636_1939785989_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=jrtCbQPG09cAX-HAJf1&_nc_ht=scontent.faqp2-1.fna&oh=00_AfA2oOR8ktMV2cL_3ELf-Nz4zGDS-hj5xDAj6iq380bkVA&oe=64741D68',
+      cover_image: TECSUP_logo,
       content_list : 
       [
         {
@@ -29,7 +31,7 @@ const Degrees = () => {
       institution: 'UNSA',
       date: '2023 - PRESENT',
       url: 'https://www.unsa.edu.pe/',
-      cover_image: 'https://scontent.faqp2-3.fna.fbcdn.net/v/t1.6435-9/45780925_1950586715017778_6610517627087355904_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=60Kga6I8EE8AX9nikvI&_nc_ht=scontent.faqp2-3.fna&oh=00_AfA-PrGXEi9-HyXoGEqpl_ZALFJwSYF4sd-T_Y37RSruFQ&oe=647AB978',
+      cover_image: UNSA_logo,
       content_list :
       [
         {

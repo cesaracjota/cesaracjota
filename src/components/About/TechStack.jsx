@@ -2,7 +2,6 @@ import { Heading, SimpleGrid, Stack, Tab, TabIndicator, TabList, TabPanel, TabPa
 import React from 'react'
 import CardTechStack from './CardTechStack';
 import reactIcon from '../../assets/img/logos/react.png';
-import typescriptIcon from '../../assets/img/logos/typescript.png';
 import htmlIcon from '../../assets/img/logos/html.png';
 import cssIcon from '../../assets/img/logos/css.png';
 import javascriptIcon from '../../assets/img/logos/javascript.png';

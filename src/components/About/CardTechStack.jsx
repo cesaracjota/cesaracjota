@@ -5,7 +5,15 @@ import ColorThief from "colorthief";
 
 const CardTechStack = ({ imageUrl, title, description, link }) => {
 
-  const [backgroundColor, setBackgroundColor] = useState(null);
+  const [backgroundColor, setBackgroundColor] = useState("");
+
+  const darkenColor = (rgbColor, amount) => {
+    const [r, g, b] = rgbColor;
+    const darkenedR = Math.floor(r * amount);
+    const darkenedG = Math.floor(g * amount);
+    const darkenedB = Math.floor(b * amount);
+    return [darkenedR, darkenedG, darkenedB];
+  };
 
   useEffect(() => {
     const colorThief = new ColorThief();
@@ -13,14 +21,37 @@ const CardTechStack = ({ imageUrl, title, description, link }) => {
     image.src = imageUrl;
     image.onload = () => {
       const dominantColor = colorThief.getColor(image);
-      const rgbColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+      const darkenedColor = darkenColor(dominantColor, 0.6); // Ajusta el valor de "0.7" según lo oscuro que desees el color
+      const rgbColor = `rgb(${darkenedColor[0]}, ${darkenedColor[1]}, ${darkenedColor[2]})`;
       setBackgroundColor(rgbColor);
     };
   }, [imageUrl]);
 
   return (
     <Link to={link}>
-      <Box borderWidth="1px" borderRadius="lg" p={4} w="full" bg="white" _dark={{ bg: 'primary.900' }}>
+      <Box 
+        w="full" 
+        borderWidth="1px" 
+        borderRadius="lg" 
+        p={4} 
+        bgImage="white"
+        _dark={{ 
+          bg: 'primary.900', 
+          borderColor: 'gray.600', 
+          _hover:{
+            borderColor: 'primary.100',
+            color: 'primary.100',
+            cursor: 'pointer'
+          } 
+        }}
+        borderColor="gray.200" 
+        _hover={{
+          borderColor: 'primary.100',
+          color: 'primary.100',
+          cursor: 'pointer'
+        }}
+        transition='all 0.3s ease-in-out'
+      >
           <Stack direction={'row'}>
             <Box
               rounded={'lg'} 
@@ -45,7 +76,7 @@ const CardTechStack = ({ imageUrl, title, description, link }) => {
               <Heading as="h3" size="md">
                 {title}
               </Heading>
-              <Text mt={2} color="gray.600" fontSize={'sm'}>
+              <Text mt={2} fontSize={'sm'}>
                 {description}
               </Text>
             </Stack>
