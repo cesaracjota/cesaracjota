@@ -3,7 +3,6 @@ import { ColorModeSwitcher } from "../../../theme/ColorModeSwitcher";
 import { RiFullscreenExitLine, RiFullscreenFill, RiMenu4Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 import { FiEdit2, FiLogOut } from "react-icons/fi";
-import { FaMoon, FaSun } from "react-icons/fa";
 import { logout } from "../../../features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useState } from "react";
@@ -296,28 +295,6 @@ function DrawerExample({ user }) {
                                 <Stack direction={{ base: 'column', lg: 'row' }} spacing={4} justifyContent={'space-between'} w={'full'}>
                                     <FormLabel htmlFor='theme'>Tema por defecto</FormLabel>
                                     <Switch isChecked={colorModeValue === 'dark' ? true : false} colorScheme='purple' size='lg' onChange={handleClickTheme} />
-                                </Stack>
-                                <Stack mt={4} direction={{ base: 'column', lg: 'row' }} spacing={4} justifyContent={'space-between'} w={'full'}>
-                                    <Button
-                                        _active={{
-                                            bg: "purple.600",
-                                            transform: "scale(0.95)",
-                                            color: "white",
-                                        }}
-                                        isTruncated
-                                        isActive={colorModeValue === 'light' ? true : false} variant='outline' colorScheme='gray' leftIcon={<FaSun />}>
-                                        Claro
-                                    </Button>
-                                    <Button
-                                        _active={{
-                                            bg: "purple.600",
-                                            transform: "scale(0.95)",
-                                            color: "white",
-                                        }}
-                                        isTruncated
-                                        isActive={colorModeValue === 'dark' ? true : false} variant='outline' colorScheme='gray' leftIcon={<FaMoon />}>
-                                        Oscuro
-                                    </Button>
                                 </Stack>
                             </Box>
 

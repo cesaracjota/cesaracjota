@@ -58,17 +58,13 @@ export const TopNav = (props) => {
             bg={scrolled ? "primary.100" : "transparent"}
             boxShadow={
                 scrolled ?
-                    "0 0 5px rgba(0,0,0,0.4), 0 0 10px rgba(0,0,0,0.4)"
+                    "0 0 2px rgba(0,0,0,0.4), 0 0 4px rgba(0,0,0,0.4)"
                     : "none"
             }
             zIndex="2"
             top="0"
             align="space-between"
             w="full"
-            css={{
-                backdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'saturate(50%) blur(8px)',
-                backgroundColor: scrolled ? 'primary.100' : 'rgba(0,0,0,0)',
-            }}
             _dark={{
                 bg: scrolled ? "primary.100" : "transparent",
             }}

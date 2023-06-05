@@ -1,14 +1,14 @@
 import React from 'react';
 import { useColorMode, useColorModeValue, IconButton } from '@chakra-ui/react';
-import { HiMoon, HiSun } from 'react-icons/hi';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 export const ColorModeSwitcher = ({scrolled}) => {
   const { toggleColorMode } = useColorMode();
-  const SwitchIcon = useColorModeValue(HiMoon, HiSun);
+  const SwitchIcon = useColorModeValue(MoonIcon, SunIcon);
 
   return (
     <IconButton
-      fontSize="2xl"
+      fontSize="xl"
       variant="ghost"
       colorScheme={
         scrolled ? "whiteAlpha" : "gray"
