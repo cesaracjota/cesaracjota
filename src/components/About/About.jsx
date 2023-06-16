@@ -1,6 +1,5 @@
 import React from 'react';
 import Degrees from './Degree';
-import TechStack from './TechStack';
 import Certifications from './Certifications';
 
 const About = () => {
@@ -9,7 +8,6 @@ const About = () => {
         <>
             <Degrees />
             <Certifications />
-            <TechStack />
         </>
     )
 }

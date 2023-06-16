@@ -24,10 +24,22 @@ const CardCertifications = ({ data }) => {
         <Card
             borderRadius={'lg'}
             bg="white"
+            borderWidth="1px"
             _dark={{
-                bg: 'primary.800'
+                bg: 'primary.1000',
+                borderColor: 'none',
+                _hover: {
+                    borderColor: 'primary.200',
+                    color: 'primary.200',
+                    cursor: 'pointer'
+                }
             }}
-            boxShadow={'lg'}
+            borderColor="none"
+            _hover={{
+                borderColor: 'primary.200',
+                color: 'primary.200',
+                cursor: 'pointer'
+            }}
             transition="all 0.3s ease-in-out"
         >
             <CardHeader
@@ -74,7 +86,7 @@ const CardCertifications = ({ data }) => {
                         width="100%"
                         bg={convertirHexATransparente(data?.brand_color, 0.65, 1)}
                         _dark={{
-                            bg:convertirHexATransparente(data?.brand_color, 0.65, 1)
+                            bg: convertirHexATransparente(data?.brand_color, 0.65, 1)
                         }}
                         zIndex={1}
                         transition="opacity 0.5s ease-in-out"
@@ -118,6 +130,10 @@ const CardCertifications = ({ data }) => {
                 <Stack
                     direction={'column'}
                     spacing={1}
+                    _hover={{
+                        color: 'primary.100',
+                        textDecoration: 'none'
+                    }}
                 >
                     <Heading
                         as={Link}
@@ -125,10 +141,6 @@ const CardCertifications = ({ data }) => {
                         target='_blank'
                         size={'md'}
                         fontWeight={'extrabold'}
-                        _hover={{
-                            color: '#3B5998',
-                            textDecoration: 'none'
-                        }}
                     >
                         {data?.title}
                     </Heading>

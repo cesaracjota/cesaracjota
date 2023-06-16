@@ -21,7 +21,15 @@ function GithubCard({ title, topics, description, fork, star, url }) {
         bg={useColorModeValue('white', 'primary.1000')}
         rounded="xl"
         borderWidth="1px"
-        borderColor={useColorModeValue('gray.200', 'purple.800')}
+        _dark={{
+          borderColor: 'none',
+          _hover: {
+            borderColor: 'primary.200',
+            color: 'primary.200',
+            cursor: 'pointer'
+          }
+        }}
+        borderColor="none"
         h="100%"
         textAlign="left"
         align="start"
@@ -29,8 +37,11 @@ function GithubCard({ title, topics, description, fork, star, url }) {
         cursor="pointer"
         shadow={'sm'}
         _hover={{
-          transform: "scale(1.03)",
+          transform: "scale(1.02)",
           shadow: "md",
+          borderColor: 'primary.200',
+          color: 'primary.200',
+          cursor: 'pointer'
         }}
         transition='all 0.3s ease-in-out'
         w="full"
@@ -122,8 +133,13 @@ function GithubCard({ title, topics, description, fork, star, url }) {
                 <Tag
                   key={index}
                   size="sm"
-                  variant="outline"
-                  colorScheme="purple"
+                  variant="solid"
+                  bg="primary.100"
+                  borderColor="primary.100"
+                  color="white"
+                  _focus={{
+                    boxShadow: 'none',
+                  }}
                 >
                   {tech}
                 </Tag>

@@ -4,28 +4,25 @@ import {
     Flex,
     HStack,
     IconButton,
-    Image,
     Stack,
     useBreakpointValue,
     Link,
     Divider,
-    Drawer,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    DrawerFooter,
     ButtonGroup,
-} from '@chakra-ui/react'
-import { useEffect, useState } from 'react';
+    Heading,
+    Text,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+} from '@chakra-ui/react';
 import { FiMenu } from 'react-icons/fi';
 import { ColorModeSwitcher } from '../../theme/ColorModeSwitcher';
-import LOGO from '../../assets/img/logo.svg';
 import "@fontsource/fira-sans-condensed";
 import { NavLink } from 'react-router-dom';
-import SidebarContent from './Sidebar';
 import LanguageMenu from '../../helpers/LanguageMenu';
-import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from 'react-icons/fa';
-import redesData from '../../data/redes.json';
+import '@fontsource/smooch';
+import "@fontsource/fira-sans-condensed";
 
 export const TopNav = (props) => {
 
@@ -34,197 +31,194 @@ export const TopNav = (props) => {
         lg: true,
     });
 
-    const [scrolled, setScrolled] = useState(false);
+    const language = localStorage.getItem('language');
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.pageYOffset > 0) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+    const menus = [
+        {
+            nameEN: 'Home',
+            nameES: 'Inicio',
+            path: '/',
+        },
+        {
+            nameEN: 'About Me',
+            nameES: 'Acerca de mi',
+            path: '/about-me',
+        },
+        {
+            nameEN: 'Projects',
+            nameES: 'Proyectos',
+            path: '/projects',
+        },
+        {
+            nameEN: 'Blogs',
+            nameES: 'Blogs',
+            path: '/blogs',
+        },
+        {
+            nameEN: 'Contact',
+            nameES: 'Contacto',
+            path: '/contact',
+        },
+    ];
 
     return (
         <Box
             as="nav"
             role="navigation"
             pos={{ base: "fixed", lg: "fixed" }}
-            bg={scrolled ? "primary.100" : "transparent"}
-            boxShadow={
-                scrolled ?
-                    "0 0 2px rgba(0,0,0,0.4), 0 0 4px rgba(0,0,0,0.4)"
-                    : "none"
-            }
+            bg={"rgba(255, 255, 255, 0.85)"}
+            backdropFilter="saturate(180%) blur(8px)"
             zIndex="2"
             top="0"
             align="space-between"
             w="full"
             _dark={{
-                bg: scrolled ? "primary.100" : "transparent",
+                bg: "rgba(26, 26, 26, 0.85)",
+                backdropFilter: "saturate(180%) blur(8px)"
             }}
-            transition="background-color 0.1s linear"
         >
             <Container
-                py={3}
+                py={2.5}
                 maxW={'6xl'}
             >
                 <HStack spacing="10" justify="space-between">
                     {isDesktop ? (
                         <Flex justify="space-between" flex="1">
-                            <Link as={NavLink} to={'/'} alignSelf="center">
+                            <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={0} direction="row" alignSelf={'center'}>
-                                    <Image src={LOGO} w={'full'} h={'full'} maxW={10} alignSelf={'center'} alt={'Cesar Acjota'} />
+                                    <Heading as="h1" fontWeight={'normal'} fontSize="28px" color={'primary.100'} fontFamily={`'Smooch', sans-serif`}>
+                                        {`</Cesar Acjota/>`}
+                                    </Heading>
                                 </Stack>
                             </Link>
-                            <ContentDrawer
-                                isOpen={props.isOpen}
-                                onClose={props.onClose}
-                            />
-                            <HStack spacing="3">
-                                <LanguageMenu scrolled={scrolled} />
-                                <Divider orientation='vertical' h={6} />
-                                <ColorModeSwitcher scrolled={scrolled} />
-                                <Divider orientation='vertical' h={6} />
-                                <IconButton
-                                    variant="ghost"
-                                    icon={<FiMenu fontSize="1.25rem" />}
-                                    size={'md'}
-                                    rounded={'full'}
-                                    aria-label="Open Menu"
-                                    onClick={props.onOpen}
-                                    colorScheme={
-                                        scrolled ? "whiteAlpha" : "gray"
-                                    }
-                                    _dark={{
-                                        color: 'white',
-                                    }}
-                                    color={
-                                        scrolled ? "white" : "black"
-                                    }
-                                />
+                            <HStack spacing="4">
+                                <ButtonGroup
+                                    variant="link"
+                                    spacing="5"
+                                    _focus={{ boxShadow: 'none' }}
+                                >
+                                    {menus.map((item, index) => (
+                                        <Text
+                                            key={index}
+                                            as={NavLink}
+                                            to={item.path}
+                                            fontSize={'16px'}
+                                            // fontWeight={'semibold'}
+                                            fontFamily={`"Fira Sans Condensed", sans-serif`}
+                                            _light={{
+                                                color: 'black',
+                                                _activeLink: {
+                                                    color: 'primary.100',
+                                                },
+                                                _hover: {
+                                                    color: 'primary.100',
+                                                },
+                                                textDecoration: 'none',
+                                            }}
+                                            _dark={{
+                                                color: 'white',
+                                                _activeLink: {
+                                                    color: 'primary.100',
+                                                },
+                                                _hover: {
+                                                    color: 'primary.100',
+                                                },
+                                                textDecoration: 'none',
+                                            }}
+                                            transition=".3s ease all"
+                                        >
+                                            {language === 'en' ? item.nameEN : item.nameES}
+                                        </Text>
+                                    ))}
+                                </ButtonGroup>
+                                <Divider orientation='vertical' h={6} borderColor={'primary.100'} _dark={{ borderColor: 'primary.100' }} />
+                                <LanguageMenu />
+                                <Divider orientation='vertical' h={6} borderColor={'primary.100'} _dark={{ borderColor: 'primary.100' }} />
+                                <ColorModeSwitcher />
                             </HStack>
                         </Flex>
                     ) : (
                         <Flex justify="space-between" flex="1">
-                            <ContentDrawer 
+                            {/* <ContentDrawer
                                 isOpen={props.isOpen}
                                 onClose={props.onClose}
-                            />
-                            <Link as={NavLink} to={'/'} alignSelf="center">
+                                redesData={redesData}
+                            /> */}
+                            <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={1} direction="row">
-                                    <Image src={LOGO} maxW={8} w="8" h="8" alt={'Cesar Acjota'} />
+                                    <Heading as="h1" fontWeight={'normal'} fontSize="22px" color={'primary.100'} fontFamily={`'Smooch', sans-serif`}>
+                                        {`</Cesar Acjota/>`}
+                                    </Heading>
                                 </Stack>
                             </Link>
                             <Stack spacing={1} direction="row">
-                                <LanguageMenu scrolled={scrolled} />
-                                <ColorModeSwitcher scrolled={scrolled} />
-                                <IconButton
+                                <LanguageMenu />
+                                <ColorModeSwitcher />
+                                {/* <IconButton
                                     variant="ghost"
                                     icon={<FiMenu fontSize="1.25rem" />}
                                     size={'md'}
                                     rounded={'full'}
                                     aria-label="Open Menu"
                                     onClick={props.onOpen}
-                                    colorScheme={
-                                        scrolled ? "whiteAlpha" : "gray"
-                                    }
-                                    _dark={{
-                                        color: 'white',
-                                    }}
-                                    color={
-                                        scrolled ? "white" : "black"
-                                    }
-                                />
+                                /> */}
+                                <Menu
+                                    placement="bottom-end"
+                                    autoSelect={true}
+                                    closeOnSelect={true}
+                                >
+                                    <MenuButton
+                                        as={IconButton}
+                                        aria-label='Options'
+                                        variant="ghost"
+                                        icon={<FiMenu fontSize="1.25rem" />}
+                                        size={'md'}
+                                        rounded={'full'}
+                                    />
+                                    <MenuList
+                                        _dark={{
+                                            bg: 'primary.1000',
+                                            color: 'white',
+                                        }}
+                                    >{
+                                        menus.map((item, index) => (
+                                            <MenuItem
+                                                key={index}
+                                                as={NavLink}
+                                                to={item.path}
+                                                fontSize={'16px'}
+                                                fontFamily={`"Fira Sans Condensed", sans-serif`}
+                                                _light={{
+                                                    _activeLink: {
+                                                        color: 'primary.100',
+                                                    },
+                                                    _hover: {
+                                                        color: 'primary.100',
+                                                    },
+                                                    textDecoration: 'none',
+                                                }}
+                                                _dark={{
+                                                    bg: 'primary.1000',
+                                                    _activeLink: {
+                                                        color: 'primary.100',
+                                                    },
+                                                    _hover: {
+                                                        color: 'primary.100',
+                                                    },
+                                                    textDecoration: 'none',
+                                                }}
+                                                transition=".3s ease all"
+                                            >
+                                                {language === 'en' ? item.nameEN : item.nameES}
+                                            </MenuItem>
+                                        ))}
+                                    </MenuList>
+                                </Menu>
                             </Stack>
                         </Flex>
                     )}
                 </HStack>
             </Container>
         </Box>
-    )
-}
-
-function ContentDrawer({ isOpen, onClose }) {
-    return (
-        <Drawer
-            isOpen={isOpen}
-            placement="right"
-            onClose={onClose}
-            size={{
-                base: 'full',
-                lg: 'sm',
-            }}
-            isFullHeight
-        >
-            <DrawerOverlay />
-            <DrawerContent
-                _dark={{ bg: 'primary.1000' }}
-                scrollBehavior={'inside'}
-            >
-                <DrawerCloseButton size={'lg'} />
-                <SidebarContent borderRight="none" />
-                <DrawerFooter
-                    boxShadow={'none'}
-                >
-                    <Stack
-                        direction="row"
-                        spacing="3"
-                        align="center"
-                        justify="center"
-                        display={'flex'}
-                        w={'full'}
-                    >
-                        <ButtonGroup>
-                            <IconButton
-                                as={NavLink}
-                                to={redesData?.youtube?.url}
-                                target='_blank'
-                                aria-label="Youtube"
-                                icon={<FaYoutube fontSize="1.6rem" />}
-                                colorScheme='red'
-                                variant="ghost"
-                                size="lg"
-                            />
-                            <IconButton
-                                as={NavLink}
-                                to={redesData?.instagram?.url}
-                                target='_blank'
-                                aria-label="Instagram"
-                                icon={<FaInstagram fontSize="1.6rem" />}
-                                colorScheme='purple'
-                                variant="ghost"
-                                size="lg"
-                            />
-                            <IconButton
-                                as={NavLink}
-                                to={redesData?.linkedin?.url}
-                                target='_blank'
-                                aria-label="LinkedIn"
-                                icon={<FaLinkedin fontSize="1.6rem" />}
-                                colorScheme='linkedin'
-                                variant="ghost"
-                                size="lg"
-                            />
-                            <IconButton
-                                as={NavLink}
-                                to={redesData?.whatsapp?.url}
-                                target='_blank'
-                                aria-label="WhatsApp"
-                                icon={<FaWhatsapp fontSize="1.6rem" />}
-                                colorScheme='whatsapp'
-                                variant="ghost"
-                                size="lg"
-                            />
-                        </ButtonGroup>
-                    </Stack>
-                </DrawerFooter>
-            </DrawerContent>
-        </Drawer>
     )
 }

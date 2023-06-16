@@ -14,7 +14,7 @@ const Blogs = () => {
         setLoading(true);
         async function loadBlogs() {
             try {
-                const data = await fetchBlogs("erinposting", 15);
+                const data = await fetchBlogs("cesaracjota", 15);
                 setBlogs(data);
                 setLoading(false);
             } catch (error) {

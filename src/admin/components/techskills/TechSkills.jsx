@@ -1,45 +1,38 @@
 import React, { useEffect } from 'react';
 import DataTable from 'react-data-table-component';
-import {
-    FiChevronLeft,
-    FiChevronRight,
-    FiChevronsLeft,
-    FiChevronsRight
-} from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 import { customStyles } from '../../../configuration/customStyles';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
-import { useColorModeValue, Box, Stack, HStack, Avatar, Text, IconButton } from '@chakra-ui/react';
+import { useColorModeValue, Box, Stack, HStack, Badge, Text, IconButton, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastChakra } from '../../../helpers/toast';
+import { AlertaEliminar } from './AlertEliminar';
 import { Icon } from '@chakra-ui/icons';
 import { Loading } from '../../../configuration/Loading';
 import { MdDelete } from 'react-icons/md';
-import { getAllMensajes, reset } from '../../../features/mensajeSlice';
 import '../../../theme/solarizedTheme';
-import DetallesMensaje from './DetallesMensaje';
-import { AlertaEliminar } from './AlertEliminar';
-import moment from 'moment';
 import { PacmanLoader } from 'react-spinners';
+import { ModalAgregarStacks } from './ModalAgregarStacks';
+import { ModalEditarStacks } from './ModalEditarStacks';
+import { getAllTechStacks, reset } from '../../../features/techstackSlice';
+import IMGPreview from '../../../assets/img/IMGPreview.png';
 
-const Mensajes = () => {
+const TechSkills = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const themeTable = useColorModeValue('default', 'solarized');
-    const colorStatusActive = useColorModeValue('black', 'white');
-	const colorStatusInactive = useColorModeValue('black', 'white');
-    const backgroundColorActive = useColorModeValue('#DBDFEA', '#4a4a4a');
 
     const { user } = useSelector((state) => state.auth);
 
-    const { mensajes, isLoading, isError, message } = useSelector((state) => state.mensajes);
+    const { techstacks, isLoading, isError, message } = useSelector((state) => state.techstacks);
 
     useEffect(() => {
 
-        async function loadUsers() {
+        async function loadData() {
             try {
 
                 if (!user) {
@@ -51,7 +44,7 @@ const Mensajes = () => {
                     console.log(message);
                 }
 
-                dispatch(getAllMensajes())
+                dispatch(getAllTechStacks())
 
                 return () => {
                     dispatch(reset())
@@ -63,54 +56,61 @@ const Mensajes = () => {
             }
         }
 
-        loadUsers();
+        loadData();
 
     }, [user, navigate, dispatch, isError, message]);
 
     const columns = [
         {
-            name: 'USUARIO',
-            selector: row => row.nombres_usuario,
+            name: 'LOGO',
+            selector: row => row.image?.secure_url,
             sortable: true,
-            cellExport: row => row.nombres_usuario,
+            cellExport: row => row.image?.secure_url,
             cell: row => (
-                <Stack spacing={2} direction={{ base: "column", lg: "row" }}>
-                    <Avatar
-                        size="sm"
-                        name={row?.nombres_usuario}
-                        fontWeight="bold"
-                        fontSize="sm"
-                        color="white"
-                        alignSelf={'center'}
-                        display={{
-                            base: 'none',
-                            lg: 'flex'
-                        }}
-                    />
-                    <Text ml={2} alignSelf={'center'} fontSize="13px" noOfLines={1}>{row?.nombres_usuario}</Text>
-                </Stack>
-            )
+                <Image
+                    boxSize="8"
+                    objectFit="cover"
+                    alt={row?.title}
+                    alignSelf={'center'}
+                    name={row?.title}
+                    src={row?.image?.secure_url || IMGPreview}
+                />
+            ),
+            width: '100px',
         },
         {
-            name: 'EMAIL',
-            selector: row => row.email,
+            name: 'TITLE',
+            selector: row => row.title,
             sortable: true,
-            cellExport: row => row.email,
+            cellExport: row => row.title,
             resizable: true
         },
         {
-            name: 'TELEFONO',
-            selector: row => row.telefono,
+            name: 'CATEGORY',
+            selector: row => row.category,
             sortable: true,
-            cellExport: row => row.telefono,
+            cellExport: row => row.category,
             resizable: true
         },
         {
-            name: 'FECHA ENVIO',
-            selector: row => moment(row.createdAt).format('YYYY-MM-DD - H:mm:ss A'),
+            name: 'ESTADO',
             sortable: true,
-            cellExport: row => row.createdAt,
+            cellExport: row => row.estado,
             center: true,
+            cell: row => (
+                <div>
+                    <Badge
+                        bg={row.estado === 'ACTIVO' ? 'green.600' : 'red.600'}
+                        variant="solid"
+                        w={28}
+                        textAlign="center"
+                        py={2}
+                        rounded="xl"
+                    >
+                        {row.estado}
+                    </Badge>
+                </div>
+            )
         },
         {
             name: 'ACCIONES',
@@ -118,17 +118,17 @@ const Mensajes = () => {
             center: true,
             cell: row => (
                 <div>
-                    <DetallesMensaje row={row} />
+                    <ModalEditarStacks row={row} />
                     <AlertaEliminar row={row} />
                 </div>
             ),
-            width: '200px'
+            width: '220px'
         }
     ]
 
     const tableData = {
         columns: columns,
-        data: mensajes,
+        data: techstacks,
     }
 
     if (isLoading) {
@@ -139,46 +139,21 @@ const Mensajes = () => {
         )
     }
 
-    const conditionalRowStyles = [
-		{
-			when: row => row.leido === false,
-			style: {
-				color: colorStatusInactive,
-				fontWeight: '800',
-                backgroundColor: backgroundColorActive,
-			},
-		},
-		{
-			when: row => row.leido === true,
-			style: {
-				color: colorStatusActive,
-			},
-		},
-	];
-
-
     return (
         <>
-            <Box
-                boxShadow="base"
-                overflow="hidden"
-                bg="white"
-                _dark={{ bg: "primary.1000" }}
-                mb={2}
-            >
-                <Stack direction="row" justifyContent="space-between" px={4} py={3}>
-                    {/* <ModalAgregarUsuario /> */}
-                    <HStack spacing={4} direction="row">
-                        <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
-                    </HStack>
-                </Stack>
-            </Box>
+            <Stack direction="row" justifyContent="space-between" py={3}>
+                <ModalAgregarStacks />
+                <HStack spacing={4} direction="row">
+                    <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
+                </HStack>
+            </Stack>
 
             <Box
                 overflow="hidden"
                 boxShadow={'base'}
                 bg="white"
                 _dark={{ bg: "primary.1000" }}
+                borderRadius={'2xl'}
                 mt={2}
                 pt={2}
             >
@@ -189,11 +164,11 @@ const Mensajes = () => {
                     filterPlaceholder="BUSCAR"
                     numberOfColumns={7}
                     zIndex={1000}
-                    fileName={'MENSAJES' + new Date().toLocaleDateString()}
+                    fileName={'PERSONAS' + new Date().toLocaleDateString()}
                 >
                     <DataTable
                         progressPending={isLoading}
-                        selectableRows
+                        // selectableRows
                         selectableRowsVisibleOnly
                         selectableRowsHighlight
                         defaultSortField="createdAt"
@@ -217,7 +192,6 @@ const Mensajes = () => {
                         }}
                         theme={themeTable}
                         customStyles={customStyles}
-                        conditionalRowStyles={conditionalRowStyles}
                         pointerOnHover={true}
                         responsive={true}
                         noDataComponent={<Text mb={4} fontSize="lg">NO DATA FOUND</Text>}
@@ -228,4 +202,4 @@ const Mensajes = () => {
     );
 };
 
-export default Mensajes;
+export default TechSkills;

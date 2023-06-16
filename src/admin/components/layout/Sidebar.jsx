@@ -1,12 +1,12 @@
 import { Box, Divider, Flex, Icon, Link, Spacer, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { FaBox, FaCalendar, FaCertificate, FaCog, FaFolder, FaThLarge, FaUser, FaVideo } from "react-icons/fa";
+import { FaBox, FaCalendar, FaCertificate, FaCode, FaCog, FaFolder, FaThLarge, FaUser, FaVideo } from "react-icons/fa";
 import { SiGmail } from "react-icons/si"
 
 const NavItem = (props) => {
-    // const activeLinkcolor = useColorModeValue("primary.100", "#ffffff");
-    const bgActiveLinkColor = useColorModeValue("#f2f2f2", "#1f1f1f")
 
+    const bgActiveLinkColor = useColorModeValue("#f2f2f2", "#1f1f1f");
+    
     const { icon, children, ...rest } = props;
 
     return (
@@ -16,7 +16,6 @@ const NavItem = (props) => {
             cursor="pointer"
             _hover={{
                 bg: bgActiveLinkColor,
-                // color: activeLinkcolor,
             }}
             role="group"
             px={4}
@@ -61,6 +60,11 @@ function Sidebar({ isOpen }) {
             icon: FaBox,
             label: "Mensajes",
             path: "/admin/mensajes",
+        },
+        {
+            icon: FaCode,
+            label: "Tech Skills",
+            path: "/admin/techskills",
         },
     ]
 
@@ -210,8 +214,6 @@ function Sidebar({ isOpen }) {
 
                 <Spacer />
 
-                {/* footer Sidebar */}
-
                 {
                     thirdListItem.map((item, index) => {
                         return (
@@ -252,9 +254,6 @@ function Sidebar({ isOpen }) {
                         color: '#ffffff'
                     }}
                 >
-                    {/* <Text fontWeight="bold">
-                        Condiciones Privacidad Políticas y seguridad Cómo funciona Prueba funciones nuevas
-                    </Text> */}
                     <Text fontSize={'12px'} as="span">© 2023 AgylCode LLC</Text>
                 </Stack>
             </Flex>

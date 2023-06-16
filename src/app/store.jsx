@@ -3,6 +3,7 @@ import authReducer from "../features/authSlice";
 import userReducer from "../features/userSlice";
 import certificadoReducer from "../features/certificadoSlice";
 import mensajeReducer from "../features/mensajeSlice";
+import techstackReducer from "../features/techstackSlice";
 
 export const store = configureStore({
     reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
         users: userReducer,
         certificados: certificadoReducer,
         mensajes: mensajeReducer,
+        techstacks: techstackReducer,
     },
 })

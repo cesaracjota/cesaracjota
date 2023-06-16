@@ -50,7 +50,7 @@ function Layout({ children }) {
                 transition=".08s ease-out"
                 mt={{
                     base: "16",
-                    lg: "1"
+                    lg: "0"
                 }}
             >
                 {children}

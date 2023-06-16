@@ -1,10 +1,11 @@
-import { Button, Heading, Stack, Link, SimpleGrid, Skeleton } from '@chakra-ui/react'
+import { Button, Heading, Stack, SimpleGrid, Skeleton } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import CardPost from './CardBlog';
 import { fetchBlogs } from '../../services/api.service';
 import { FaMousePointer } from 'react-icons/fa';
 import { t } from 'i18next';
 import { ToastChakra } from '../../helpers/toast';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
 
@@ -65,7 +66,7 @@ const Blog = () => {
                     alignItems={'center'}
                     alignSelf={'center'}
                     _dark={{
-                        color: 'purple.600'
+                        color: 'primary.100'
                     }}
                     fontWeight="bold"
                 >
@@ -74,9 +75,14 @@ const Blog = () => {
                         fontSize={'sm'}
                         fontWeight={800}
                         variant={'ghost'}
-                        href={'/blogs'}
+                        to={'/blogs'}
                         rel="noopener noreferrer"
-                        colorScheme={'purple'}
+                        bg={'primary.100'}
+                        color={'white'}
+                        _hover={{
+                            bg: 'primary.200',
+                            color: 'white',
+                        }}
                         style={{
                             textDecoration: 'none',
                         }}

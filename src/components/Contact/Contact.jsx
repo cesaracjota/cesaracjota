@@ -5,8 +5,6 @@ import {
     Heading,
     Image,
     Input,
-    InputGroup,
-    InputLeftElement,
     Stack,
     Text,
     Textarea
@@ -16,7 +14,6 @@ import ContactLogo from '../../assets/img/contact.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { createMessage } from '../../features/mensajeSlice';
 import { ToastChakra } from '../../helpers/toast';
-import { EmailIcon, InfoIcon, PhoneIcon } from '@chakra-ui/icons';
 import { t } from 'i18next';
 
 const Contact = () => {
@@ -91,7 +88,13 @@ const Contact = () => {
                     </Heading>
 
                     <Stack spacing={2}>
-                        <Text>
+                        <Text
+                            color={'gray.800'}
+                            _dark={{
+                                color: 'gray.200'
+                            }}
+                            fontSize={'lg'}
+                        >
                         {t("contacts.subtitle")}
                         </Text>
                     </Stack>
@@ -122,53 +125,44 @@ const Contact = () => {
                                     <FormLabel>
                                     {t("contacts.form.name")}
                                     </FormLabel>
-                                    <InputGroup>
-                                        <InputLeftElement
-                                            pointerEvents='none'
-                                            children={<InfoIcon color='purple.600' />}
-                                            fontSize={20}
-                                        />
                                         <Input
                                             ref={usernameRef}
                                             type='text'
                                             placeholder={t("contacts.ph.name")}
+                                            _focus={{
+                                                borderColor: 'primary.100',
+                                                boxShadow: 'none',
+                                            }}
                                             onChange={(e) => setIndice({ ...indice, nombres_usuario: e.target.value })}
                                         />
-                                    </InputGroup>
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>
                                     {t("contacts.form.email")}
                                     </FormLabel>
-                                    <InputGroup>
-                                        <InputLeftElement
-                                            pointerEvents='none'
-                                            children={<EmailIcon color='purple.600' />}
-                                            fontSize={20}
-                                        />
-                                        <Input
-                                            ref={emailRef}
-                                            type='email'
-                                            placeholder={t("contacts.ph.email")}
-                                            onChange={(e) => setIndice({ ...indice, email: e.target.value })}
-                                        />
-                                    </InputGroup>
+                                    <Input
+                                        ref={emailRef}
+                                        type='email'
+                                        placeholder={t("contacts.ph.email")}
+                                        _focus={{
+                                            borderColor: 'primary.100',
+                                            boxShadow: 'none',
+                                        }}
+                                        onChange={(e) => setIndice({ ...indice, email: e.target.value })}
+                                    />
                                 </FormControl>
                                 <FormControl>
                                     <FormLabel>{t("contacts.form.phone_number")}</FormLabel>
-                                    <InputGroup>
-                                        <InputLeftElement
-                                            pointerEvents='none'
-                                            children={<PhoneIcon color='purple.600' />}
-                                            fontSize={20}
-                                        />
-                                        <Input
-                                            ref={telefonoRef}
-                                            type='tel'
-                                            placeholder={t("contacts.ph.phone_number")}
-                                            onChange={(e) => setIndice({ ...indice, telefono: e.target.value })}
-                                        />
-                                    </InputGroup>
+                                    <Input
+                                        ref={telefonoRef}
+                                        type='tel'
+                                        placeholder={t("contacts.ph.phone_number")}
+                                        _focus={{
+                                            borderColor: 'primary.100',
+                                            boxShadow: 'none',
+                                        }}
+                                        onChange={(e) => setIndice({ ...indice, telefono: e.target.value })}
+                                    />
                                 </FormControl>
                                 <FormControl isRequired>
                                     <FormLabel>{t("contacts.form.message_subject")}</FormLabel>
@@ -176,6 +170,10 @@ const Contact = () => {
                                         ref={asuntoRef}
                                         type='text'
                                         onChange={(e) => setIndice({ ...indice, asunto_mensaje: e.target.value })}
+                                        _focus={{
+                                            borderColor: 'primary.100',
+                                            boxShadow: 'none',
+                                        }}
                                         placeholder={t("contacts.ph.message_subject")}
                                     />
                                 </FormControl>
@@ -185,6 +183,10 @@ const Contact = () => {
                                         ref={messageRef}
                                         type='text'
                                         onChange={(e) => setIndice({ ...indice, mensaje: e.target.value })}
+                                        _focus={{
+                                            borderColor: 'primary.100',
+                                            boxShadow: 'none',
+                                        }}
                                         placeholder={t("contacts.ph.message")}
                                     />
                                 </FormControl>

@@ -16,6 +16,7 @@ import { getAllCertificados, reset } from '../../../features/certificadoSlice';
 import { ModalAgregarCertificado } from './ModalAgregarCertificado';
 import '../../../theme/solarizedTheme';
 import { ModalEditarCertificado } from './ModalEditarCertificado';
+import { PacmanLoader } from 'react-spinners';
 
 const Certificados = () => {
 
@@ -155,7 +156,11 @@ const Certificados = () => {
   }
 
   if (isLoading) {
-    return <Loading />
+    return (
+        <Loading>
+            <PacmanLoader color="#625bf8" loading={true} size={50} />
+        </Loading>
+      )
   }
 
   return (

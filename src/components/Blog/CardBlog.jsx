@@ -22,18 +22,30 @@ export default function CardPost({ blog }) {
         <motion.div layout onClick={toggleOpen}>
             <Stack
                 p={4}
-                bg={useColorModeValue('purple.50', 'primary.1000')}
+                bg={useColorModeValue('white', 'primary.1000')}
                 rounded="xl"
                 borderWidth="1px"
-                borderColor={useColorModeValue('gray.200', 'purple.800')}
+                _dark={{
+                    bg: 'primary.1000',
+                    borderColor: 'none',
+                    _hover: {
+                        borderColor: 'primary.200',
+                        color: 'primary.200',
+                        cursor: 'pointer'
+                    }
+                }}
+                borderColor={'none'}
                 h="100%"
                 textAlign="left"
                 align="start"
                 cursor="pointer"
                 shadow={'sm'}
                 _hover={{
-                    transform: "scale(1.02)",
+                    transform: "scale(1.01)",
                     shadow: "md",
+                    borderColor: 'primary.200',
+                    color: 'primary.200',
+                    cursor: 'pointer',
                 }}
                 transition='all 0.3s ease-in-out'
                 w="full"
@@ -42,6 +54,9 @@ export default function CardPost({ blog }) {
                     direction={'column'}
                     spacing={2}
                     w="full"
+                    _hover={{
+                        color: 'primary.100',
+                    }}
                 >
                     <Tooltip
                         label={blog?.title}
@@ -50,13 +65,12 @@ export default function CardPost({ blog }) {
                         bg='primary.100'
                         color="white"
                     >
-                        <Stack direction={'row'} justifyContent={'space-between'} w="full">
+                        <Stack direction={'row'} justifyContent={'space-between'} w="full" >
                             <Heading
                                 as={Link}
                                 to={blog?.url}
                                 target='_blank'
-                                color={useColorModeValue('purple.600', 'purple.600')}
-                                fontSize={'xl'}
+                                fontSize={{ base: 'md', lg: 'xl' }}
                                 fontWeight="extrabold"
                                 w="full"
                                 noOfLines={1}
@@ -70,12 +84,9 @@ export default function CardPost({ blog }) {
                                 justifyContent={'flex-end'}
                                 alignItems={'center'}
                                 alignSelf={'center'}
-                                _dark={{
-                                    color: 'purple.600'
-                                }}
                                 fontWeight="bold"
                             >
-                                <Text>
+                                <Text color="red.400">
                                     {blog?.positive_reactions_count}
                                 </Text>
                                 <Icon
@@ -85,7 +96,7 @@ export default function CardPost({ blog }) {
                                     w={6}
                                     h={6}
                                 />
-                                <Text>
+                                <Text color="primary.100">
                                     {blog?.comments_count}
                                 </Text>
                                 <Icon
@@ -103,24 +114,19 @@ export default function CardPost({ blog }) {
                         width={'full'}
                         display={'flex'}
                         justifyContent={'space-between'}
+                        _hover={{
+                            color: 'primary.100',
+                        }}
                     >
                         <Stack>
                             <Text
-                                color={'gray.700'}
-                                fontWeight="bold"
-                                _dark={{
-                                    color: 'purple.100'
-                                }}
+                                fontSize={'sm'}
+                                fontWeight={'semibold'}
                             >
-                                { moment(blog?.published_at).format('DD/MM/YYYY - H:mm:ss') }
+                                {moment(blog?.published_at).format('DD/MM/YYYY - H:mm:ss')}
                             </Text>
                             <Text
-                                color={'gray.600'}
-                                _dark={{
-                                    color: 'white'
-                                }}
-                                fontSize={'17px'}
-                                fontWeight={'semibold'}
+                                fontSize={'14px'}
                                 noOfLines={1}
                             >
                                 {blog?.description}

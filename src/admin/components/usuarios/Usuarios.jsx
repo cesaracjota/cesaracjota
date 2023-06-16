@@ -21,6 +21,7 @@ import { Loading } from '../../../configuration/Loading';
 import { ModalEditarUsuario } from './ModalEditarUsuario';
 import { MdDelete } from 'react-icons/md';
 import '../../../theme/solarizedTheme';
+import { PacmanLoader  } from 'react-spinners';
 
 const Usuarios = () => {
 
@@ -150,7 +151,6 @@ const Usuarios = () => {
       center: true,
       cell: row => (
         <div>
-          {/* <ModalDetallesPersona persona={row}/>*/}
           <ModalEditarUsuario row={row} />
           <AlertaEliminar row={row} />
         </div>
@@ -165,7 +165,11 @@ const Usuarios = () => {
   }
 
   if (isLoading) {
-    return <Loading />
+    return (
+        <Loading>
+            <PacmanLoader color="#625bf8" loading={true} size={50} />
+        </Loading>
+      )
   }
 
   return (

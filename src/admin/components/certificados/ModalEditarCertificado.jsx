@@ -37,7 +37,7 @@ export const ModalEditarCertificado = ({ row }) => {
         description: '',
         link: '',
         logo: '',
-        image: '',
+        image: null,
         brand_color: '',
         estado: 'ACTIVO',
     }
@@ -47,7 +47,6 @@ export const ModalEditarCertificado = ({ row }) => {
     const handleModalOpen = () => {
         setIsModalOpen(!isModalOpen)
         setIndice(row);
-
     }
 
     const handleModalClose = () => {

@@ -74,20 +74,6 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const handleShowClick = () => setShowPassword(!showPassword);
 
-    // const content = (isLoading) ? (
-    //     <Center h={'100vh'} w={'full'} bg={bgAuth} _dark={'primary.900'}>
-    //         <Stack spacing={4} px={4} direction="column" align={'center'}>
-    //             <Text fontSize="xl" fontWeight="bold">
-    //                 {' '}
-    //                 Iniciando Sesión ...{' '}
-    //             </Text>
-    //             <div className="loader">
-    //                 <Loading />
-    //             </div>
-    //         </Stack>
-    //     </Center>
-    // ) : (
-
     return (
         <form onSubmit={handleLogin}>
             <HStack display="flex" justify={'center'} w={'full'} h={'100vh'} bg={bgAuth} py={{ base: 14, lg: 16 }}>
@@ -155,14 +141,14 @@ const LoginPage = () => {
                                     w="full"
                                     bg={'primary.100'}
                                     color={'white'}
-                                    _hover={{ bg: 'primary.100' }}
+                                    _hover={{ bg: 'primary.200' }}
                                     isLoading={isLoading ? true : false}
                                     loadingText={'Iniciando Sesión...'}
                                     _dark={{
                                         bg: "primary.100",
                                         color: "white",
                                         _hover: {
-                                            bg: "primary.100"
+                                            bg: "primary.200"
                                         }
                                     }}
                                     type="submit"

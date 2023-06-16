@@ -1,27 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
     Flex,
     IconButton,
     Menu,
     MenuButton,
-    MenuDivider,
     MenuItem,
     MenuList,
 } from "@chakra-ui/react";
 import Flag from "react-flagkit";
-import { AiOutlineReload } from "react-icons/ai";
 
-function LanguageMenu({ scrolled }) {
+function LanguageMenu({ display }) {
     const { i18n } = useTranslation();
-    const { t } = useTranslation();
     const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+    const [shouldRefreshPage, setShouldRefreshPage] = useState(false);
 
     const handleChangeLanguage = (language) => {
         i18n.changeLanguage(language);
         setSelectedLanguage(language);
         localStorage.setItem("language", language);
+        setShouldRefreshPage(true);
     };
+
+    useEffect(() => {
+        if (shouldRefreshPage) {
+            window.location.reload();
+            setShouldRefreshPage(false);
+        }
+    }, [shouldRefreshPage]);
 
     return (
         <Flex alignItems="center" alignSelf={'center'}>
@@ -38,15 +44,7 @@ function LanguageMenu({ scrolled }) {
                     size={'md'}
                     rounded={'full'}
                     variant="ghost"
-                    colorScheme={
-                        scrolled ? "whiteAlpha" : "gray"
-                    }
-                    _dark={{
-                        color: 'white',
-                    }}
-                    color={
-                        scrolled ? "white" : "black"
-                    }
+                    display={display}
                 />
                 <MenuList
                     boxShadow="md"
@@ -83,21 +81,6 @@ function LanguageMenu({ scrolled }) {
                         fontWeight={'bold'}
                     >
                         Español
-                    </MenuItem>
-                    <MenuDivider />
-                    <MenuItem
-                        icon={<AiOutlineReload size={'1.4rem'} />}
-                        _dark={{ 
-                            bg: "primary.1000", 
-                            _hover: { bg: "primary.900",
-                            _selected: { 
-                                bg: "white" 
-                            }
-                        } }}
-                        fontWeight={'bold'}
-                        onClick={() => window.location.reload()}
-                    >
-                        {t("reload")}
                     </MenuItem>
                 </MenuList>
             </Menu>

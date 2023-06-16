@@ -4,7 +4,7 @@ import Layout from '../components/Layout/Layout';
 
 const AboutPage = () => {
   return (
-    <Layout componente={<About />} />
+    <Layout componente={ <About />} />
   )
 }
 

@@ -1,5 +1,8 @@
 {
-    "welcomeMessage": "Hi, I’m",
+    "welcomeMessage1": "Hi, I’m Cesar Acjota.",
+    "welcomeMessage2": "I'm software developer.",
+    "welcomeMessage3": "I'm a UX/UI designer.",
+    "welcomeMessage4": "I'm passionate about technology.",
     "presentationMessage": "Software developer obsessed with quality and user experience. With 1 year of experience, I specialize in creating intuitive and efficient web and mobile applications. If you want to work on an exciting and challenging project, I'm ready to help you!",
     "reload": "Reload",
     "resume": "Résumé",

@@ -1,8 +1,10 @@
-import React from 'react';
-import { Heading, chakra, Stack, Image, Button, Icon, useBreakpointValue, Text } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { chakra, Stack, Image, Button, Icon, useBreakpointValue, Text, Heading } from '@chakra-ui/react';
 import { BsArrowUpRight } from 'react-icons/bs';
 import { useTranslation } from "react-i18next";
 import CV from '../../assets/pdf/CV.pdf';
+
+import { TypeAnimation } from 'react-type-animation';
 
 const Contenido = () => {
 
@@ -12,6 +14,17 @@ const Contenido = () => {
         base: false,
         lg: true,
     });
+
+    const [textColor, setTextColor] = useState('gray.500');
+    const [textColor2, setTextColor2] = useState('gray.500');
+
+    const handleTextColorChange = (color) => {
+        setTextColor(color);
+    };
+
+    const handleTextColorChangeMobile = (color) => {
+        setTextColor2(color);
+    }
 
     return (
         <>
@@ -33,7 +46,6 @@ const Contenido = () => {
                                 boxShadow={'rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;'}
                                 alt={'Cesar Acjota'}
                                 alignSelf={'center'}
-                                display={{ base: 'block', lg: 'none' }}
                             />
                             <Stack
                                 direction={'column'}
@@ -45,12 +57,34 @@ const Contenido = () => {
                                 }}
                                 alignSelf={'center'}
                             >
-                                <Heading as={'h1'} fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
-                                    {t("welcomeMessage")} <Text as={'span'} color="primary.100" fontWeight={'extrabold'}>Cesar Acjota.</Text>
+                                <Heading color={textColor2} fontWeight={'extrabold'} size={'xs'} textAlign={'center'}>
+                                    <TypeAnimation
+                                        sequence={[
+                                            () => handleTextColorChangeMobile("gray.500"),
+                                            t("welcomeMessage1"),
+                                            2000,
+                                            () => handleTextColorChangeMobile("blue.500"),
+                                            t("welcomeMessage2"),
+                                            1000,
+                                            () => handleTextColorChangeMobile("pink.500"),
+                                            t("welcomeMessage3"),
+                                            1000,
+                                            () => handleTextColorChangeMobile("yellow.500)"),
+                                            t("welcomeMessage4"),
+                                            1000,
+                                        ]}
+                                        wrapper="span"
+                                        cursor={true}
+                                        repeat={Infinity}
+                                        loop={true}
+                                        deletionSpeed={110}
+                                        speed={80}
+                                        style={{ fontSize: '2em', display: 'inline-block', fontWeight: 'bold' }}
+                                    />
                                 </Heading>
-                                <chakra.p textAlign={'justify'} fontSize={{ base: 16, lg: 20 }}>
+                                <Text textAlign={'justify'} fontSize={'sm'}>
                                     {t("presentationMessage")}
-                                </chakra.p>
+                                </Text>
                                 <Stack
                                     direction={{
                                         base: 'row',
@@ -117,32 +151,6 @@ const Contenido = () => {
                                     >
                                         GitHub
                                     </Button>
-                                    <Button
-                                        w="full"
-                                        as="a"
-                                        href="https://youtube.com/@agylcode"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        rightIcon={
-                                            <Icon
-                                                as={BsArrowUpRight}
-                                                w={5}
-                                                h={5}
-                                            />
-                                        }
-                                        size={{ base: 'sm', lg: 'md' }}
-                                        colorScheme='red'
-                                        _dark={{
-                                            bg: 'red.600',
-                                            color: 'white',
-                                            _hover: {
-                                                bg: 'red.700'
-                                            }
-                                        }}
-                                        variant={'outline'}
-                                    >
-                                        YouTube
-                                    </Button>
                                 </Stack>
                                 <Button
                                     w="full"
@@ -158,16 +166,20 @@ const Contenido = () => {
                                         />
                                     }
                                     size={{ base: 'sm', lg: 'md' }}
-                                    colorScheme='purple'
+                                    bg='primary.100'
+                                    color="white"
+                                    _hover={{
+                                        bg: 'primary.200'
+                                    }}
                                     _dark={{
-                                        bg: 'purple.600',
+                                        bg: 'primary.100',
                                         color: 'white',
                                         _hover: {
-                                            bg: 'purple.700'
+                                            bg: 'primary.200'
                                         }
                                     }}
                                     variant={'solid'}
-                                    boxShadow={'0 5px 20px 0px rgb(128 90 213 / 50%)'}
+                                    boxShadow={'0 5px 20px 0px rgb(66 58 246 / 50%)'}
                                 >
                                     {t("resume")}
                                 </Button>
@@ -186,11 +198,34 @@ const Contenido = () => {
                                 }}
                                 alignSelf={'center'}
                             >
-                                <Heading as={'h1'} fontWeight={'extrabold'} size={{ base: 'xl', lg: '2xl' }} textAlign={{ base: 'center', lg: 'start' }}>
-                                    {t("welcomeMessage")} <Text as={'span'} color="primary.100" fontWeight={'extrabold'}>Cesar Acjota.</Text>
+                                <Heading fontWeight={'extrabold'} color={textColor} _dark={{ color: textColor }} fontSize={'20px'} textAlign={{ base: 'center', lg: 'start' }}>
+                                    <TypeAnimation
+                                        sequence={[
+                                            () => handleTextColorChange("gray.600"),
+                                            t("welcomeMessage1"),
+                                            2000,
+                                            () => handleTextColorChange("blue.600"),
+                                            t("welcomeMessage2"),
+                                            2000,
+                                            () => handleTextColorChange("pink.600"),
+                                            t("welcomeMessage3"),
+                                            2000,
+                                            () => handleTextColorChange("primary.100"),
+                                            t("welcomeMessage4"),
+                                            2000,
+                                        ]}
+                                        wrapper="span"
+                                        cursor={true}
+                                        repeat={Infinity}
+                                        loop={true}
+                                        deletionSpeed={110}
+                                        speed={80}
+                                        style={{ fontSize: '2em', display: 'inline-block', fontWeight: 'extrabold' }}
+                                    />
                                 </Heading>
-                                <chakra.p textAlign={'justify'} fontSize={{ base: 16, lg: 20 }}>
-                                    {t("presentationMessage")}
+
+                                <chakra.p textAlign={'justify'} fontSize={'18px'}>
+                                    {t("presentationMessage")}.
                                 </chakra.p>
                                 <Stack
                                     direction={{
@@ -258,32 +293,6 @@ const Contenido = () => {
                                     >
                                         GitHub
                                     </Button>
-                                    <Button
-                                        w="full"
-                                        as="a"
-                                        href="https://youtube.com/@agylcode"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        rightIcon={
-                                            <Icon
-                                                as={BsArrowUpRight}
-                                                w={5}
-                                                h={5}
-                                            />
-                                        }
-                                        size={{ base: 'sm', lg: 'md' }}
-                                        colorScheme='red'
-                                        _dark={{
-                                            bg: 'red.600',
-                                            color: 'white',
-                                            _hover: {
-                                                bg: 'red.700'
-                                            }
-                                        }}
-                                        variant={'solid'}
-                                    >
-                                        YouTube
-                                    </Button>
                                 </Stack>
                                 <Button
                                     w="full"
@@ -299,16 +308,20 @@ const Contenido = () => {
                                         />
                                     }
                                     size={{ base: 'sm', lg: 'md' }}
-                                    colorScheme='purple'
+                                    bg='primary.100'
+                                    _hover={{
+                                        bg: 'primary.200'
+                                    }}
+                                    color="white"
                                     _dark={{
-                                        bg: 'purple.600',
+                                        bg: 'primary.100',
                                         color: 'white',
                                         _hover: {
-                                            bg: 'purple.700'
+                                            bg: 'primary.300'
                                         }
                                     }}
                                     variant={'solid'}
-                                    boxShadow={'0 5px 20px 0px rgb(128 90 213 / 50%)'}
+                                    boxShadow={'0 5px 20px 0px rgb(66 58 246 / 50%)'}
                                 >
                                     {t("resume")}
                                 </Button>
@@ -322,7 +335,6 @@ const Contenido = () => {
                                 boxShadow={'rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;'}
                                 alt={'Cesar Acjota'}
                                 alignSelf={'center'}
-                                display={{ base: 'none', lg: 'block' }}
                             />
                         </>
                     )
@@ -332,4 +344,4 @@ const Contenido = () => {
     )
 }
 
-export default Contenido
+export default Contenido;

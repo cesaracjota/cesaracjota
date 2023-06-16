@@ -44,20 +44,23 @@ const Certifications = () => {
                 textAlign={'start'}
                 w="full"
                 mb={8}
+                mt={8}
             >
                 <Heading
-                    fontSize={'3xl'}
+                    as="h1"
+                    fontSize={{ base: '2xl', lg: '4xl' }}
                     fontWeight="extrabold"
-                    w="full"
-                    noOfLines={1}
+                    letterSpacing="tight"
+                    lineHeight="shorter"
                 >
                     Certifications
                 </Heading>
                 <Text
-                    color={'gray.600'}
+                    color={'gray.800'}
                     _dark={{
-                        color: 'gray.400'
+                        color: 'gray.200'
                     }}
+                    fontSize={'lg'}
                 >
                     My academic certifications
                 </Text>
