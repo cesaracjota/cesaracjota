@@ -17,7 +17,7 @@ import {
 import { MdCheckCircle } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { FaUniversity } from 'react-icons/fa';
-import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
+// import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
 import TECSUP_logo from '../../assets/img/logos/TECSUP.jpg';
 import GOOGLE_logo from '../../assets/img/logos/google.png';
 import ISOS_GROUP_logo from '../../assets/img/logos/ISOS_GROUP.png';
@@ -27,26 +27,26 @@ import PODER_JUDICIAL_logo from '../../assets/img/logos/PODER_JUDICIAL.png';
 const CardDegree = () => {
 
     const dataEducation = [
-        {
-            career: 'B.Tech. in Telecomunications Engineering',
-            institution: 'UNSA',
-            date: '2023 - present',
-            url: 'https://www.unsa.edu.pe/',
-            image: UNSA_logo,
-            content_list:
-                [
-                    {
-                        title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
-                    },
-                    {
-                        title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
-                    },
-                    {
-                        title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
-                    },
-                ],
-            icon: 'RiChatHeartFill'
-        },
+        // {
+        //     career: 'B.Tech. in Telecomunications Engineering',
+        //     institution: 'UNSA',
+        //     date: '2023 - present',
+        //     url: 'https://www.unsa.edu.pe/',
+        //     image: UNSA_logo,
+        //     content_list:
+        //         [
+        //             {
+        //                 title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
+        //             },
+        //             {
+        //                 title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
+        //             },
+        //             {
+        //                 title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
+        //             },
+        //         ],
+        //     icon: 'RiChatHeartFill'
+        // },
         {
             career: 'B.Tech. in Computer Engineering',
             institution: 'TECSUP',
@@ -73,7 +73,7 @@ const CardDegree = () => {
         {
             career: 'Software Engineer Intern',
             institution: 'GOOGLE',
-            date: 'Jun 2021 - present',
+            date: 'Jun 2023 - present',
             url: 'https://www.google.com/',
             image: GOOGLE_logo,
             content_list: [
@@ -153,7 +153,7 @@ const CardDegree = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: '2xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '4xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"
@@ -166,7 +166,7 @@ const CardDegree = () => {
                     _dark={{
                         color: 'gray.200'
                     }}
-                    fontSize={'lg'}
+                    fontSize={["sm","lg"]}
                 >
                     My academic background
                 </Text>
@@ -178,7 +178,7 @@ const CardDegree = () => {
                         <FaUniversity fontSize={"20px"} />
                     </Square>
                     <Heading
-                        fontSize={{ base: 'lg', lg: '2xl' }}
+                        fontSize={["sm","xl"]}
                         fontWeight="extrabold"
                         mb={0}
                         textAlign={'left'}
@@ -203,7 +203,7 @@ const CardDegree = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: '2xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '4xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"
@@ -216,7 +216,7 @@ const CardDegree = () => {
                     _dark={{
                         color: 'gray.200'
                     }}
-                    fontSize={'lg'}
+                    fontSize={["sm","lg"]}
                 >
                     My work experience in the software and systems development sector
                 </Text>
@@ -227,7 +227,7 @@ const CardDegree = () => {
                         <FaUniversity fontSize={"20px"} />
                     </Square>
                     <Heading
-                        fontSize={{ base: 'lg', lg: '2xl' }}
+                        fontSize={["md","xl"]}
                         fontWeight="extrabold"
                         mb={0}
                         textAlign={'left'}

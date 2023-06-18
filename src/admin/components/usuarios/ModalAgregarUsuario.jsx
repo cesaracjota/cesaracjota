@@ -17,7 +17,6 @@ import {
     ModalOverlay,
     Select,
     Stack,
-    Tooltip,
 } from '@chakra-ui/react'
 import { VscAdd } from 'react-icons/vsc';
 import { useDispatch, useSelector } from 'react-redux';
@@ -64,28 +63,22 @@ export const ModalAgregarUsuario = () => {
 
     return (
         <>
-        <Tooltip
-            label={user.usuario.role !== 'ADMIN' ? 'No tiene privilegios para realizar estas acciones': 'Agregar nuevo usuario' }
-            fontSize="md"
-            placement="bottom"
-            hasArrow
-        >
             <Button
                 colorScheme="messenger"
-                _dark={{ bg: "messenger.500", color: "white", _hover: { bg: "messenger.600" }}}
+                _dark={{ bg: "messenger.500", color: "white", _hover: { bg: "messenger.600" } }}
                 aria-label="Agregar"
-                leftIcon={<Icon as={user.usuario.role !== 'ADMIN' ? LockIcon : VscAdd} fontSize="2xl" />}
+                leftIcon={<Icon as={user.usuario.role !== 'ADMIN' ? LockIcon : VscAdd} fontSize="xl" />}
                 variant="solid"
-                borderRadius="none"
+                borderRadius="xl"
                 onClick={handleModalOpen}
                 isDisabled={user.usuario.role !== 'ADMIN'}
+                isTruncated={user.usuario.role !== 'ADMIN'}
             >
                 Nuevo Registro
             </Button>
-        </Tooltip>
             <Modal isOpen={isModalOpen} onClose={handleModalClose} size="6xl">
-                <ModalOverlay 
-                    bg="rgba(0,0,0,0.7)"
+                <ModalOverlay
+                    bg="rgba(0,0,0,0.9)"
                     backdropFilter='auto'
                     backdropBlur='2px'
                 />
@@ -93,7 +86,7 @@ export const ModalAgregarUsuario = () => {
                     <ModalHeader textAlign="center">AGREGAR NUEVO USUARIO</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Stack spacing={2} direction={{ base: "column", lg: "row"}} justifyContent="space-between" px={4} py={2}>
+                        <Stack spacing={2} direction={{ base: "column", lg: "row" }} justifyContent="space-between" px={4} py={2}>
                             <FormControl>
                                 <FormLabel fontWeight="semibold">NOMBRES</FormLabel>
                                 <Input
@@ -123,7 +116,7 @@ export const ModalAgregarUsuario = () => {
                                 />
                             </FormControl>
                         </Stack>
-                        <Stack spacing={2} direction={{ base: "column", lg: "row"}} justifyContent="space-between" px={4} py={2}>
+                        <Stack spacing={2} direction={{ base: "column", lg: "row" }} justifyContent="space-between" px={4} py={2}>
                             <FormControl>
                                 <FormLabel fontWeight="semibold">EMAIL</FormLabel>
                                 <Input
@@ -141,14 +134,14 @@ export const ModalAgregarUsuario = () => {
                                 <FormLabel fontWeight="semibold">PASSWORD</FormLabel>
                                 <InputGroup>
                                     <Input
-                                        type={ showPassword ? "text" : "password" }
+                                        type={showPassword ? "text" : "password"}
                                         placeholder='Ingrese la contraseña'
                                         onChange={(e) => setIndice({ ...indice, password: e.target.value })}
                                     />
                                     <InputRightElement width="3rem">
-                                    <Button h="1.75rem" color={'white'} bg="messenger.600" _hover={{ bg: 'messenger.700' }} size="sm" onClick={handleShowClick} >
-                                        {showPassword ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
-                                    </Button>
+                                        <Button h="1.75rem" color={'white'} bg="messenger.600" _hover={{ bg: 'messenger.700' }} size="sm" onClick={handleShowClick} >
+                                            {showPassword ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
+                                        </Button>
                                     </InputRightElement>
                                 </InputGroup>
                                 <FormHelperText textColor={'red.500'}>
@@ -158,7 +151,7 @@ export const ModalAgregarUsuario = () => {
                                 </FormHelperText>
                             </FormControl>
                         </Stack>
-                        <Stack spacing={2} direction={{ base: "column", lg: "row"}} justifyContent="space-between" px={4} py={2}>
+                        <Stack spacing={2} direction={{ base: "column", lg: "row" }} justifyContent="space-between" px={4} py={2}>
                             <FormControl isRequired>
                                 <FormLabel fontWeight="semibold">ROL USUARIO</FormLabel>
                                 <Select

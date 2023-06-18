@@ -33,11 +33,17 @@ const getById = async (id) => {
 const create = async (data, token) => {
     const config = {
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}`
         },
     }
-    const response = await axios.post(`${baseURL}/certificados`, data, config);
+
+    const formData = new FormData();
+    for(let key in data){
+        formData.append(key, data[key]);
+    }
+
+    const response = await axios.post(`${baseURL}/certificados`, formData, config);
     if (response.status === 200 || response.status === 201) {
         ToastChakra('CERTIFICADO CREADO', 'El certificado se ha agregado correctamente','success', 1500, 'bottom');
         return response.data.certificado;
@@ -49,11 +55,28 @@ const create = async (data, token) => {
 const update = async (data, token) => {
     const config = {
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}`
         },
     }
-    const response = await axios.put(`${baseURL}/certificados/${data._id}`, data, config);
+
+    const formData = new FormData();
+
+    if (data.logo instanceof File) {
+        formData.append("logo", data.logo);
+    }
+
+    if (data.image instanceof File) {
+        formData.append("image", data.image);
+    }
+
+    formData.append("title", data.title);
+    formData.append("hover_title", data.hover_title);
+    formData.append("description", data.description);
+    formData.append("link", data.link);
+    formData.append("estado", data.estado);
+    
+    const response = await axios.put(`${baseURL}/certificados/${data._id}`, formData, config);
     if (response.status === 200 || response.status === 201) {
         ToastChakra('REGISTRO MODIFICADO', 'El certificado se ha modificado correctamente','success', 1500, 'bottom');
         return response.data.certificado;

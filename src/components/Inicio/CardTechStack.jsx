@@ -32,7 +32,7 @@ const CardTechStack = ({ image, title, description, link }) => {
   }, [imageUrl]);
 
   return (
-    <Link to={link}>
+    <Link to={link} target='_blank'>
       <Box
         w="full"
         borderWidth="1px"
@@ -76,14 +76,14 @@ const CardTechStack = ({ image, title, description, link }) => {
           <Stack direction={'column'} justifyContent={'space-between'} alignSelf={'center'}>
             <Heading
               as="h3"
-              size="md"
+              size={["sm","md"]}
               noOfLines={1}
             >
               {title}
             </Heading>
             <Text
               mt={2}
-              fontSize={'sm'}
+              fontSize={["xs","sm"]}
               noOfLines={1}
             >
               {description}

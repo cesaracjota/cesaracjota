@@ -5,7 +5,10 @@ import {
     FormLabel,
     Icon,
     IconButton,
+    Image,
     Input,
+    InputGroup,
+    InputRightElement,
     Modal,
     ModalBody,
     ModalCloseButton,
@@ -13,15 +16,16 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    Select,
+    Radio,
+    RadioGroup,
     Stack,
     Textarea,
-    Tooltip,
+    useDisclosure,
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCertificado } from '../../../features/certificadoSlice';
-// import { LockIcon } from '@chakra-ui/icons';
 import { MdEdit } from 'react-icons/md';
+import { ModalPreviewFile } from './PreviewFile';
 
 export const ModalEditarCertificado = ({ row }) => {
 
@@ -36,13 +40,17 @@ export const ModalEditarCertificado = ({ row }) => {
         hover_title: '',
         description: '',
         link: '',
-        logo: '',
+        logo: null,
         image: null,
-        brand_color: '',
-        estado: 'ACTIVO',
+        estado: '',
     }
 
     const [indice, setIndice] = useState(initialValues);
+    const [isLoading, setIsLoading] = useState(false);
+    const [previewLogo, setPreviewLogo] = useState(null);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const fileInputRef = React.useRef();
 
     const handleModalOpen = () => {
         setIsModalOpen(!isModalOpen)
@@ -54,37 +62,54 @@ export const ModalEditarCertificado = ({ row }) => {
         setIndice(initialValues)
     }
 
-    const handleSave = () => {
-        dispatch(updateCertificado(indice));
-        setIsModalOpen(false);
-        setIndice(initialValues);
+    const handleSave = async () => {
+        setIsLoading(true);
+        try {
+            await dispatch(updateCertificado(indice));
+            setIsModalOpen(false);
+            setIndice(initialValues);
+        } catch (error) {
+            console.log(error);
+        }
+        setIsLoading(false);
+    }
+
+    const handlePreviewImage = (e) => {
+        const file = e.target.files[0];
+        setIndice({ ...indice, image: file })
+    }
+
+    const handlePreviewLogo = (e) => {
+        const file = e.target.files[0];
+        setIndice({ ...indice, logo: file })
+        setPreviewLogo(URL.createObjectURL(file));
     }
 
     return (
         <>
-            <Tooltip hasArrow label={user.usuario.role !== 'ADMIN' ? 'No tiene privilegios para realizar estas acciones' : 'Editar'} placement='auto'>
-                <IconButton
-                    icon={<Icon as={MdEdit} />}
-                    fontSize="2xl"
-                    size={'md'}
-                    colorScheme="yellow"
-                    color="white"
-                    variant={'solid'}
-                    _dark={{ color: "white", bg: "yellow.500", _hover: { bg: "yellow.800" } }}
-                    onClick={() => handleModalOpen(row)}
-                    isDisabled={user.usuario.role !== 'ADMIN'}
-                    ml={2}
-                />
-            </Tooltip>
+            
+            <IconButton
+                icon={<Icon as={MdEdit} />}
+                fontSize="2xl"
+                size={'md'}
+                rounded="xl"
+                colorScheme="purple"
+                color="white"
+                variant={'solid'}
+                _dark={{ color: "white", bg: "purple.500", _hover: { bg: "purple.700" } }}
+                onClick={() => handleModalOpen(row)}
+                isDisabled={user.usuario.role !== 'ADMIN'}
+                ml={2}
+            />
             <Modal isOpen={isModalOpen} onClose={handleModalClose} size="6xl">
                 <ModalOverlay
-                    bg="rgba(0,0,0,0.7)"
+                    bg="rgba(0,0,0,0.8)"
                     backdropFilter='auto'
                     backdropBlur='2px'
                 />
-                <ModalContent _dark={{ bg: "primary.900" }} borderRadius="none">
+                <ModalContent _dark={{ bg: "primary.900" }} borderRadius="2xl">
                     <ModalHeader textAlign="center">EDITAR CERTIFICADO</ModalHeader>
-                    <ModalCloseButton />
+                    <ModalCloseButton size="lg" />
                     <ModalBody>
                         <Stack mt={-4} spacing={2} direction={{ base: "column", lg: "row" }} justifyContent="space-between" px={4} py={2}>
                             <FormControl>
@@ -118,25 +143,66 @@ export const ModalEditarCertificado = ({ row }) => {
                                 />
                             </FormControl>
                         </Stack>
-                        <Stack spacing={2} direction={{ base: 'column', lg: 'row' }} px={4} py={2}>
-                            <FormControl>
-                                <FormLabel fontWeight="semibold">LOGO INSTITUCIÓN</FormLabel>
-                                <Input
-                                    placeholder="Ingrese la url del logo"
-                                    defaultValue={indice ? indice.logo : ''}
-                                    type="text"
-                                    onChange={(e) => setIndice({ ...indice, logo: e.target.value })}
+                        <Stack spacing={2} direction="row" px={4} py={2} justifyContent={'space-between'}>
+                            <Stack w="full" direction={'row'}>
+                                <FormControl id="logo" alignSelf={'center'}>
+                                    <FormLabel fontWeight="semibold">LOGO INSTITUCIÓN</FormLabel>
+                                    <Input
+                                        type="file"
+                                        ref={fileInputRef}
+                                        onChange={handlePreviewLogo}
+                                        accept='image/*'
+                                    />
+                                </FormControl>
+                                <Image
+                                    src={ indice?.logo?.secure_url || previewLogo || 'https://cdn.icon-icons.com/icons2/2529/PNG/512/img_filetype_icon_151817.png'}
+                                    alt="preview"
+                                    borderRadius="xl"
+                                    objectFit="cover"
+                                    width="100%"
+                                    height="100%"
+                                    maxHeight="100px"
+                                    maxWidth="100px"
+                                    boxShadow={'base'}
+                                    alignSelf={'center'}
                                 />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel fontWeight="semibold">IMAGEN</FormLabel>
-                                <Input
-                                    placeholder="Ingrese la url imagen"
-                                    defaultValue={indice ? indice.image : ''}
-                                    type="text"
-                                    onChange={(e) => setIndice({ ...indice, image: e.target.value })}
-                                />
-                            </FormControl>
+                            </Stack>
+                            <Stack w="full" direction={'row'}>
+                                <FormControl alignSelf={'center'}>
+                                    <FormLabel fontWeight="semibold">CERTIFICADO</FormLabel>
+                                    <InputGroup alignSelf={'center'}>
+                                        <Input
+                                            type="file"
+                                            accept='application/pdf'
+                                            ref={fileInputRef}
+                                            onChange={handlePreviewImage}
+                                        />
+                                        {
+                                            !indice?.image?.secure_url && (
+                                                <InputRightElement mr={1}>
+                                                    <ModalPreviewFile open={isOpen} onOpen={onOpen} onClose={onClose} file={indice.image} />
+                                                </InputRightElement>
+                                            )
+                                        }
+                                    </InputGroup>
+                                </FormControl>
+                                {
+                                    indice?.image?.secure_url && (
+                                        <Image
+                                            src={indice?.image?.secure_url || previewLogo || 'https://cdn.icon-icons.com/icons2/2529/PNG/512/img_filetype_icon_151817.png'}
+                                            alt="preview"
+                                            borderRadius="xl"
+                                            objectFit="cover"
+                                            width="100%"
+                                            height="100%"
+                                            maxHeight="100px"
+                                            maxWidth="100px"
+                                            boxShadow={'base'}
+                                            alignSelf={'center'}
+                                        />
+                                    )
+                                }
+                            </Stack>
                         </Stack>
                         <Stack spacing={2} px={4} py={2}>
                             <FormControl>
@@ -150,40 +216,39 @@ export const ModalEditarCertificado = ({ row }) => {
                             </FormControl>
                         </Stack>
                         <Stack spacing={2} direction={{ base: "column", lg: "row" }} justifyContent="space-between" px={4} py={2}>
-                            <FormControl>
-                                <FormLabel fontWeight="semibold">BRAND COLOR</FormLabel>
-                                <Input
-                                    type="color"
-                                    defaultValue={indice ? indice.brand_color : ''}
-                                    onChange={(e) => setIndice({ ...indice, brand_color: e.target.value })}
-                                />
-                            </FormControl>
                             <FormControl isRequired>
                                 <FormLabel fontWeight="semibold">ESTADO</FormLabel>
-                                <Select
-                                    placeholder="SELECCIONE ESTADO"
-                                    defaultValue={indice ? indice.estado : ''}
-                                    onChange={(e) => setIndice({ ...indice, estado: e.target.value })}
+                                <RadioGroup
+                                    onChange={(e) => setIndice({ ...indice, estado: e })}
+                                    defaultValue={ indice ? indice.estado : ""}
                                 >
-                                    <option value={'ACTIVO'}>ACTIVO</option>
-                                    <option value={'INACTIVO'}>INACTIVO</option>
-                                </Select>
+                                    <Stack spacing={5} direction='row'>
+                                        <Radio colorScheme='red' value={'INACTIVO'}>
+                                            INACTIVO
+                                        </Radio>
+                                        <Radio colorScheme='green' value={'ACTIVO'} size={'lg'}>
+                                            ACTIVO
+                                        </Radio>
+                                    </Stack>
+                                </RadioGroup>
                             </FormControl>
                         </Stack>
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme="red" borderRadius="none" _dark={{ bg: "red.500", color: "white", _hover: { bg: "red.600" } }} size="lg" mr={3} onClick={handleModalClose}>
+                        <Button colorScheme="red" borderRadius="xl" _dark={{ bg: "red.500", color: "white", _hover: { bg: "red.600" } }} size="lg" mr={3} onClick={handleModalClose}>
                             CANCELAR
                         </Button>
 
                         <Button
-                            colorScheme="messenger"
-                            _dark={{ bg: "messenger.500", color: "white", _hover: { bg: "messenger.600" } }}
+                            colorScheme="green"
+                            _dark={{ bg: "green.500", color: "white", _hover: { bg: "green.600" } }}
                             size="lg"
-                            borderRadius="none"
+                            isLoading={isLoading}
+                            loadingText="Guardando..."
+                            borderRadius="xl"
                             mr={3}
                             onClick={handleSave}
-                            isDisabled={ indice.title === '' || indice.hover_title === '' }
+                            isDisabled={ indice.title === '' || indice.logo === '' }
                         >
                             ACTUALIZAR
                         </Button>

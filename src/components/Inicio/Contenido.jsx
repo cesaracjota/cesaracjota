@@ -65,20 +65,20 @@ const Contenido = () => {
                                             2000,
                                             () => handleTextColorChangeMobile("blue.500"),
                                             t("welcomeMessage2"),
-                                            1000,
+                                            3000,
                                             () => handleTextColorChangeMobile("pink.500"),
                                             t("welcomeMessage3"),
-                                            1000,
-                                            () => handleTextColorChangeMobile("yellow.500)"),
+                                            3000,
+                                            () => handleTextColorChangeMobile("yellow.500"),
                                             t("welcomeMessage4"),
-                                            1000,
+                                            3000,
                                         ]}
                                         wrapper="span"
                                         cursor={true}
                                         repeat={Infinity}
                                         loop={true}
-                                        deletionSpeed={110}
-                                        speed={80}
+                                        deletionSpeed={100}
+                                        speed={60}
                                         style={{ fontSize: '2em', display: 'inline-block', fontWeight: 'bold' }}
                                     />
                                 </Heading>

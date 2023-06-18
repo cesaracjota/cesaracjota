@@ -104,7 +104,7 @@ const TechSkills = () => {
                         variant="solid"
                         w={28}
                         textAlign="center"
-                        py={2}
+                        py={3}
                         rounded="xl"
                     >
                         {row.estado}

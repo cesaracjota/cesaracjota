@@ -84,20 +84,19 @@ const TechStack = () => {
             <Stack textAlign={'start'} w="full" mt={8}>
                 <Heading
                     as="h1"
-                    fontSize={{ base: '2xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '4xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"
                 >
                     Tech Stack
                 </Heading>
-                <Text color={'gray.800'} _dark={{ color: 'gray.200' }} fontSize={'lg'}>
+                <Text color={'gray.800'} _dark={{ color: 'gray.200' }} fontSize={["sm","lg"]}>
                     A list of my favorite tools and technologies that I use on a regular basis.
                 </Text>
             </Stack>
             <Tabs variant="unstyled" position="relative" p={0}>
                 <TabList
-                    scrollMarginX={10}
                     overflowX={'auto'}
                     overflowY={'hidden'}
                     whiteSpace={'nowrap'}
@@ -123,13 +122,18 @@ const TechStack = () => {
                                 color: 'primary.100',
                                 fontWeight: 'bold'
                             }}
-                            fontWeight="extrabold"
+                            fontWeight="black"
                             _active={{
                                 bg: 'transparent'
                             }}
                             onClick={() => setSelectedCategory(value)}
                         >
-                            {label}
+                            <Heading
+                                fontWeight={'extrabold'}
+                                fontSize={{ base: 'md', lg: 'lg' }}
+                            >
+                                {label}
+                            </Heading>
                         </Tab>
                     ))}
                 </TabList>
@@ -138,8 +142,7 @@ const TechStack = () => {
                         base: 'none',
                         lg: 'block'
                     }}
-                    mt="-1.5px"
-                    height="2px"
+                    height="4px"
                     bg="primary.100"
                     borderRadius="2px"
                 />

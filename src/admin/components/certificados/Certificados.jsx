@@ -62,15 +62,15 @@ const Certificados = () => {
   const columns = [
     {
       name: 'LOGO',
-      selector: row => row.logo,
+      selector: row => row.logo?.secure_url,
       sortable: true,
-      cellExport: row => row.logo,
+      cellExport: row => row.logo?.secure_url,
       cell: row => (
         <Image
           boxSize="10"
           objectFit="cover"
           name={row?.title}
-          src={row?.logo}
+          src={row?.logo?.secure_url}
           alignSelf={'center'}
           display={{
             base: 'none',
@@ -95,27 +95,6 @@ const Certificados = () => {
       resizable: true
     },
     {
-      name: 'BRAND COLOR',
-      selector: row => row.brand_color,
-      sortable: true,
-      cellExport: row => row.brand_color,
-      cell: row => (
-        <div>
-          <Badge
-            bg={row.brand_color}
-            variant="solid"
-            w={'28'}
-            textAlign="center"
-            py={3}
-            rounded="md"
-            color="white"
-          >
-            {row.brand_color}
-          </Badge>
-        </div>
-      )
-    },
-    {
       name: 'ESTADO',
       sortable: true,
       cellExport: row => row.estado,
@@ -127,8 +106,8 @@ const Certificados = () => {
             variant="solid"
             w={28}
             textAlign="center"
-            py={3}
-            rounded="md"
+            py={2}
+            rounded="xl"
           >
             {row.estado}
           </Badge>
@@ -141,7 +120,6 @@ const Certificados = () => {
       center: true,
       cell: row => (
         <div>
-          {/* <ModalDetallesPersona persona={row}/>*/}
           <ModalEditarCertificado row={row} />
           <AlertaEliminar row={row} />
         </div>
@@ -157,28 +135,20 @@ const Certificados = () => {
 
   if (isLoading) {
     return (
-        <Loading>
-            <PacmanLoader color="#625bf8" loading={true} size={50} />
-        </Loading>
-      )
+      <Loading>
+        <PacmanLoader color="#625bf8" loading={true} size={50} />
+      </Loading>
+    )
   }
 
   return (
     <>
-      <Box
-        boxShadow="base"
-        overflow="hidden"
-        bg="white"
-        _dark={{ bg: "primary.1000" }}
-        mb={2}
-      >
-        <Stack direction="row" justifyContent="space-between" px={4} py={3}>
-          <ModalAgregarCertificado />
-          <HStack spacing={4} direction="row">
-            <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
-          </HStack>
-        </Stack>
-      </Box>
+      <Stack direction="row" justifyContent="space-between" py={3}>
+        <ModalAgregarCertificado />
+        <HStack spacing={4} direction="row">
+          <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
+        </HStack>
+      </Stack>
 
       <Box
         overflow="hidden"
@@ -187,19 +157,17 @@ const Certificados = () => {
         _dark={{ bg: "primary.1000" }}
         mt={2}
         pt={2}
+        borderRadius={'2xl'}
       >
         <DataTableExtensions
           {...tableData}
           print={false}
           exportHeaders={true}
           filterPlaceholder="BUSCAR"
-          numberOfColumns={7}
-          zIndex={1000}
-          fileName={'PERSONAS' + new Date().toLocaleDateString()}
+          fileName={'CERTIFICADOS' + new Date().toLocaleDateString()}
         >
           <DataTable
             progressPending={isLoading}
-            selectableRows
             selectableRowsVisibleOnly
             selectableRowsHighlight
             defaultSortField="createdAt"

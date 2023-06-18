@@ -40,7 +40,7 @@ export const ModalEditarStacks = ({ row }) => {
         link: '',
         image: null,
         category: '',
-        estado: 'ACTIVO',
+        estado: '',
     }
 
     const [indice, setIndice] = useState(initialValues);

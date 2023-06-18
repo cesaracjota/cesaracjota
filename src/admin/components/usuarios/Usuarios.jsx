@@ -174,20 +174,12 @@ const Usuarios = () => {
 
   return (
     <>
-      <Box
-        boxShadow="base"
-        overflow="hidden"
-        bg="white"
-        _dark={{ bg: "primary.1000" }}
-        mb={2}
-      >
-        <Stack direction="row" justifyContent="space-between" px={4} py={3}>
-          <ModalAgregarUsuario />
-          <HStack spacing={4} direction="row">
-            <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
-          </HStack>
-        </Stack>
-      </Box>
+      <Stack direction="row" justifyContent="space-between" py={3}>
+        <ModalAgregarUsuario />
+        <HStack spacing={4} direction="row">
+          <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
+        </HStack>
+      </Stack>
 
       <Box
         overflow="hidden"
@@ -196,6 +188,7 @@ const Usuarios = () => {
         _dark={{ bg: "primary.1000" }}
         mt={2}
         pt={2}
+        borderRadius={'2xl'}
       >
         <DataTableExtensions
           {...tableData}

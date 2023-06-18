@@ -86,7 +86,7 @@ export const TopNav = (props) => {
                         <Flex justify="space-between" flex="1">
                             <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={0} direction="row" alignSelf={'center'}>
-                                    <Heading as="h1" fontWeight={'normal'} fontSize="28px" color={'primary.100'} fontFamily={`'Smooch', sans-serif`}>
+                                    <Heading as="h1" fontWeight={'500'} fontSize="30px" color={'black'} _dark={{ color: 'white' }} fontFamily={`'Smooch', sans-serif`}>
                                         {`</Cesar Acjota/>`}
                                     </Heading>
                                 </Stack>
@@ -103,7 +103,6 @@ export const TopNav = (props) => {
                                             as={NavLink}
                                             to={item.path}
                                             fontSize={'16px'}
-                                            // fontWeight={'semibold'}
                                             fontFamily={`"Fira Sans Condensed", sans-serif`}
                                             _light={{
                                                 color: 'black',
@@ -131,22 +130,17 @@ export const TopNav = (props) => {
                                         </Text>
                                     ))}
                                 </ButtonGroup>
-                                <Divider orientation='vertical' h={6} borderColor={'primary.100'} _dark={{ borderColor: 'primary.100' }} />
+                                <Divider orientation='vertical' h={6} borderColor={'gray.700'} _dark={{ borderColor: 'gray.200' }} />
                                 <LanguageMenu />
-                                <Divider orientation='vertical' h={6} borderColor={'primary.100'} _dark={{ borderColor: 'primary.100' }} />
+                                <Divider orientation='vertical' h={6} borderColor={'gray.700'} _dark={{ borderColor: 'gray.200' }} />
                                 <ColorModeSwitcher />
                             </HStack>
                         </Flex>
                     ) : (
                         <Flex justify="space-between" flex="1">
-                            {/* <ContentDrawer
-                                isOpen={props.isOpen}
-                                onClose={props.onClose}
-                                redesData={redesData}
-                            /> */}
                             <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={1} direction="row">
-                                    <Heading as="h1" fontWeight={'normal'} fontSize="22px" color={'primary.100'} fontFamily={`'Smooch', sans-serif`}>
+                                    <Heading as="h1" fontWeight={'500'} fontSize="24px" color={'black'} _dark={{ color: 'white' }} fontFamily={`'Smooch', sans-serif`}>
                                         {`</Cesar Acjota/>`}
                                     </Heading>
                                 </Stack>
@@ -154,14 +148,6 @@ export const TopNav = (props) => {
                             <Stack spacing={1} direction="row">
                                 <LanguageMenu />
                                 <ColorModeSwitcher />
-                                {/* <IconButton
-                                    variant="ghost"
-                                    icon={<FiMenu fontSize="1.25rem" />}
-                                    size={'md'}
-                                    rounded={'full'}
-                                    aria-label="Open Menu"
-                                    onClick={props.onOpen}
-                                /> */}
                                 <Menu
                                     placement="bottom-end"
                                     autoSelect={true}
@@ -194,6 +180,7 @@ export const TopNav = (props) => {
                                                     },
                                                     _hover: {
                                                         color: 'primary.100',
+                                                        bg: 'none'
                                                     },
                                                     textDecoration: 'none',
                                                 }}
@@ -204,6 +191,7 @@ export const TopNav = (props) => {
                                                     },
                                                     _hover: {
                                                         color: 'primary.100',
+                                                        bg: 'none'
                                                     },
                                                     textDecoration: 'none',
                                                 }}

@@ -8,9 +8,9 @@ import {
     MenuItem,
     MenuList,
 } from "@chakra-ui/react";
-import Flag from "react-flagkit";
+import { MdTranslate } from 'react-icons/md';
 
-function LanguageMenu({ display }) {
+function LanguageMenu() {
     const { i18n } = useTranslation();
     const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
     const [shouldRefreshPage, setShouldRefreshPage] = useState(false);
@@ -40,11 +40,10 @@ function LanguageMenu({ display }) {
             >
                 <MenuButton
                     as={IconButton}
-                    icon={<Flag country={selectedLanguage === "en" ? 'US' : "ES"} size={'sm'} />}
+                    icon={<MdTranslate fontSize={'20px'} />}
                     size={'md'}
                     rounded={'full'}
                     variant="ghost"
-                    display={display}
                 />
                 <MenuList
                     boxShadow="md"
@@ -55,30 +54,64 @@ function LanguageMenu({ display }) {
                     }}
                 >
                     <MenuItem
-                        icon={<Flag country="US" />}
-                        _dark={{ 
-                            bg:selectedLanguage === "en" ? "primary.100" : "transparent",
-                            color:selectedLanguage === "en" ? "white" : "inherit",
-                            _hover: { bg: "primary.100" } 
+                        fontSize={'16px'}
+                        fontFamily={`"Fira Sans Condensed", sans-serif`}
+                        icon={<MdTranslate fontSize={'20px'} />}
+                        fontWeight={500}
+                        _light={{
+                            color: selectedLanguage === "en" ? "primary.100" : "black",
+                            _hover: {
+                                color: 'primary.100',
+                                bg: 'none'
+                            },
+                            _focus: {
+                                color: 'primary.100',
+                                bg: 'none'
+                            },
+                            textDecoration: 'none',
                         }}
-                        bg={selectedLanguage === "en" ? "primary.100" : "transparent"}
-                        color={selectedLanguage === "en" ? "white" : "inherit"}
+                        _dark={{
+                            bg: 'primary.1000',
+                            color: selectedLanguage === "en" ? "primary.100" : "white",
+                            _hover: {
+                                color: 'primary.100',
+                                bg: 'none'
+                            },
+                            _focus: {
+                                color: 'primary.100',
+                                bg: 'none'
+                            },
+                            textDecoration: 'none',
+                        }}
+                        transition=".3s ease all"
                         onClick={() => handleChangeLanguage("en")}
-                        fontWeight={'bold'}
                     >
-                        English
+                        Ingles
                     </MenuItem>
                     <MenuItem
-                        _dark={{ 
-                            bg:selectedLanguage === "es" ? "primary.100" : "transparent",
-                            color:selectedLanguage === "es" ? "white" : "inherit",
-                            _hover: { bg: "primary.100" } 
+                        fontSize={'16px'}
+                        fontFamily={`"Fira Sans Condensed", sans-serif`}
+                        icon={<MdTranslate fontSize={'20px'} />}
+                        fontWeight={500}
+                        _light={{
+                            color: selectedLanguage === "es" ? "primary.100" : "black",
+                            _hover: {
+                                color: 'primary.100',
+                                bg: 'none'
+                            },
+                            textDecoration: 'none',
                         }}
-                        bg={selectedLanguage === "es" ? "primary.100" : "transparent"}
-                        color={selectedLanguage === "es" ? "white" : "inherit"}
-                        icon={<Flag country="ES" />}
+                        _dark={{
+                            bg: 'primary.1000',
+                            color: selectedLanguage === "es" ? "primary.100" : "white",
+                            _hover: {
+                                color: 'primary.100',
+                                bg: 'none'
+                            },
+                            textDecoration: 'none',
+                        }}
+                        transition=".3s ease all"
                         onClick={() => handleChangeLanguage("es")}
-                        fontWeight={'bold'}
                     >
                         Español
                     </MenuItem>

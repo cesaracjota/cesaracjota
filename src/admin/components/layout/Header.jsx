@@ -1,4 +1,4 @@
-import { Flex, IconButton, Icon, Drawer, DrawerOverlay, DrawerContent, useDisclosure, Text, Stack, DrawerCloseButton, HStack, Heading } from "@chakra-ui/react";
+import { Flex, IconButton, Icon, useDisclosure, Stack, HStack, Heading } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../../theme/ColorModeSwitcher";
 import { RiFullscreenExitLine, RiFullscreenFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -63,33 +63,6 @@ function Header({ onToggle }) {
                 icon={<Icon fontSize={24} as={HamburgerIcon} />}
             />
 
-            <Drawer
-                isOpen={sidebar.isOpen}
-                onClose={sidebar.onClose}
-                placement="left"
-                size="full"
-            >
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton
-                        size={'lg'}
-                    />
-                    <Stack
-                        spacing={0}
-                        align="center"
-                        justify="center"
-                        direction="column"
-                        h="100%"
-                        w="100%"
-                        p={10}
-                    >
-                        <Text>
-                            Dashboard
-                        </Text>
-                    </Stack>
-                </DrawerContent>
-            </Drawer>
-
             <IconButton
                 aria-label="Menu"
                 display={{ base: "flex", lg: "none" }}
@@ -108,7 +81,7 @@ function Header({ onToggle }) {
             >
                 <Link as={Link} to={'/admin/dashboard'} _hover={{ textDecoration: 'none' }}>
                     <Stack spacing={0} direction="row" alignSelf={'center'}>
-                        <Heading as="h1" fontWeight={'normal'} fontSize={{base: "20px", lg: "26px"}} color={'primary.100'} fontFamily={`'Smooch', sans-serif`}>
+                        <Heading as="h1" fontWeight={'normal'} fontSize={{base: "20px", lg: "26px"}} color={'gray.800'} _dark={{ color: 'gray.200' }} fontFamily={`'Smooch', sans-serif`}>
                             {`</CesarAcjota/>`}
                         </Heading>
                     </Stack>

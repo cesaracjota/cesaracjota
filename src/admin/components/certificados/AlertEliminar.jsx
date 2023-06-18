@@ -10,10 +10,10 @@ import {
     Button,
     Icon,
     Flex,
-    Tooltip,
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux';
-import { AiFillDelete, AiOutlineAlert } from 'react-icons/ai';
+import { AiOutlineAlert } from 'react-icons/ai';
+import { RiDeleteBackFill } from 'react-icons/ri';
 import { deleteCertificado } from '../../../features/certificadoSlice';
 
 export const AlertaEliminar = ({ row }) => {
@@ -39,20 +39,19 @@ export const AlertaEliminar = ({ row }) => {
 
     return (
         <>
-            <Tooltip hasArrow label={user.usuario.role !== 'ADMIN' ? 'No tiene privilegios para realizar estas acciones' : 'Eliminar'} placement='auto'>
-                <IconButton
-                    aria-label="Eliminar"
-                    onClick={() => handleOpenAlert(row._id)}
-                    icon={<Icon as={AiFillDelete} />}
-                    fontSize="2xl"
-                    size={'md'}
-                    colorScheme="red"
-                    variant={'solid'}
-                    _dark={{ color: "white", bg: "red.500", _hover: { bg: "red.800" } }}
-                    ml={2}
-                    isDisabled={user.usuario.role !== 'ADMIN'}
-                />
-            </Tooltip>
+            <IconButton
+                aria-label="Eliminar"
+                onClick={() => handleOpenAlert(row._id)}
+                icon={<Icon as={RiDeleteBackFill} />}
+                fontSize="2xl"
+                size={'md'}
+                rounded={'xl'}
+                colorScheme="red"
+                variant={'solid'}
+                _dark={{ color: "white", bg: "red.500", _hover: { bg: "red.700" } }}
+                ml={2}
+                isDisabled={user.usuario.role !== 'ADMIN'}
+            />
             <AlertDialog
                 motionPreset='slideInBottom'
                 onClose={handleCloseAlert}
@@ -66,7 +65,7 @@ export const AlertaEliminar = ({ row }) => {
                     backdropBlur='2px'
                 />
 
-                <AlertDialogContent py={6} _dark={{ bg: "primary.900" }} borderRadius="none">
+                <AlertDialogContent py={6} _dark={{ bg: "primary.900" }} borderRadius="2xl">
                     <Flex textAlign="center" justifyContent="center" p={2}>
                         <Icon as={AiOutlineAlert} fontSize="9xl" color="red.500" />
                     </Flex>
@@ -79,8 +78,8 @@ export const AlertaEliminar = ({ row }) => {
                             onClick={handleCloseAlert}
                             colorScheme="red"
                             size="lg"
-                            _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.800" } }}
-                            borderRadius="none"
+                            _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }}
+                            borderRadius="xl"
                         >
                             CANCELAR
                         </Button>
@@ -89,8 +88,8 @@ export const AlertaEliminar = ({ row }) => {
                             ml={3}
                             onClick={() => handleDelete(row._id)}
                             size="lg"
-                            _dark={{ bg: "green.600", color: "white", _hover: { bg: "green.800" } }}
-                            borderRadius="none"
+                            _dark={{ bg: "green.600", color: "white", _hover: { bg: "green.700" } }}
+                            borderRadius="xl"
                         >
                             ¡SÍ BÓRRALO!
                         </Button>
