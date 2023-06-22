@@ -13,9 +13,9 @@ const Home = () => {
             <Divider />
             <Blog />
             <Divider my={4}/>
-            <TechStack />
-            <Divider my={4}/>
             <About />
+            <Divider my={4}/>
+            <TechStack />
         </>
     )
 }
