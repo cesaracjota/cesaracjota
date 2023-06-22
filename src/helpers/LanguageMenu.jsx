@@ -42,7 +42,7 @@ function LanguageMenu() {
                     as={IconButton}
                     icon={<MdTranslate fontSize={'20px'} />}
                     size={'md'}
-                    rounded={'full'}
+                    rounded={'lg'}
                     variant="ghost"
                 />
                 <MenuList

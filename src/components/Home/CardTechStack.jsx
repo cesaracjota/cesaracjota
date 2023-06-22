@@ -40,7 +40,7 @@ const CardTechStack = ({ image, title, description, link }) => {
         p={4}
         bgImage="white"
         _dark={{
-          bg: 'primary.1000',
+          bg: 'primary.900',
           borderColor: 'none',
           _hover: {
             borderColor: 'primary.200',
@@ -55,6 +55,9 @@ const CardTechStack = ({ image, title, description, link }) => {
           cursor: 'pointer'
         }}
         transition='all 0.3s ease-in-out'
+        css={{
+          transition: "background-color 0.9s ease-in-out",
+        }}
       >
         <Stack direction={'row'}>
           <Box
@@ -71,6 +74,7 @@ const CardTechStack = ({ image, title, description, link }) => {
               maxH={10}
               objectFit={'cover'}
               alignSelf={'center'}
+              transition="all 0.3s ease-in-out"
             />
           </Box>
           <Stack direction={'column'} justifyContent={'space-between'} alignSelf={'center'}>

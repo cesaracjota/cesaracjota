@@ -61,6 +61,7 @@ export const ModalAgregarCertificado = () => {
     const handleModalClose = () => {
         setIsModalOpen(false)
         setIndice(initialValues)
+        setPreviewLogo(null)
     }
 
     const handleSave = async () => {
@@ -171,7 +172,7 @@ export const ModalAgregarCertificado = () => {
                                     }
                                 </FormControl>
                                 <Image
-                                    src={previewLogo || 'https://cdn.icon-icons.com/icons2/2529/PNG/512/img_filetype_icon_151817.png'}
+                                    src={ previewLogo || 'https://cdn.icon-icons.com/icons2/2529/PNG/512/img_filetype_icon_151817.png' }
                                     alt="preview"
                                     borderRadius="xl"
                                     objectFit="cover"

@@ -4,6 +4,11 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const WebsiteModal = ({ websiteUrl, isOpen, onOpen, onClose }) => {
 
+  const handleCloseModal = () => {
+    onClose();
+    websiteUrl=''
+  }
+
   return (
     <>
       <Button
@@ -19,14 +24,14 @@ const WebsiteModal = ({ websiteUrl, isOpen, onOpen, onClose }) => {
               borderColor: 'primary.100',
           }}
           leftIcon={<FaExternalLinkAlt />}
-          onClick={onOpen}
+          onClick={(e) => onOpen(websiteUrl)}
           fontSize={["xs", "sm"]}
           w={["full", "auto", "auto", "auto"]}
           borderRadius={'sm'}
       >
           Preview
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose} size="6xl">
+      <Modal isOpen={isOpen} onClose={handleCloseModal} size="6xl">
         <ModalOverlay />
         <ModalContent borderRadius={'none'}>
           <ModalBody px={2}>

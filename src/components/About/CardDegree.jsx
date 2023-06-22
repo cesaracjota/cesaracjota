@@ -17,12 +17,14 @@ import {
 import { MdCheckCircle } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { FaUniversity } from 'react-icons/fa';
+import { MdWork } from 'react-icons/md';
 // import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
 import TECSUP_logo from '../../assets/img/logos/TECSUP.jpg';
 import GOOGLE_logo from '../../assets/img/logos/google.png';
 import ISOS_GROUP_logo from '../../assets/img/logos/ISOS_GROUP.png';
 import MARIA_INMACULADA_logo from '../../assets/img/logos/MARIA_INMACULADA.jpg';
 import PODER_JUDICIAL_logo from '../../assets/img/logos/PODER_JUDICIAL.png';
+import { t } from 'i18next';
 
 const CardDegree = () => {
 
@@ -158,17 +160,16 @@ const CardDegree = () => {
                     letterSpacing="tight"
                     lineHeight="shorter"
                 >
-                    {/* {t("popular_blogs")} */}
-                    Degrees Received
+                    {t("about_me.title")}
                 </Heading>
                 <Text
                     color={'gray.800'}
                     _dark={{
                         color: 'gray.200'
                     }}
-                    fontSize={["sm","lg"]}
+                    fontSize={["sm","md"]}
                 >
-                    My academic background
+                    {t("about_me.subtitle")}
                 </Text>
             </Stack>
 
@@ -184,7 +185,7 @@ const CardDegree = () => {
                         textAlign={'left'}
                         alignSelf={"center"}
                     >
-                        EDUCATIÓN
+                        {t("about_me.education")}
                     </Heading>
                 </Stack>
                 {dataEducation.map((degree, index) => (
@@ -208,23 +209,22 @@ const CardDegree = () => {
                     letterSpacing="tight"
                     lineHeight="shorter"
                 >
-                    {/* {t("popular_blogs")} */}
-                    Work experience
+                    {t("about_me.work_experience.title")}
                 </Heading>
                 <Text
                     color={'gray.800'}
                     _dark={{
                         color: 'gray.200'
                     }}
-                    fontSize={["sm","lg"]}
+                    fontSize={["sm","md"]}
                 >
-                    My work experience in the software and systems development sector
+                    {t("about_me.work_experience.subtitle")}
                 </Text>
             </Stack>
             <Stack direction={'column'} w="full" spacing={0}>
                 <Stack direction={'row'}>
                     <Square size='42px' bg='primary.100' color='white' borderRadius={'full'}>
-                        <FaUniversity fontSize={"20px"} />
+                        <MdWork fontSize={"20px"} />
                     </Square>
                     <Heading
                         fontSize={["md","xl"]}
@@ -233,7 +233,7 @@ const CardDegree = () => {
                         textAlign={'left'}
                         alignSelf={"center"}
                     >
-                        COMPANIES
+                        {t("about_me.work_experience.companies")}
                     </Heading>
                 </Stack>
                 {dataExperience.map((degree, index) => (

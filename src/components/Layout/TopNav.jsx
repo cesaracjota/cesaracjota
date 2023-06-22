@@ -86,7 +86,7 @@ export const TopNav = (props) => {
                         <Flex justify="space-between" flex="1">
                             <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={0} direction="row" alignSelf={'center'}>
-                                    <Heading as="h1" fontWeight={'500'} fontSize="30px" color={'black'} _dark={{ color: 'white' }} fontFamily={`'Smooch', sans-serif`}>
+                                    <Heading as="h1" fontWeight={'500'} fontSize="30px" color={'gray.700'} _dark={{ color: 'gray.200' }} fontFamily={`'Smooch', sans-serif`}>
                                         {`</Cesar Acjota/>`}
                                     </Heading>
                                 </Stack>

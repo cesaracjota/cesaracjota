@@ -1,10 +1,10 @@
 import React from 'react';
-import Inicio from '../components/Inicio/Inicio';
 import Layout from '../components/Layout/Layout';
+import Home from '../components/Home/Home';
 
 const HomePage = () => {
     return (
-        <Layout componente={<Inicio />} />
+        <Layout componente={<Home />} />
     )
 }
 

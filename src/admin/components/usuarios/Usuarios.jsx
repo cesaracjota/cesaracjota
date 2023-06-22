@@ -114,13 +114,13 @@ const Usuarios = () => {
           <Badge
             bg={row.role === 'ADMIN' ? 'messenger.600' : 'red.600'}
             variant="solid"
-            w={20}
+            w={32}
             textAlign="center"
-            py={3}
-            rounded="md"
+            py={2}
+            rounded="xl"
             color="white"
           >
-            {row.role}
+            {row.role === 'ADMIN' ? 'ADMINISTRADOR' : 'USUARIO' }
           </Badge>
         </div>
       )
@@ -137,8 +137,8 @@ const Usuarios = () => {
             variant="solid"
             w={24}
             textAlign="center"
-            py={3}
-            rounded="md"
+            py={2}
+            rounded="xl"
           >
             {row.estado}
           </Badge>

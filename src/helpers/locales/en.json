@@ -1,13 +1,35 @@
 {
-    "welcomeMessage1": "Hi, I’m Cesar Acjota.",
-    "welcomeMessage2": "I'm software developer.",
-    "welcomeMessage3": "I'm a UX/UI designer.",
-    "welcomeMessage4": "I'm passionate about technology.",
+    "welcomeMessage1": "Hi, I am Cesar Acjota.",
+    "welcomeMessage2": "Software developer.",
+    "welcomeMessage3": "UX/UI designer.",
+    "welcomeMessage4": "Technology enthusiasts",
     "presentationMessage": "Software developer obsessed with quality and user experience. With 1 year of experience, I specialize in creating intuitive and efficient web and mobile applications. If you want to work on an exciting and challenging project, I'm ready to help you!",
-    "reload": "Reload",
     "resume": "Résumé",
     "popular_blogs": "Popular Blogs",
-    "projects": "Project",
+    "skills": "Technical Skills",
+    "skills_description": "In my portfolio, I can highlight a wide range of technical skills that I have acquired and developed throughout my career. My knowledge and skills are focused on the field of technology and its practical application. I have a solid foundation in different tools and technologies that I use regularly to carry out projects effectively.",
+    "about_me": {
+        "title": "About Me",
+        "subtitle": "My academic background and work experience.",
+        "education": "EDUCATION",
+        "work_experience": {
+            "title": "Work Experience",
+            "subtitle": "Worked in different companies and projects, these are some of them.",
+            "companies": "COMPANIES"
+        },
+        "certification": {
+            "title": "Certifications",
+            "subtitle": "I Obtained different certifications, here are some of them."
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "subtitle": "I worked on a wide variety of projects. Here are some of them.",
+        "bigProjects": "Big Projects",
+        "openSourceProject": "Open Source Projects",
+        "created_on": "Created on",
+        "live_preview": "Live Preview"
+    },
     "more_blogs": "More Blogs",
     "contacts": {
         "title": "Contact Me",
@@ -28,5 +50,8 @@
             "loadingText": "Send Message...",
             "button_send": "Send Message"
         }
+    },
+    "footer": {
+        "description": " Made with ❤️ by Cesar Acjota, Team @AgylCode"
     }
 }

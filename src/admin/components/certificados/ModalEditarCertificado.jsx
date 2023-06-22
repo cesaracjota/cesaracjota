@@ -60,13 +60,14 @@ export const ModalEditarCertificado = ({ row }) => {
     const handleModalClose = () => {
         setIsModalOpen(false)
         setIndice(initialValues)
+        setPreviewLogo(null)
     }
 
     const handleSave = async () => {
         setIsLoading(true);
         try {
             await dispatch(updateCertificado(indice));
-            setIsModalOpen(false);
+            handleModalClose();
             setIndice(initialValues);
         } catch (error) {
             console.log(error);

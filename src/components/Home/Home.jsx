@@ -5,7 +5,7 @@ import Contenido from './Contenido';
 import TechStack from './TechStack';
 
 
-const Inicio = () => {
+const Home = () => {
     return (
         <>
             <Contenido />
@@ -16,4 +16,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio
+export default Home

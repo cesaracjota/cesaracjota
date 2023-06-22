@@ -6,6 +6,7 @@ import { ToastChakra } from '../../helpers/toast';
 import { getAllTechStacks, reset } from '../../features/techstackSlice';
 import { Loading } from '../../configuration/Loading';
 import { ScaleLoader } from "react-spinners";
+import { t } from 'i18next';
 
 const TechStack = () => {
 
@@ -38,7 +39,7 @@ const TechStack = () => {
         },
         {
             value: 'others',
-            label: 'OTROS'
+            label: '+'
         }
     ];
 
@@ -89,10 +90,10 @@ const TechStack = () => {
                     letterSpacing="tight"
                     lineHeight="shorter"
                 >
-                    Tech Stack
+                    {t("skills")}
                 </Heading>
-                <Text color={'gray.800'} _dark={{ color: 'gray.200' }} fontSize={["sm","lg"]}>
-                    A list of my favorite tools and technologies that I use on a regular basis.
+                <Text color={'gray.800'} _dark={{ color: 'gray.200' }} textAlign={'justify'} fontSize={["sm","lg"]}>
+                    {t("skills_description")}
                 </Text>
             </Stack>
             <Tabs variant="unstyled" position="relative" p={0}>

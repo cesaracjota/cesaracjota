@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { chakra, Stack, Image, Button, Icon, useBreakpointValue, Text, Heading } from '@chakra-ui/react';
 import { BsArrowUpRight } from 'react-icons/bs';
 import { useTranslation } from "react-i18next";
@@ -15,16 +15,7 @@ const Contenido = () => {
         lg: true,
     });
 
-    const [textColor, setTextColor] = useState('gray.500');
-    const [textColor2, setTextColor2] = useState('gray.500');
-
-    const handleTextColorChange = (color) => {
-        setTextColor(color);
-    };
-
-    const handleTextColorChangeMobile = (color) => {
-        setTextColor2(color);
-    }
+    const textColor = 'gray.500';
 
     return (
         <>
@@ -57,19 +48,15 @@ const Contenido = () => {
                                 }}
                                 alignSelf={'center'}
                             >
-                                <Heading color={textColor2} fontWeight={'extrabold'} size={'xs'} textAlign={'center'}>
+                                <Heading color={textColor} fontWeight={'extrabold'} size={'xs'} textAlign={'center'}>
                                     <TypeAnimation
                                         sequence={[
-                                            () => handleTextColorChangeMobile("gray.500"),
                                             t("welcomeMessage1"),
                                             2000,
-                                            () => handleTextColorChangeMobile("blue.500"),
                                             t("welcomeMessage2"),
                                             3000,
-                                            () => handleTextColorChangeMobile("pink.500"),
                                             t("welcomeMessage3"),
                                             3000,
-                                            () => handleTextColorChangeMobile("yellow.500"),
                                             t("welcomeMessage4"),
                                             3000,
                                         ]}
@@ -201,16 +188,12 @@ const Contenido = () => {
                                 <Heading fontWeight={'extrabold'} color={textColor} _dark={{ color: textColor }} fontSize={'20px'} textAlign={{ base: 'center', lg: 'start' }}>
                                     <TypeAnimation
                                         sequence={[
-                                            () => handleTextColorChange("gray.600"),
                                             t("welcomeMessage1"),
                                             2000,
-                                            () => handleTextColorChange("blue.600"),
                                             t("welcomeMessage2"),
                                             2000,
-                                            () => handleTextColorChange("pink.600"),
                                             t("welcomeMessage3"),
                                             2000,
-                                            () => handleTextColorChange("primary.100"),
                                             t("welcomeMessage4"),
                                             2000,
                                         ]}

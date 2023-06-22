@@ -1,8 +1,9 @@
 import { Box, Container, ButtonGroup, IconButton, Stack, Text, Divider } from '@chakra-ui/react';
-import { FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import "@fontsource/fira-sans-condensed";
 import redesData from '../../data/redes.json';
 import { Link } from 'react-router-dom';
+import { t } from 'i18next';
 
 export const Footer = (props) => {
 
@@ -18,7 +19,7 @@ export const Footer = (props) => {
                 <Divider mb={6}/>
                 <Stack justify="space-between" direction={{ base: "column", lg: "row" }} align="center">
                     <Text fontSize="sm" color="subtle">
-                        &copy; {new Date().getFullYear()} Made with ❤️ by Cesar Acjota, Team @AgylCode
+                        &copy; {new Date().getFullYear()}{t("footer.description")}
                     </Text>
                     <ButtonGroup>
                         <IconButton
@@ -33,11 +34,11 @@ export const Footer = (props) => {
                         />
                         <IconButton
                             as={Link}
-                            to={redesData?.instagram?.url}
+                            to={redesData?.github?.url}
                             target='_blank'
-                            aria-label="Instagram"
-                            icon={<FaInstagram fontSize="1.6rem" />}
-                            colorScheme='purple'
+                            aria-label="Github"
+                            icon={<FaGithub fontSize="1.6rem" />}
+                            colorScheme='gray'
                             variant="ghost"
                             size="lg"
                         />

@@ -4,6 +4,7 @@ import CardCertifications from './CardCertifications';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastChakra } from '../../helpers/toast';
 import { getAllCertificados, reset } from '../../features/certificadoSlice';
+import { t } from 'i18next';
 
 const Certifications = () => {
 
@@ -16,7 +17,7 @@ const Certifications = () => {
     useEffect(() => {
 
         async function loadCertificados() {
-            
+
             try {
 
                 if (isError) {
@@ -54,30 +55,42 @@ const Certifications = () => {
                     letterSpacing="tight"
                     lineHeight="shorter"
                 >
-                    Certifications
+                    {t("about_me.certification.title")}
                 </Heading>
                 <Text
                     color={'gray.800'}
                     _dark={{
                         color: 'gray.200'
                     }}
-                    fontSize={["sm","lg"]}
+                    fontSize={["sm", "md"]}
                 >
-                    My academic certifications
+                    {t("about_me.certification.subtitle")}
                 </Text>
             </Stack>
 
             {
                 isLoading ? (
-                    <SimpleGrid columns={[ 1, 2, 3 ]} spacing={4}>
+                    <SimpleGrid columns={[1, 2, 3]} spacing={4}>
                         <Skeleton bg="white" _dark={{ bg: 'primary.1000' }} height='40' />
                         <Skeleton bg="white" _dark={{ bg: 'primary.1000' }} height='40' />
                         <Skeleton bg="white" _dark={{ bg: 'primary.1000' }} height='40' />
                     </SimpleGrid>
                 ) : (
-                    <SimpleGrid columns={[ 1, 1, 2, 3 ]} spacing={4}>
-                        { filteredCertificados?.map((certification, index) => (
-                            <CardCertifications key={index} data={certification} />
+                    <SimpleGrid 
+                        columns={[
+                            1,
+                            1,
+                            filteredCertificados.length === 1 ? 1 : filteredCertificados.length === 2 ? 2 : 2,
+                            filteredCertificados.length === 1 ? 1 : filteredCertificados.length === 2 ? 2 : 3
+                        ]} 
+                        spacing={4}
+                    >
+                        {filteredCertificados?.map((certification, index) => (
+                            <CardCertifications
+                                key={index}
+                                data={certification}
+                                columnSpan={filteredCertificados.length === 4 && index === 3 ? 3 : 1}
+                            />
                         ))}
                     </SimpleGrid>
                 )

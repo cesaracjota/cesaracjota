@@ -1,7 +1,6 @@
-import { Flex, IconButton, Icon, useDisclosure, Stack, HStack, Heading } from "@chakra-ui/react";
+import { Flex, IconButton, Icon, useDisclosure, HStack } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../../theme/ColorModeSwitcher";
 import { RiFullscreenExitLine, RiFullscreenFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -55,7 +54,7 @@ function Header({ onToggle }) {
                     lg: "inline-flex"
                 }}
                 size={'md'}
-                rounded={'full'}
+                rounded={'lg'}
                 onClick={() => { onToggle(); }}
                 variant="ghost"
                 colorScheme="gray"
@@ -69,24 +68,9 @@ function Header({ onToggle }) {
                 onClick={sidebar.onOpen}
                 fontSize="xl"
                 variant="ghost"
-                rounded={'full'}
+                rounded={'lg'}
                 icon={<HamburgerIcon />}
             />
-
-            <Stack
-                spacing={1}
-                align="center"
-                justify="center"
-                direction="row"
-            >
-                <Link as={Link} to={'/admin/dashboard'} _hover={{ textDecoration: 'none' }}>
-                    <Stack spacing={0} direction="row" alignSelf={'center'}>
-                        <Heading as="h1" fontWeight={'normal'} fontSize={{base: "20px", lg: "26px"}} color={'gray.800'} _dark={{ color: 'gray.200' }} fontFamily={`'Smooch', sans-serif`}>
-                            {`</CesarAcjota/>`}
-                        </Heading>
-                    </Stack>
-                </Link>
-            </Stack>
 
             <Flex alignSelf="center" verticalAlign={'center'} justify={'flex-end'} justifyContent={{ base: "flex-end", lg: "space-between" }} w={'full'} display="inline-flex">
                 <HStack display={{ base: "none", lg: "flex" }} ml={242}>
@@ -96,7 +80,7 @@ function Header({ onToggle }) {
                         aria-label="Full Screen"
                         fontSize="xl"
                         variant="ghost"
-                        rounded={'full'}
+                        rounded={'lg'}
                         icon={isSpanded === true ? <RiFullscreenExitLine /> : <RiFullscreenFill />}
                         colorScheme="gray"
                         onClick={handleFullScreen}

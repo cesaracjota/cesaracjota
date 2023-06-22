@@ -1,6 +1,6 @@
 import { Box, Divider, Flex, Icon, Link, Spacer, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import { FaBox, FaCalendar, FaCertificate, FaCode, FaCog, FaFolder, FaThLarge, FaUser, FaVideo } from "react-icons/fa";
+import { FaBox, FaCalendar, FaCertificate, FaChalkboard, FaCode, FaCog, FaFolder, FaThLarge, FaUser, FaVideo } from "react-icons/fa";
 import { SiGmail } from "react-icons/si"
 
 const NavItem = (props) => {
@@ -66,6 +66,11 @@ function Sidebar({ isOpen }) {
             label: "Tech Skills",
             path: "/admin/techskills",
         },
+        {
+            icon: FaChalkboard,
+            label: "Proyectos",
+            path: "/admin/projects",
+        }
     ]
 
     const secondListItem = [

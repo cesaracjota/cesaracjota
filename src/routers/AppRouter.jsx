@@ -18,6 +18,7 @@ import CertificadoPage from '../admin/pages/CertificadoPage';
 import './index.css';
 import MensajePage from '../admin/pages/MensajePage';
 import TechSkillsPage from '../admin/pages/TechSkillsPage';
+import ProjectAdminPage from '../admin/pages/ProjectPage';
 
 export const AppRouter = () => {
 
@@ -33,6 +34,7 @@ export const AppRouter = () => {
                     <Route path="/admin/certificados" element={<CertificadoPage />} />
                     <Route path="/admin/mensajes" element={<MensajePage />} />
                     <Route path="/admin/techskills" element={<TechSkillsPage />} />
+                    <Route path="/admin/projects" element={<ProjectAdminPage />} />
                 </Route>
                 <Route element={<PublicRoute />}>
                     <Route path="/auth/login" element={<LoginPage />} />

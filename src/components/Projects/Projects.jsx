@@ -4,7 +4,7 @@ import GithubCard from './GithubCard';
 import { getStarredRepositories } from '../../services/api.service';
 import { t } from 'i18next';
 import { ToastChakra } from '../../helpers/toast';
-import ProjectContent from './ProjectsContent';
+import ProjectCard from './ProjectCard';
 
 const Projects = () => {
 
@@ -25,7 +25,6 @@ const Projects = () => {
             }
         }
         loadProjects();
-
     }, []);
 
     return (
@@ -39,7 +38,7 @@ const Projects = () => {
                     size={["lg", "xl"]}
                     fontWeight="extrabold"
                 >
-                    {t("projects")}
+                    {t("projects.title")}
                 </Heading>
                 <Text
                     color={'gray.800'}
@@ -48,7 +47,7 @@ const Projects = () => {
                     }}
                     fontSize={["sm", "lg"]}
                 >
-                    My academic background
+                    {t("projects.subtitle")}
                 </Text>
             </Stack>
             <Tabs variant="enclosed" p={0}>
@@ -86,7 +85,7 @@ const Projects = () => {
                             fontWeight={'bold'}
                             fontSize={{ base: 'md', lg: 'lg' }}
                         >
-                            Big Projects
+                            {t("projects.bigProjects")}
                         </Heading>
                     </Tab>
                     <Tab
@@ -112,13 +111,13 @@ const Projects = () => {
                             fontWeight={'bold'}
                             fontSize={{ base: 'md', lg: 'lg' }}
                         >
-                            Open Source Projects
+                            {t("projects.openSourceProject")}
                         </Heading>
                     </Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel px={0}>
-                        <ProjectContent />
+                        <ProjectCard />
                     </TabPanel>
                     <TabPanel px={0}>
                         {

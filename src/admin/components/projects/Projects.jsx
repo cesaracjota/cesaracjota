@@ -4,7 +4,7 @@ import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from '
 import { customStyles } from '../../../configuration/customStyles';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
-import { useColorModeValue, Box, Stack, HStack, Badge, Text, IconButton, Image } from '@chakra-ui/react';
+import { useColorModeValue, Box, Stack, HStack, Badge, Text, IconButton } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastChakra } from '../../../helpers/toast';
@@ -12,13 +12,13 @@ import { AlertaEliminar } from './AlertEliminar';
 import { Icon } from '@chakra-ui/icons';
 import { Loading } from '../../../configuration/Loading';
 import { MdDelete } from 'react-icons/md';
-import { getAllCertificados, reset } from '../../../features/certificadoSlice';
-import { ModalAgregarCertificado } from './ModalAgregarCertificado';
 import '../../../theme/solarizedTheme';
-import { ModalEditarCertificado } from './ModalEditarCertificado';
 import { PacmanLoader } from 'react-spinners';
+import { getAllProjects, reset } from '../../../features/projectSlice';
+import { ModalEditarProyecto } from './ModalEditarProyecto';
+import { ModalAgregarProyecto } from './ModalAgregarProyecto';
 
-const Certificados = () => {
+export const Projects = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,11 +27,11 @@ const Certificados = () => {
 
   const { user } = useSelector((state) => state.auth);
 
-  const { certificados, isLoading, isError, message } = useSelector((state) => state.certificados);
+  const { projects, isLoading, isError, message } = useSelector((state) => state.projects);
 
   useEffect(() => {
 
-    async function loadCertificados() {
+    async function loadData() {
       try {
 
         if (!user) {
@@ -43,7 +43,7 @@ const Certificados = () => {
           console.log(message);
         }
 
-        dispatch(getAllCertificados())
+        dispatch(getAllProjects())
 
         return () => {
           dispatch(reset())
@@ -55,40 +55,25 @@ const Certificados = () => {
       }
     }
 
-    loadCertificados();
+    loadData();
 
   }, [user, navigate, dispatch, isError, message]);
 
   const columns = [
     {
-      name: 'LOGO',
-      selector: row => row.logo?.secure_url,
-      sortable: true,
-      cellExport: row => row.logo?.secure_url,
-      cell: row => (
-        <Image
-          boxSize="10"
-          objectFit="cover"
-          name={row?.title}
-          src={row?.logo?.secure_url}
-          alignSelf={'center'}
-        />
-      ),
-      width: '100px',
-    },
-    {
-      name: 'TITLE',
+      name: 'PROJECT TITLE',
       selector: row => row.title,
       sortable: true,
       cellExport: row => row.title,
       resizable: true
     },
     {
-      name: 'HOVER TITLE',
-      selector: row => row.hover_title,
-      sortable: true,
-      cellExport: row => row.hover_title,
-      resizable: true
+      name: 'AUTHORS',
+      selector: row => row.authors.join(', '),
+    },
+    {
+      name: 'TOPICS',
+      selector: row => row.topics.join(', '),
     },
     {
       name: 'ESTADO',
@@ -116,7 +101,7 @@ const Certificados = () => {
       center: true,
       cell: row => (
         <div>
-          <ModalEditarCertificado row={row} />
+          <ModalEditarProyecto row={row} />
           <AlertaEliminar row={row} />
         </div>
       ),
@@ -126,7 +111,7 @@ const Certificados = () => {
 
   const tableData = {
     columns: columns,
-    data: certificados,
+    data: projects,
   }
 
   if (isLoading) {
@@ -140,7 +125,7 @@ const Certificados = () => {
   return (
     <>
       <Stack direction="row" justifyContent="space-between" py={3}>
-        <ModalAgregarCertificado />
+        <ModalAgregarProyecto />
         <HStack spacing={4} direction="row">
           <IconButton isDisabled colorScheme="red" _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }} aria-label='Eliminar' icon={<Icon as={MdDelete} fontSize="2xl" />} variant="solid" rounded="full" />
         </HStack>
@@ -196,5 +181,3 @@ const Certificados = () => {
     </>
   );
 };
-
-export default Certificados;

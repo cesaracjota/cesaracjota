@@ -82,7 +82,7 @@ export const ModalAgregarUsuario = () => {
                     backdropFilter='auto'
                     backdropBlur='2px'
                 />
-                <ModalContent _dark={{ bg: "primary.900" }} borderRadius="none">
+                <ModalContent _dark={{ bg: "primary.900" }} borderRadius="2xl">
                     <ModalHeader textAlign="center">AGREGAR NUEVO USUARIO</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
@@ -175,7 +175,7 @@ export const ModalAgregarUsuario = () => {
                         </Stack>
                     </ModalBody>
                     <ModalFooter>
-                        <Button borderRadius="none" colorScheme="red" _dark={{ bg: "red.500", color: "white", _hover: { bg: "red.600" } }} size="lg" mr={3} onClick={handleModalClose}>
+                        <Button borderRadius="xl" colorScheme="red" _dark={{ bg: "red.500", color: "white", _hover: { bg: "red.600" } }} size="lg" mr={3} onClick={handleModalClose}>
                             CANCELAR
                         </Button>
 
@@ -183,7 +183,7 @@ export const ModalAgregarUsuario = () => {
                             colorScheme="messenger"
                             _dark={{ bg: "messenger.500", color: "white", _hover: { bg: "messenger.600" } }}
                             size="lg"
-                            borderRadius="none"
+                            borderRadius="xl"
                             mr={3}
                             onClick={handleSave}
                             isDisabled={indice.name === '' || indice.email === '' || indice.password === '' || indice.estado === ''}

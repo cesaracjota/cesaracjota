@@ -11,7 +11,7 @@ export const ColorModeSwitcher = ({ display }) => {
       fontSize="lg"
       variant="ghost"
       display={display}
-      rounded={'full'}
+      rounded={'lg'}
       onClick={toggleColorMode}
       icon={<SwitchIcon />}
     />

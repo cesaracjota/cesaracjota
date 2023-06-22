@@ -18,9 +18,8 @@ import {
     ModalOverlay,
     Select,
     Stack,
-    Tooltip,
 } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../../features/userSlice';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { MdEdit } from 'react-icons/md';
@@ -28,6 +27,8 @@ import { MdEdit } from 'react-icons/md';
 export const ModalEditarUsuario = ({ row }) => {
 
     const dispatch = useDispatch();
+
+    const { user } = useSelector((state) => state.auth);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -65,26 +66,26 @@ export const ModalEditarUsuario = ({ row }) => {
 
     return (
         <>
-            <Tooltip hasArrow label='EDITAR' placement='auto'>
-                <IconButton
-                    icon={<Icon as={MdEdit} />}
-                    fontSize="2xl"
-                    size={'md'}
-                    colorScheme="yellow"
-                    color="white"
-                    variant={'solid'}
-                    _dark={{ color: "white", bg: "yellow.500", _hover: { bg: "yellow.800" } }}
-                    onClick={() => handleModalOpen(row)}
-                    ml={2}
-                />
-            </Tooltip>
+            <IconButton
+                icon={<Icon as={MdEdit} />}
+                fontSize="2xl"
+                size={'md'}
+                rounded="xl"
+                colorScheme="purple"
+                color="white"
+                variant={'solid'}
+                _dark={{ color: "white", bg: "purple.500", _hover: { bg: "purple.700" } }}
+                onClick={() => handleModalOpen(row)}
+                isDisabled={user.usuario.role !== 'ADMIN'}
+                ml={2}
+            />
             <Modal isOpen={isModalOpen} onClose={handleModalClose} size="6xl" isCentered>
                 <ModalOverlay 
-                    bg="rgba(0,0,0,0.7)"
+                    bg="rgba(0,0,0,0.8)"
                     backdropFilter='auto'
                     backdropBlur='2px'
                 />
-                <ModalContent _dark={{ bg: "primary.900" }} borderRadius="none">
+                <ModalContent _dark={{ bg: "primary.900" }} borderRadius="2xl">
                     <ModalHeader textAlign="center">EDITAR USUARIO</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
@@ -183,7 +184,7 @@ export const ModalEditarUsuario = ({ row }) => {
                         </Stack>
                     </ModalBody>
                     <ModalFooter>
-                        <Button borderRadius="none" colorScheme="red" _dark={{ bg: "red.500", color: "white", _hover: { bg: "red.600" } }} size="lg" mr={3} onClick={handleModalClose}>
+                        <Button borderRadius="xl" colorScheme="red" _dark={{ bg: "red.500", color: "white", _hover: { bg: "red.600" } }} size="lg" mr={3} onClick={handleModalClose}>
                             CANCELAR
                         </Button>
 
@@ -191,7 +192,7 @@ export const ModalEditarUsuario = ({ row }) => {
                             colorScheme="messenger"
                             _dark={{ bg: "messenger.500", color: "white", _hover: { bg: "messenger.600" } }}
                             size="lg"
-                            borderRadius="none"
+                            borderRadius="xl"
                             mr={3}
                             onClick={handleSave}
                             isDisabled={indice.name === '' || indice.email === '' || indice.password === '' || indice.estado === ''}

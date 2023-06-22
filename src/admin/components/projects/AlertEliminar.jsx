@@ -11,14 +11,16 @@ import {
     Icon,
     Flex,
 } from '@chakra-ui/react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineAlert } from 'react-icons/ai';
-import { deleteUser } from '../../../features/userSlice';
 import { RiDeleteBackFill } from 'react-icons/ri';
+import { deleteProject } from '../../../features/projectSlice';
 
 export const AlertaEliminar = ({ row }) => {
 
     const dispatch = useDispatch();
+
+    const { user } = useSelector((state) => state.auth);
 
     const [isOpenAlert, setIsOpenAlert] = useState(false);
 
@@ -31,7 +33,7 @@ export const AlertaEliminar = ({ row }) => {
     }
 
     const handleDelete = (id) => {
-        dispatch(deleteUser(id));
+        dispatch(deleteProject(id));
         setIsOpenAlert(false);
     }
 
@@ -43,11 +45,12 @@ export const AlertaEliminar = ({ row }) => {
                 icon={<Icon as={RiDeleteBackFill} />}
                 fontSize="2xl"
                 size={'md'}
+                rounded={'xl'}
                 colorScheme="red"
-                borderRadius={'xl'}
                 variant={'solid'}
-                _dark={{ color: "white", bg: "red.500", _hover: { bg: "red.800" } }}
+                _dark={{ color: "white", bg: "red.500", _hover: { bg: "red.700" } }}
                 ml={2}
+                isDisabled={user.usuario.role !== 'ADMIN'}
             />
             <AlertDialog
                 motionPreset='slideInBottom'
@@ -57,7 +60,7 @@ export const AlertaEliminar = ({ row }) => {
                 size="xl"
             >
                 <AlertDialogOverlay
-                    bg="rgba(0,0,0,0.8)"
+                    bg="rgba(0,0,0,0.7)"
                     backdropFilter='auto'
                     backdropBlur='2px'
                 />
@@ -75,7 +78,7 @@ export const AlertaEliminar = ({ row }) => {
                             onClick={handleCloseAlert}
                             colorScheme="red"
                             size="lg"
-                            _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.800" } }}
+                            _dark={{ bg: "red.600", color: "white", _hover: { bg: "red.700" } }}
                             borderRadius="xl"
                         >
                             CANCELAR
@@ -85,7 +88,7 @@ export const AlertaEliminar = ({ row }) => {
                             ml={3}
                             onClick={() => handleDelete(row._id)}
                             size="lg"
-                            _dark={{ bg: "green.600", color: "white", _hover: { bg: "green.800" } }}
+                            _dark={{ bg: "green.600", color: "white", _hover: { bg: "green.700" } }}
                             borderRadius="xl"
                         >
                             ¡SÍ BÓRRALO!

@@ -1,6 +1,6 @@
 import { Box, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay } from "@chakra-ui/react";
 export const ModalImage = ({ isModalOpen, onClose, image }) => {
-
+    
     return (
         <>
             <Modal isOpen={isModalOpen} onClose={onClose} size={'4xl'} isCentered>
@@ -19,7 +19,7 @@ export const ModalImage = ({ isModalOpen, onClose, image }) => {
                     <ModalCloseButton size={'lg'} />
                     <ModalBody p={1}>
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'} w="full">
-                            <Image borderRadius={'2xl'} src={image?.secure_url} alt={'cesara acjota'}/>
+                            <Image borderRadius={'2xl'} src={image} alt={'cesara acjota'}/>
                         </Box>
                     </ModalBody>
                 </ModalContent>
