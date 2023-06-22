@@ -6,7 +6,7 @@ import {
     IconButton,
     Stack,
     useBreakpointValue,
-    Link,
+    Link as ChakraLink,
     Divider,
     ButtonGroup,
     Heading,
@@ -40,19 +40,9 @@ export const TopNav = (props) => {
             path: '/',
         },
         {
-            nameEN: 'About Me',
-            nameES: 'Acerca de mi',
-            path: '/about-me',
-        },
-        {
             nameEN: 'Projects',
             nameES: 'Proyectos',
             path: '/projects',
-        },
-        {
-            nameEN: 'Blogs',
-            nameES: 'Blogs',
-            path: '/blogs',
         },
         {
             nameEN: 'Contact',
@@ -84,13 +74,13 @@ export const TopNav = (props) => {
                 <HStack spacing="10" justify="space-between">
                     {isDesktop ? (
                         <Flex justify="space-between" flex="1">
-                            <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
+                            <ChakraLink as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={0} direction="row" alignSelf={'center'}>
                                     <Heading as="h1" fontWeight={'500'} fontSize="30px" color={'gray.700'} _dark={{ color: 'gray.200' }} fontFamily={`'Smooch', sans-serif`}>
                                         {`</Cesar Acjota/>`}
                                     </Heading>
                                 </Stack>
-                            </Link>
+                            </ChakraLink>
                             <HStack spacing="4">
                                 <ButtonGroup
                                     variant="link"
@@ -138,13 +128,13 @@ export const TopNav = (props) => {
                         </Flex>
                     ) : (
                         <Flex justify="space-between" flex="1">
-                            <Link as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
+                            <ChakraLink as={NavLink} to={'/'} alignSelf="center" _hover={{ textDecoration: 'none' }}>
                                 <Stack spacing={1} direction="row">
                                     <Heading as="h1" fontWeight={'500'} fontSize="24px" color={'black'} _dark={{ color: 'white' }} fontFamily={`'Smooch', sans-serif`}>
                                         {`</Cesar Acjota/>`}
                                     </Heading>
                                 </Stack>
-                            </Link>
+                            </ChakraLink>
                             <Stack spacing={1} direction="row">
                                 <LanguageMenu />
                                 <ColorModeSwitcher />
@@ -159,7 +149,7 @@ export const TopNav = (props) => {
                                         variant="ghost"
                                         icon={<FiMenu fontSize="1.25rem" />}
                                         size={'md'}
-                                        rounded={'full'}
+                                        rounded={'lg'}
                                     />
                                     <MenuList
                                         _dark={{

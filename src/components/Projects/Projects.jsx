@@ -37,6 +37,7 @@ const Projects = () => {
                     as="h2"
                     size={["lg", "xl"]}
                     fontWeight="extrabold"
+                    id='projects'
                 >
                     {t("projects.title")}
                 </Heading>

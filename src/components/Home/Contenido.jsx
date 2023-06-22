@@ -23,7 +23,6 @@ const Contenido = () => {
                 direction={{ base: 'column', lg: 'row' }}
                 spacing={{ base: 4, lg: 10 }}
                 mb={4}
-                id='about'
             >
                 {
                     !isDesktop ? (
