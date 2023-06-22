@@ -24,7 +24,7 @@ import LanguageMenu from '../../helpers/LanguageMenu';
 import '@fontsource/smooch';
 import "@fontsource/fira-sans-condensed";
 
-export const TopNav = (props) => {
+export const TopNav = () => {
 
     const isDesktop = useBreakpointValue({
         base: false,
