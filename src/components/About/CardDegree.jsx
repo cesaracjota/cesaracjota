@@ -20,7 +20,7 @@ import { FaUniversity } from 'react-icons/fa';
 import { MdWork } from 'react-icons/md';
 // import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
 import TECSUP_logo from '../../assets/img/logos/TECSUP.jpg';
-import GOOGLE_logo from '../../assets/img/logos/google.png';
+import AGYLCODE_logo from '../../assets/img/logos/AGYLCODE.jpeg';
 import ISOS_GROUP_logo from '../../assets/img/logos/ISOS_GROUP.png';
 import MARIA_INMACULADA_logo from '../../assets/img/logos/MARIA_INMACULADA.jpg';
 import PODER_JUDICIAL_logo from '../../assets/img/logos/PODER_JUDICIAL.png';
@@ -74,10 +74,10 @@ const CardDegree = () => {
     const dataExperience = [
         {
             career: 'Software Engineer Intern',
-            institution: 'GOOGLE',
+            institution: 'AGYL CODE',
             date: 'Jun 2023 - present',
             url: 'https://www.google.com/',
-            image: GOOGLE_logo,
+            image: AGYLCODE_logo,
             content_list: [
                 {
                     title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
