@@ -58,14 +58,14 @@ const CardDegree = () => {
             content_list:
                 [
                     {
-                        title: 'I have studied basic software engineering subjects like DS, Algorithms, DBMS, OS, CA, AI etc.',
+                        title: 'He realizado una variedad de cursos relacionados con Inteligencia Artificial, que incluyen temas como IA Explicable, Aprendizaje Automático en Grafos, Visión por Computadora, entre otros.',
                     },
                     {
-                        title: 'Apart from this, I have done courses on Deep Learning, Data Science, Cloud Computing and Full Stack Development.',
+                        title: ' Además de esto, también he tenido experiencia como asistente de investigación. Como parte de ello, he trabajado en la creación de nuevos algoritmos en Aprendizaje Automático en Grafos y Ciencia de Redes.',
                     },
                     {
-                        title: 'I was selected for Merit cum Means Scholarship which is given to top 10% of students in college. I have received award from respected director for consistently best performance in academics.',
-                    },
+                        title: 'A pocos meses de titularme como: Software Engineer.',
+                    }
                 ],
             icon: 'FaRegCommentDots'
         },
@@ -80,13 +80,10 @@ const CardDegree = () => {
             image: AGYLCODE_logo,
             content_list: [
                 {
-                    title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
+                    title: 'Como desarrollador Full Stack, diseño y mantengo aplicaciones web completas, tanto en el front-end como en el back-end. Trabajo en todas las etapas del ciclo de desarrollo de software, desde el análisis hasta la implementación y pruebas.',
                 },
                 {
-                    title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
-                },
-                {
-                    title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
+                    title: 'En el back-end, desarrollo la lógica empresarial y gestiono bases de datos e integraciones con servicios externos utilizando tecnologías como Node.js, Python o Django.',
                 },
             ],
         },
@@ -98,14 +95,14 @@ const CardDegree = () => {
             image: ISOS_GROUP_logo,
             content_list: [
                 {
-                    title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
+                    title: 'Como diseñador UX/UI, creo experiencias de usuario excepcionales y diseños atractivos. Utilizo técnicas de investigación para desarrollar flujos de usuarios intuitivos y wireframes.',
                 },
                 {
-                    title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
+                    title: 'Siempre aseguro que mis diseños sean adaptables a diferentes dispositivos y resoluciones, siguiendo las mejores prácticas de diseño responsivo.',
                 },
                 {
-                    title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
-                },
+                    title: 'Además, me aseguro de que mis diseños sean accesibles para todos los usuarios, siguiendo las pautas de accesibilidad.',
+                }
             ]
         },
         {
@@ -116,13 +113,13 @@ const CardDegree = () => {
             image: MARIA_INMACULADA_logo,
             content_list: [
                 {
-                    title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
+                    title: 'Como desarrollador Full Stack, diseñé y realizé mantenimiento de aplicaciones web completas, tanto en el front-end como en el back-end. Trabajo en todas las etapas del ciclo de desarrollo de software, desde el análisis hasta la implementación y pruebas.',
                 },
                 {
-                    title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
+                    title: 'En el back-end, desarrollé la lógica empresarial y gestioné bases de datos e integraciones con servicios externos utilizando tecnologías como Node.js, Python o Django.',
                 },
                 {
-                    title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
+                    title: 'En el front-end, utilicé tecnologías como React.js, Next.js, HTML5, CSS3, JavaScript, TypeScript, entre otros.',
                 }
             ]
         },
@@ -134,13 +131,13 @@ const CardDegree = () => {
             image: PODER_JUDICIAL_logo,
             content_list: [
                 {
-                    title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
+                    title: 'Como desarrollador Frontend, diseñé y realicé mantenimiento de aplicaciones web completas, tanto en el front-end como en el back-end. Trabajo en todas las etapas del ciclo de desarrollo de software, desde el análisis hasta la implementación y pruebas.',
                 },
                 {
-                    title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
+                    title: 'En el front-end, utilicé tecnologías como React.js, Next.js, HTML5, CSS3, JavaScript, TypeScript, entre otros.',
                 },
                 {
-                    title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
+                    title: 'En el back-end, desarrollé la lógica empresarial y gestioné bases de datos e integraciones con servicios externos utilizando tecnologías como Spring Boot, Java y PostgreSQL.',
                 }
             ]
         }
@@ -155,7 +152,7 @@ const CardDegree = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: 'xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '3xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"
@@ -204,7 +201,7 @@ const CardDegree = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: 'xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '3xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"

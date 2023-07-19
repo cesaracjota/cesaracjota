@@ -85,14 +85,14 @@ const TechStack = () => {
             <Stack textAlign={'start'} w="full" mt={8}>
                 <Heading
                     as="h1"
-                    fontSize={{ base: 'xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '3xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"
                 >
                     {t("skills")}
                 </Heading>
-                <Text color={'gray.800'} _dark={{ color: 'gray.200' }} textAlign={'justify'} fontSize={["sm","lg"]}>
+                <Text color={'gray.800'} _dark={{ color: 'gray.200' }} textAlign={'left'} fontSize={["sm","md"]}>
                     {t("skills_description")}
                 </Text>
             </Stack>

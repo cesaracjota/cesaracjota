@@ -79,7 +79,7 @@ const Contact = () => {
                 >
                     <Heading
                         as="h1"
-                        fontSize={{ base: '2xl', lg: '4xl' }}
+                        fontSize={{ base: 'xl', lg: '3xl' }}
                         fontWeight="extrabold"
                         letterSpacing="tight"
                         lineHeight="shorter"
@@ -93,7 +93,7 @@ const Contact = () => {
                             _dark={{
                                 color: 'gray.200'
                             }}
-                            fontSize={'lg'}
+                            fontSize={{ base: 'sm', lg: 'md' }}
                         >
                         {t("contacts.subtitle")}
                         </Text>

@@ -7,8 +7,8 @@ import esTranslation from "./locales/es.json";
 
 // Configura la inicialización de i18n.
 i18n.use(initReactI18next).init({
-  fallbackLng: "en", // El idioma predeterminado si no se puede detectar uno.
-  lng: localStorage.getItem("language") || "en", // El idioma seleccionado.
+  fallbackLng: "es", // El idioma predeterminado si no se puede detectar uno.
+  lng: localStorage.getItem("language") || "es", // El idioma seleccionado.
   resources: {
     en: {
       translation: enTranslation,

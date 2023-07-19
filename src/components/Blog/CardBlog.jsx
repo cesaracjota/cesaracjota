@@ -23,7 +23,7 @@ export default function CardPost({ blog }) {
             <Stack
                 p={4}
                 bg={useColorModeValue('white', 'primary.1000')}
-                rounded="xl"
+                rounded="md"
                 borderWidth="1px"
                 _dark={{
                     bg: 'primary.1000',

@@ -68,7 +68,7 @@ const Contenido = () => {
                                         style={{ fontSize: '2em', display: 'inline-block', fontWeight: 'bold' }}
                                     />
                                 </Heading>
-                                <Text textAlign={'justify'} fontSize={'sm'}>
+                                <Text textAlign={'left'} fontSize={'sm'}>
                                     {t("presentationMessage")}
                                 </Text>
                                 <Stack
@@ -202,11 +202,11 @@ const Contenido = () => {
                                         loop={true}
                                         deletionSpeed={110}
                                         speed={80}
-                                        style={{ fontSize: '2em', display: 'inline-block', fontWeight: 'extrabold' }}
+                                        style={{ fontSize: '1.7em', display: 'inline-block', fontWeight: 'extrabold' }}
                                     />
                                 </Heading>
 
-                                <chakra.p textAlign={'justify'} fontSize={'18px'}>
+                                <chakra.p textAlign={'left'} fontSize={'18px'}>
                                     {t("presentationMessage")}.
                                 </chakra.p>
                                 <Stack

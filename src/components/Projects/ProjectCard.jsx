@@ -17,7 +17,7 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProjects, reset } from '../../features/projectSlice';
-import { ToastChakra } from '../../helpers/toast';
+// import { ToastChakra } from '../../helpers/toast';
 import moment from 'moment';
 import { ModalImage } from './ModalImage';
 import { FaExternalLinkAlt } from 'react-icons/fa';
@@ -37,7 +37,7 @@ const ProjectCard = () => {
             try {
 
                 if (isError) {
-                    ToastChakra('Error', message, 'error', 1500);
+                    // ToastChakra('Error', message, 'error', 1500);
                     console.log(message);
                 }
 

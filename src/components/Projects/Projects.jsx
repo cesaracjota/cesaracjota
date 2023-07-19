@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import GithubCard from './GithubCard';
 import { getStarredRepositories } from '../../services/api.service';
 import { t } from 'i18next';
-import { ToastChakra } from '../../helpers/toast';
+// import { ToastChakra } from '../../helpers/toast';
 import ProjectCard from './ProjectCard';
 
 const Projects = () => {
@@ -20,7 +20,7 @@ const Projects = () => {
                 setLoading(false);
             } catch (error) {
                 console.log(error);
-                ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
+                // ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
                 setLoading(false);
             }
         }
@@ -35,7 +35,7 @@ const Projects = () => {
             >
                 <Heading
                     as="h2"
-                    size={["lg", "xl"]}
+                    size={["md", "lg"]}
                     fontWeight="extrabold"
                     id='projects'
                 >
@@ -46,7 +46,7 @@ const Projects = () => {
                     _dark={{
                         color: 'gray.200'
                     }}
-                    fontSize={["sm", "lg"]}
+                    fontSize={["sm", "md"]}
                 >
                     {t("projects.subtitle")}
                 </Text>

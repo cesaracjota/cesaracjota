@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Heading, SimpleGrid, Skeleton, Stack, Text } from '@chakra-ui/react'
 import CardCertifications from './CardCertifications';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastChakra } from '../../helpers/toast';
+// import { ToastChakra } from '../../helpers/toast';
 import { getAllCertificados, reset } from '../../features/certificadoSlice';
 import { t } from 'i18next';
 
@@ -21,7 +21,7 @@ const Certifications = () => {
             try {
 
                 if (isError) {
-                    ToastChakra('Error', message, 'error', 1500);
+                    // ToastChakra('Error', message, 'error', 1500);
                     console.log(message);
                 }
 
@@ -50,7 +50,7 @@ const Certifications = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: 'xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '3xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"

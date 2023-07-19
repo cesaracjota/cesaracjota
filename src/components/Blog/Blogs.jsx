@@ -3,7 +3,7 @@ import { Heading, SimpleGrid, Skeleton, Stack } from '@chakra-ui/react'
 import { t } from 'i18next'
 import { fetchBlogs } from '../../services/api.service';
 import CardPost from './CardBlog';
-import { ToastChakra } from '../../helpers/toast';
+// import { ToastChakra } from '../../helpers/toast';
 
 const Blogs = () => {
 
@@ -19,7 +19,7 @@ const Blogs = () => {
                 setLoading(false);
             } catch (error) {
                 console.error(error);
-                ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
+                // ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
             }
         }
 
@@ -34,7 +34,7 @@ const Blogs = () => {
         >
             <Heading
                 as="h1"
-                fontSize={{ base: '2xl', lg: '4xl' }}
+                fontSize={{ base: 'xl', lg: '3xl' }}
                 fontWeight="extrabold"
                 letterSpacing="tight"
                 lineHeight="shorter"

@@ -4,7 +4,7 @@ import CardPost from './CardBlog';
 import { fetchBlogs } from '../../services/api.service';
 import { FaMousePointer } from 'react-icons/fa';
 import { t } from 'i18next';
-import { ToastChakra } from '../../helpers/toast';
+// import { ToastChakra } from '../../helpers/toast';
 import { Link } from 'react-router-dom';
 
 const Blog = () => {
@@ -21,7 +21,7 @@ const Blog = () => {
                 setLoading(false);
             } catch (error) {
                 console.error(error);
-                ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
+                // ToastChakra('ERROR AL CARGAR LA DATA', error?.message, 'error', 1500, 'bottom');
             }
         }
 
@@ -37,7 +37,7 @@ const Blog = () => {
             >
                 <Heading
                     as="h1"
-                    fontSize={{ base: '2xl', lg: '4xl' }}
+                    fontSize={{ base: 'xl', lg: '3xl' }}
                     fontWeight="extrabold"
                     letterSpacing="tight"
                     lineHeight="shorter"
