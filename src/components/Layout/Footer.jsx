@@ -29,6 +29,9 @@ export const Footer = (props) => {
                             aria-label="Youtube"
                             icon={<FaYoutube fontSize="1.6rem" />}
                             colorScheme='red'
+                            _dark={{
+                                color:'red.500'
+                            }}
                             variant="ghost"
                             size="lg"
                         />
@@ -49,6 +52,9 @@ export const Footer = (props) => {
                             aria-label="LinkedIn"
                             icon={<FaLinkedin fontSize="1.6rem" />}
                             colorScheme='linkedin'
+                            _dark={{
+                                color: 'linkedin.600'
+                            }}
                             variant="ghost"
                             size="lg"
                         />
