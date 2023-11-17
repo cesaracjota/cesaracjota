@@ -2,15 +2,14 @@ import {
     Button,
     FormControl,
     FormLabel,
+    HStack,
     Heading,
-    Image,
     Input,
     Stack,
     Text,
     Textarea
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import ContactLogo from '../../assets/img/contact.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { createMessage } from '../../features/mensajeSlice';
 import { ToastChakra } from '../../helpers/toast';
@@ -95,7 +94,7 @@ const Contact = () => {
                             }}
                             fontSize={{ base: 'sm', lg: 'md' }}
                         >
-                        {t("contacts.subtitle")}
+                            {t("contacts.subtitle")}
                         </Text>
                     </Stack>
                 </Stack>
@@ -112,19 +111,14 @@ const Contact = () => {
                     width="full"
                     justifyContent={'space-between'}
                 >
-                    <Image
-                        alt="Contact Us"
-                        src={ContactLogo}
-                        boxSize={'500'}
-                        alignSelf={'center'}
-                    />
                     <Stack spacing={2} w="full">
                         <form onSubmit={handleSave}>
                             <Stack spacing={4}>
-                                <FormControl isRequired>
-                                    <FormLabel>
-                                    {t("contacts.form.name")}
-                                    </FormLabel>
+                                <HStack justifyContent={'space-between'} spacing={10}>
+                                    <FormControl isRequired>
+                                        <FormLabel>
+                                            {t("contacts.form.name")}
+                                        </FormLabel>
                                         <Input
                                             ref={usernameRef}
                                             type='text'
@@ -135,22 +129,23 @@ const Contact = () => {
                                             }}
                                             onChange={(e) => setIndice({ ...indice, nombres_usuario: e.target.value })}
                                         />
-                                </FormControl>
-                                <FormControl isRequired>
-                                    <FormLabel>
-                                    {t("contacts.form.email")}
-                                    </FormLabel>
-                                    <Input
-                                        ref={emailRef}
-                                        type='email'
-                                        placeholder={t("contacts.ph.email")}
-                                        _focus={{
-                                            borderColor: 'primary.100',
-                                            boxShadow: 'none',
-                                        }}
-                                        onChange={(e) => setIndice({ ...indice, email: e.target.value })}
-                                    />
-                                </FormControl>
+                                    </FormControl>
+                                    <FormControl isRequired>
+                                        <FormLabel>
+                                            {t("contacts.form.email")}
+                                        </FormLabel>
+                                        <Input
+                                            ref={emailRef}
+                                            type='email'
+                                            placeholder={t("contacts.ph.email")}
+                                            _focus={{
+                                                borderColor: 'primary.100',
+                                                boxShadow: 'none',
+                                            }}
+                                            onChange={(e) => setIndice({ ...indice, email: e.target.value })}
+                                        />
+                                    </FormControl>
+                                </HStack>
                                 <FormControl>
                                     <FormLabel>{t("contacts.form.phone_number")}</FormLabel>
                                     <Input
@@ -181,7 +176,10 @@ const Contact = () => {
                                     <FormLabel>{t("contacts.form.message")}</FormLabel>
                                     <Textarea
                                         ref={messageRef}
+                                        resize="vertical"
+
                                         type='text'
+
                                         onChange={(e) => setIndice({ ...indice, mensaje: e.target.value })}
                                         _focus={{
                                             borderColor: 'primary.100',

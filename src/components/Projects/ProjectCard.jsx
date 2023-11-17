@@ -6,23 +6,19 @@ import {
     Flex,
     Text,
     Image,
-    Icon,
     Heading,
     Tag,
     Link,
     Skeleton,
     Button,
 } from '@chakra-ui/react';
-import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProjects, reset } from '../../features/projectSlice';
-// import { ToastChakra } from '../../helpers/toast';
 import moment from 'moment';
 import { ModalImage } from './ModalImage';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { t } from 'i18next';
-
 const ProjectCard = () => {
 
     const dispatch = useDispatch();
@@ -31,6 +27,8 @@ const ProjectCard = () => {
     const [imageValue, setImageValue] = useState('');
 
     const { projects, isLoading, isError, message } = useSelector((state) => state.projects);
+
+    const filterProjects = projects.filter(project => project.estado === 'ACTIVO');
 
     useEffect(() => {
         async function loadData() {
@@ -120,7 +118,7 @@ const ProjectCard = () => {
                     </>
                 ) : (
                     <>
-                        {projects.map((data, index) => (
+                        {filterProjects.map((data, index) => (
                             <Stack
                                 key={index}
                                 spacing={{ base: 0, md: 4 }}
@@ -140,17 +138,18 @@ const ProjectCard = () => {
                                 {data?.isFeatured && (
                                     <Flex
                                         alignItems="center"
-                                        p={2}
-                                        bg="primary.100"
+                                        px={10}
+                                        py={2}
+                                        backgroundColor="rgba(98, 91, 248, 0.9)"
+                                        borderTopStartRadius={'md'}
                                         pos="absolute"
-                                        fontSize="sm"
-                                        fontWeight="500"
+                                        fontWeight="600"
                                         color="white"
                                         top={0}
                                         left={0}
                                         alignSelf={'center'}
                                     >
-                                        <Text alignSelf={'center'}>FEATURED</Text> &nbsp; <Icon alignItems={'center'} as={AiOutlineExclamationCircle} h={4} w={4} />
+                                        <Text alignSelf={'center'}>EN DESARROLLO</Text>
                                     </Flex>
                                 )}
                                 <Flex ml="0 !important">
