@@ -18,39 +18,39 @@ import { MdCheckCircle } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { FaUniversity } from 'react-icons/fa';
 import { MdWork } from 'react-icons/md';
-// import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
+import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
 import TECSUP_logo from '../../assets/img/logos/TECSUP.jpg';
 import AGYLCODE_logo from '../../assets/img/logos/AGYLCODE.jpeg';
 import ISOS_GROUP_logo from '../../assets/img/logos/ISOS_GROUP.png';
 import MARIA_INMACULADA_logo from '../../assets/img/logos/MARIA_INMACULADA.jpg';
 import PODER_JUDICIAL_logo from '../../assets/img/logos/PODER_JUDICIAL.png';
 import { t } from 'i18next';
+import { useTranslation } from "react-i18next";
 
 const CardDegree = () => {
 
     const dataEducation = [
-        // {
-        //     career: 'B.Tech. in Telecomunications Engineering',
-        //     institution: 'UNSA',
-        //     date: '2023 - present',
-        //     url: 'https://www.unsa.edu.pe/',
-        //     image: UNSA_logo,
-        //     content_list:
-        //         [
-        //             {
-        //                 title: 'I have taken varity of courses related to Artificial Intelligence which correspond to Explainable AI, Graph Machine Learning, Computer Vision etc.',
-        //             },
-        //             {
-        //                 title: 'Apart from this, I have also done research assistantship. As part of it, I have worked on creating new algorithms in Graph ML and Network Science.',
-        //             },
-        //             {
-        //                 title: 'During my time at university, I was also associated with multimedia department. As part of it, I have worked on some documentry films and interviews.',
-        //             },
-        //         ],
-        //     icon: 'RiChatHeartFill'
-        // },
         {
-            career: 'B.Tech. in Computer Engineering',
+            career: 'B.Tech. in Materials Engineering',
+            institution: 'UNSA',
+            date: '2024 - present',
+            url: 'https://www.unsa.edu.pe/',
+            image: UNSA_logo,
+            content_list:
+                [
+                    {
+                        title: 'Una nueva etapa en mi camino profesional seguir continuando con mis estudios superiores les iré comentando a medida que voy avanzando.',
+                    },
+                ],
+            content_list_en: [
+                {
+                    title: 'A new stage in my professional path to continue with my higher studies, I will keep you informed as I go along.'
+                }
+            ],
+            icon: 'RiChatHeartFill'
+        },
+        {
+            career: 'B.Tech. in Software Engineering',
             institution: 'TECSUP',
             date: '2019 - 2022',
             url: 'https://www.tecsup.edu.pe/',
@@ -61,12 +61,17 @@ const CardDegree = () => {
                         title: 'He realizado una variedad de cursos relacionados con Inteligencia Artificial, que incluyen temas como IA Explicable, Aprendizaje Automático en Grafos, Visión por Computadora, entre otros.',
                     },
                     {
-                        title: ' Además de esto, también he tenido experiencia como asistente de investigación. Como parte de ello, he trabajado en la creación de nuevos algoritmos en Aprendizaje Automático en Grafos y Ciencia de Redes.',
-                    },
-                    {
                         title: 'A pocos meses de titularme como: Software Engineer.',
                     }
                 ],
+            content_list_en: [
+                {
+                    title: 'I have taken a variety of courses related to Artificial Intelligence, including topics such as Explainable AI, Machine Learning in Graphs, Computer Vision, among others.'
+                },
+                {
+                    title: 'A few months away from graduating as a Software Engineer.'
+                },
+            ],
             icon: 'FaRegCommentDots'
         },
     ];
@@ -86,6 +91,14 @@ const CardDegree = () => {
                     title: 'En el back-end, desarrollo la lógica empresarial y gestiono bases de datos e integraciones con servicios externos utilizando tecnologías como Node.js, Python o Django.',
                 },
             ],
+            content_list_en: [
+                {
+                    title: 'As a Full Stack developer, I design and maintain complete web applications, both front-end and back-end. I work in all stages of the software development cycle, from analysis to implementation and testing.'
+                },
+                {
+                    title: 'On the back-end, I develop business logic and manage databases and integrations with external services using technologies such as Node.js, Python or Django.'
+                }
+            ]
         },
         {
             career: 'UX/UI Designer',
@@ -103,6 +116,17 @@ const CardDegree = () => {
                 {
                     title: 'Además, me aseguro de que mis diseños sean accesibles para todos los usuarios, siguiendo las pautas de accesibilidad.',
                 }
+            ],
+            content_list_en: [
+                {
+                    title: 'As a UX/UI designer, I create exceptional user experiences and engaging designs. I use research techniques to develop intuitive user flows and wireframes.'
+                },
+                {
+                    title: 'I always ensure that my designs are adaptable to different devices and resolutions, following responsive design best practices.'
+                },
+                {
+                    title: 'I also ensure that my designs are accessible to all users, following accessibility guidelines.'
+                },
             ]
         },
         {
@@ -121,6 +145,17 @@ const CardDegree = () => {
                 {
                     title: 'En el front-end, utilicé tecnologías como React.js, Next.js, HTML5, CSS3, JavaScript, TypeScript, entre otros.',
                 }
+            ],
+            content_list_en: [
+                {
+                    title: 'As a Full Stack developer, I design and maintain complete web applications, both front-end and back-end. I work in all stages of the software development cycle, from analysis to implementation and testing.'
+                },
+                {
+                    title: 'On the back-end, I developed business logic and managed databases and integrations with external services using technologies such as Node.js, Python or Django.'
+                },
+                {
+                    title: 'On the front-end, I used technologies such as React.js, Next.js, HTML5, CSS3, JavaScript, TypeScript, among others.'
+                },
             ]
         },
         {
@@ -139,6 +174,17 @@ const CardDegree = () => {
                 {
                     title: 'En el back-end, desarrollé la lógica empresarial y gestioné bases de datos e integraciones con servicios externos utilizando tecnologías como Spring Boot, Java y PostgreSQL.',
                 }
+            ],
+            content_list_en: [
+                {
+                    title: 'As a Frontend developer, I designed and maintained complete web applications, both front-end and back-end. I work in all stages of the software development cycle, from analysis to implementation and testing.'
+                },
+                {
+                    title: 'On the front-end, I used technologies such as React.js, Next.js, HTML5, CSS3, JavaScript, TypeScript, among others.'
+                },
+                {
+                    title: 'En el back-end, desarrollé la lógica empresarial y gestioné bases de datos e integraciones con servicios externos utilizando tecnologías como Spring Boot, Java y PostgreSQL.'
+                },
             ]
         }
     ]
@@ -186,7 +232,7 @@ const CardDegree = () => {
                     </Heading>
                 </Stack>
                 {dataEducation.map((degree, index) => (
-                    <Flex key={index} mb="10px">
+                    <Flex key={index} mb="10px" justify-content={'flex-start'}>
                         <LineWithDot />
                         <Card {...degree} />
                     </Flex>
@@ -245,7 +291,10 @@ const CardDegree = () => {
 }
 
 
-const Card = ({ title, career, institution, date, url, image, content_list }) => {
+const Card = ({ title, career, institution, date, url, image, content_list, content_list_en }) => {
+    
+    const { i18n } = useTranslation();
+
     return (
         <Stack
             p={{ base: 4, lg: 6 }}
@@ -293,6 +342,8 @@ const Card = ({ title, career, institution, date, url, image, content_list }) =>
                     justifyContent={{
                         lg: 'space-between'
                     }}
+                    display={'flex'}
+                    w='full'
                 >
                     <Stack
                         direction={'column'}
@@ -341,17 +392,27 @@ const Card = ({ title, career, institution, date, url, image, content_list }) =>
                         {date}
                     </Heading>
                 </Stack>
-                <VStack spacing={2} mt={3} mb={3} textAlign="left">
+                <VStack spacing={2} mt={3} mb={3} textAlign="start" justify-content={'flex-start'}>
                     <Stack
                         direction={'column'}
                         spacing={2}
+                        justify-content={'flex-start'}
+                        textAlign={'start'}
                         fontSize={{
                             base: 'xs',
                             lg: 'md'
                         }}
                     >
                         {
+                            i18n.language === "es" ?
                             content_list?.map((content, index) => (
+                                <List key={index} textAlign={'start'}>
+                                    <ListItem>
+                                        <ListIcon as={MdCheckCircle} color='primary.100' boxSize={5} />
+                                        {content?.title}
+                                    </ListItem>
+                                </List>
+                            )) : content_list_en?.map((content, index) => (
                                 <List key={index}>
                                     <ListItem>
                                         <ListIcon as={MdCheckCircle} color='primary.100' boxSize={5} />

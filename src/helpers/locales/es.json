@@ -3,7 +3,7 @@
     "welcomeMessage2": "Desarrollador de Software.",
     "welcomeMessage3": "Diseñador UX/UI.",
     "welcomeMessage4": "Apasionado por la tecnología.",
-    "presentationMessage": "Desarrollador de software obsesionado con la calidad y la experiencia del usuario. Especializado en crear aplicaciones web y móviles intuitivas y eficientes. Si quieres trabajar en un proyecto emocionante y desafiante, ¡estoy listo para ayudarte!",
+    "presentationMessage": "Especializado en crear aplicaciones web, móviles intuitivas y eficientes. Si quieres trabajar en un proyecto emocionante y desafiante, ¡estoy listo para ayudarte!",
     "resume": "Curriculum vitae",
     "popular_blogs": "Blogs Populares",
     "more_blogs": "Más Blogs",
@@ -37,7 +37,7 @@
         "ph": {
             "name": "Nombres",
             "email": "Correo Electrónico",
-            "phone_number": "+(código) Número de Teléfono",
+            "phone_number": "Número de Teléfono",
             "message_subject": "Escribe el asunto aquí...",
             "message": "Escribe tu mensaje aquí..."
         },
@@ -52,6 +52,6 @@
         }
     },
     "footer": {
-        "description": " Hecho con ❤️ por Cesar Acjota, Equipo @AgylCode"
+        "description": " Hecho con ❤️ por Cesar Acjota"
     }
 }

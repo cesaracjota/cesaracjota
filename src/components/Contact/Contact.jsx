@@ -2,7 +2,6 @@ import {
     Button,
     FormControl,
     FormLabel,
-    HStack,
     Heading,
     Input,
     Stack,
@@ -113,8 +112,7 @@ const Contact = () => {
                 >
                     <Stack spacing={2} w="full">
                         <form onSubmit={handleSave}>
-                            <Stack spacing={4}>
-                                <HStack justifyContent={'space-between'} spacing={10}>
+                            <Stack spacing={4} justifyContent={'space-between'}>
                                     <FormControl isRequired>
                                         <FormLabel>
                                             {t("contacts.form.name")}
@@ -145,7 +143,7 @@ const Contact = () => {
                                             onChange={(e) => setIndice({ ...indice, email: e.target.value })}
                                         />
                                     </FormControl>
-                                </HStack>
+                                </Stack>
                                 <FormControl>
                                     <FormLabel>{t("contacts.form.phone_number")}</FormLabel>
                                     <Input
@@ -190,7 +188,9 @@ const Contact = () => {
                                 </FormControl>
                                 <Button
                                     type='submit'
-                                    mt={6}
+                                    mt={4}
+                                    w={'full'}
+                                    fontWeight={'normal'}
                                     colorScheme='purple'
                                     isLoading={isLoading ? true : false}
                                     loadingText={t("contacts.form.loadingText")}
@@ -204,7 +204,6 @@ const Contact = () => {
                                 >
                                     {t("contacts.form.button_send")}
                                 </Button>
-                            </Stack>
                         </form>
                     </Stack>
                 </Stack>

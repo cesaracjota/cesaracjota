@@ -3,7 +3,7 @@
     "welcomeMessage2": "Software developer.",
     "welcomeMessage3": "UX/UI designer.",
     "welcomeMessage4": "Technology enthusiasts",
-    "presentationMessage": "Software developer obsessed with quality and user experience. I specialize in creating intuitive and efficient web and mobile applications. If you want to work on an exciting and challenging project, I'm ready to help you!",
+    "presentationMessage": "I specialize in creating intuitive and efficient web, mobile applications. If you want to work on an exciting and challenging project, I'm ready to help you!",
     "resume": "Resume",
     "popular_blogs": "Popular Blogs",
     "skills": "Technical Skills",
@@ -37,7 +37,7 @@
         "ph": {
             "name": "Complete Name",
             "email": "Email Include @",
-            "phone_number": "+(code) Phone Number",
+            "phone_number": "Phone Number",
             "message_subject": "Type the subject of the message here...",
             "message": "Type your message here..."
         },
@@ -52,6 +52,6 @@
         }
     },
     "footer": {
-        "description": " Made with ❤️ by Cesar Acjota, Team @AgylCode"
+        "description": " Made with ❤️ by Cesar Acjota"
     }
 }
