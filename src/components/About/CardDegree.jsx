@@ -30,25 +30,25 @@ import { useTranslation } from "react-i18next";
 const CardDegree = () => {
 
     const dataEducation = [
-        {
-            career: 'B.Tech. in Materials Engineering',
-            institution: 'UNSA',
-            date: '2024 - present',
-            url: 'https://www.unsa.edu.pe/',
-            image: UNSA_logo,
-            content_list:
-                [
-                    {
-                        title: 'Una nueva etapa en mi camino profesional seguir continuando con mis estudios superiores les iré comentando a medida que voy avanzando.',
-                    },
-                ],
-            content_list_en: [
-                {
-                    title: 'A new stage in my professional path to continue with my higher studies, I will keep you informed as I go along.'
-                }
-            ],
-            icon: 'RiChatHeartFill'
-        },
+        // {
+        //     career: 'B.Tech. in Materials Engineering',
+        //     institution: 'UNSA',
+        //     date: '2024 - present',
+        //     url: 'https://www.unsa.edu.pe/',
+        //     image: UNSA_logo,
+        //     content_list:
+        //         [
+        //             {
+        //                 title: 'Una nueva etapa en mi camino profesional seguir continuando con mis estudios superiores les iré comentando a medida que voy avanzando.',
+        //             },
+        //         ],
+        //     content_list_en: [
+        //         {
+        //             title: 'A new stage in my professional path to continue with my higher studies, I will keep you informed as I go along.'
+        //         }
+        //     ],
+        //     icon: 'RiChatHeartFill'
+        // },
         {
             career: 'B.Tech. in Software Engineering',
             institution: 'TECSUP',
