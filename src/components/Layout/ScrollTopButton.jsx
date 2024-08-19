@@ -28,7 +28,7 @@ const ScrollTopButton = () => {
 
   const openSendMessageWhatsApp = () => {
     const phoneNumber = "51942035890";
-    const message = "Hola estimado. ¿Puedes proporcionarme más información sobre la tu servicio? Gracias.";
+    const message = "Hola...";
     
     const whatsappURL = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(message)}`;
   
@@ -79,7 +79,7 @@ const ScrollTopButton = () => {
             marginLeft: "-100%",
             marginTop: "-100%",
             borderRadius: "50%",
-            bgColor: "whatsapp.400",
+            bgColor: "whatsapp.500",
             animation: `2.25s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`,
           }}
         >
