@@ -21,8 +21,9 @@ import { MdWork } from 'react-icons/md';
 import UNSA_logo from '../../assets/img/logos/UNSA.jpg';
 import TECSUP_logo from '../../assets/img/logos/TECSUP.jpg';
 import AGYLCODE_logo from '../../assets/img/logos/AGYLCODE.jpeg';
+import GZ_logo from '../../assets/img/logos/GZ.jpg';
 import ISOS_GROUP_logo from '../../assets/img/logos/ISOS_GROUP.png';
-import MARIA_INMACULADA_logo from '../../assets/img/logos/MARIA_INMACULADA.jpg';
+import MUNI_USICAYOS_logo from '../../assets/img/logos/MUNI_USICAYOS.jpg';
 import PODER_JUDICIAL_logo from '../../assets/img/logos/PODER_JUDICIAL.png';
 import { t } from 'i18next';
 import { useTranslation } from "react-i18next";
@@ -101,9 +102,32 @@ const CardDegree = () => {
             ]
         },
         {
+            career: 'Futter Developer',
+            institution: 'Grifo Zamácola',
+            date: 'Ene 2024 - Abr 2024',
+            url: '#',
+            image: GZ_logo,
+            content_list: [
+                {
+                    title: 'Desarrollé y mantuve un sistema multifuncional utilizando Flutter, mejorando la eficiencia operativa en un 30%.',
+                },
+                {
+                    title: 'Colaboré con un equipo multidisciplinario para diseñar y desarrollar interfaces de usuario intuitivas y responsivas.',
+                },
+            ],
+            content_list_en: [
+                {
+                    title: 'As a Full Stack developer, I design and maintain complete web applications, both front-end and back-end. I work in all stages of the software development cycle, from analysis to implementation and testing.'
+                },
+                {
+                    title: 'On the back-end, I develop business logic and manage databases and integrations with external services using technologies such as Node.js, Python or Django.'
+                }
+            ]
+        },
+        {
             career: 'UX/UI Designer',
             institution: 'ISOS GROUP',
-            date: 'May 2023 - Jun 2023',
+            date: 'Nov 2023 - Ene 2024',
             url: 'https://www.isosgroup.pe/',
             image: ISOS_GROUP_logo,
             content_list: [
@@ -130,20 +154,20 @@ const CardDegree = () => {
             ]
         },
         {
-            career: 'Full Stack Software Developer',
-            institution: 'MARIA INMACULADA SCHOOL',
-            date: 'Dec 2022 - May 2023',
+            career: ' Analista de Sistemas y Programador',
+            institution: 'DISTRITO DE USICAYOS',
+            date: 'Ene 2023 - Nov 2023',
             url: 'https://www.maria-inmaculada.edu.pe/',
-            image: MARIA_INMACULADA_logo,
+            image: MUNI_USICAYOS_logo,
             content_list: [
                 {
-                    title: 'Como desarrollador Full Stack, diseñé y realizé mantenimiento de aplicaciones web completas, tanto en el front-end como en el back-end. Trabajo en todas las etapas del ciclo de desarrollo de software, desde el análisis hasta la implementación y pruebas.',
+                    title: 'Colaboré con equipos de desarrollo para crear interfaces de usuario atractivas y funcionales para aplicaciones móviles y plataformas web.',
                 },
                 {
-                    title: 'En el back-end, desarrollé la lógica empresarial y gestioné bases de datos e integraciones con servicios externos utilizando tecnologías como Node.js, Python o Django.',
+                    title: 'Realicé levantamiento de requerimientos y análisis para comprender necesidades y expectativas de los clientes.',
                 },
                 {
-                    title: 'En el front-end, utilicé tecnologías como React.js, Next.js, HTML5, CSS3, JavaScript, TypeScript, entre otros.',
+                    title: 'Diseñé wireframes, prototipos interactivos utilizando herramientas como FIGMA.',
                 }
             ],
             content_list_en: [

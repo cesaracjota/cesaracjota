@@ -19,6 +19,7 @@ import moment from 'moment';
 import { ModalImage } from './ModalImage';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { t } from 'i18next';
+import BANNERIMG from '../../assets/img/banner.jpg'
 const ProjectCard = () => {
 
     const dispatch = useDispatch();
@@ -161,7 +162,7 @@ const ProjectCard = () => {
                                         alignSelf={'center'}
                                         cursor={'pointer'}
                                         objectFit="cover"
-                                        src={data?.image?.secure_url}
+                                        src={data?.image?.secure_url ?? BANNERIMG}
                                         alt={data?.title}
                                         onClick={(index) => handleOpenModal(index?.target?.currentSrc)}
                                     />
