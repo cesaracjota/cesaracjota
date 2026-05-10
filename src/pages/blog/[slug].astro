@@ -1,0 +1,244 @@
+---
+import { getCollection, render } from 'astro:content';
+import '../../styles/global.css';
+import ConfigModal from '../../components/ConfigModal';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Helper for formatted date
+const publishDate = post.data.date.toLocaleDateString('es-PE', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// SEO Setup
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const siteName = "Cesar Acjota | Portfolio";
+const defaultImage = "/og-image.webp"; // Placeholder for their real OG image
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": new URL(defaultImage, Astro.url).toString(),
+  "author": {
+    "@type": "Person",
+    "name": "Cesar Acjota",
+    "url": Astro.url.origin
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cesar Acjota",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://avatars.githubusercontent.com/u/81894363?v=4"
+    }
+  },
+  "datePublished": post.data.date.toISOString(),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL.toString()
+  }
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.data.title} | César A. Ccoa Jota</title>
+    <meta name="description" content={post.data.description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${post.data.title} | César A. Ccoa Jota`} />
+    <meta property="og:description" content={post.data.description} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={new URL(defaultImage, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${post.data.title} | César A. Ccoa Jota`} />
+    <meta property="twitter:description" content={post.data.description} />
+    <meta property="twitter:image" content={new URL(defaultImage, Astro.url)} />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <!-- Inline script to prevent FOUC when loading light/dark mode and color theme -->
+    <script is:inline>
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      const colorTheme = localStorage.getItem('colorTheme') || 'zinc';
+      document.documentElement.classList.add(`theme-${colorTheme}`);
+    </script>
+  </head>
+  <body class="bg-[var(--color-bg)] text-[var(--color-text-main)] antialiased min-h-screen flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-bg)]">
+    
+    <!-- Academic/Journal Header Navigation -->
+    <nav class="w-full border-b border-[var(--color-border)] bg-[var(--color-surface)] sticky top-0 z-40 backdrop-blur-md bg-opacity-80">
+      <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-2 text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-accent)] transition-colors group">
+            <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al CV
+          </a>
+          <div class="h-4 w-px bg-[var(--color-border)] hidden md:block"></div>
+          <span class="text-xs font-mono text-[var(--color-text-muted)] hidden md:block uppercase tracking-wider">
+            Open Access Repository
+          </span>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-medium text-[var(--color-text-muted)]">
+          <a href="#" class="hover:text-[var(--color-text-main)] transition-colors flex items-center gap-1">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            Download PDF
+          </a>
+          <a href="#" class="hover:text-[var(--color-text-main)] transition-colors flex items-center gap-1">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+            Share
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Grid (SciELO / Elsevier style) -->
+    <main class="max-w-6xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-12 lg:gap-16 items-start w-full flex-1">
+      
+      <!-- Left Sidebar: Meta Info -->
+      <aside class="w-full lg:w-64 shrink-0 space-y-8 order-2 lg:order-1">
+        
+        {/* Metrics Box */}
+        <div class="p-5 border border-[var(--color-border)] bg-[var(--color-surface)] rounded-xl shadow-sm">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">Metrics</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-medium text-[var(--color-text-main)]">Views</span>
+              <span class="text-sm font-mono text-[var(--color-accent)] font-bold">1,204</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-medium text-[var(--color-text-main)]">Citations</span>
+              <span class="text-sm font-mono text-[var(--color-accent)] font-bold">0</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Info Box */}
+        <div class="space-y-4">
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-1">Published</h4>
+            <time class="text-sm font-medium text-[var(--color-text-main)]">{publishDate}</time>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-1">DOI</h4>
+            <a href="#" class="text-sm font-mono text-[var(--color-accent)] hover:underline break-all">10.1016/j.microecon.2026.{post.id.substring(0,4)}</a>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-2">Keywords</h4>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((tag: string) => (
+                <span class="px-2 py-1 text-[10px] font-mono bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-secondary)] rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Cite this */}
+        <div class="p-4 bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-xl">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-2">How to cite</h4>
+          <p class="text-xs text-[var(--color-text-secondary)] leading-relaxed font-serif">
+            Acjota({new Date().getFullYear()}). {post.data.title}. <i>Journal of Data & Economics Research</i>. Advance online publication.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Center: Article Body -->
+      <article class="flex-1 min-w-0 order-1 lg:order-2 animate-fade-up">
+        
+        {/* Article Header */}
+        <header class="mb-10 border-b border-[var(--color-border)] pb-8">
+          <div class="inline-block px-3 py-1 bg-[var(--color-accent-light)] text-[var(--color-accent)] text-xs font-bold uppercase tracking-widest rounded mb-6">
+            Original Research Article
+          </div>
+          <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tight text-[var(--color-text-main)] mb-6 leading-[1.15]">
+            {post.data.title}
+          </h1>
+          
+          <div class="flex items-center gap-3 mb-6">
+            <img src="https://avatars.githubusercontent.com/u/81894363?v=4&size=64" alt="Author" class="w-10 h-10 rounded-full border border-[var(--color-border)]" />
+            <div>
+              <div class="font-bold text-[var(--color-text-main)] text-sm flex items-center gap-1.5">
+                César Acjota <sup class="text-[var(--color-text-muted)] font-normal">1, 2</sup>
+              </div>
+              <div class="text-xs text-[var(--color-text-muted)]">
+                <sup class="mr-1">1</sup> Data Engineer & Developer
+                <span class="mx-1">|</span>
+                <sup class="mr-1">2</sup> Economist, UNSA
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Abstract */}
+        <section class="mb-12 p-6 md:p-8 bg-[var(--color-surface)] border-l-4 border-[var(--color-accent)] rounded-r-xl shadow-sm">
+          <h2 class="text-lg font-bold text-[var(--color-text-main)] mb-3 font-display">Abstract</h2>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed text-sm md:text-base font-serif italic">
+            {post.data.description}
+          </p>
+        </section>
+
+        {/* Markdown Content */}
+        <div class="prose prose-invert max-w-none 
+          prose-p:text-[var(--color-text-secondary)] prose-p:leading-loose prose-p:text-base prose-p:font-serif
+          prose-headings:text-[var(--color-text-main)] prose-headings:font-display prose-headings:font-bold
+          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-[var(--color-border)] prose-h2:pb-2
+          prose-h3:text-xl prose-h3:mt-8
+          prose-a:text-[var(--color-accent)] prose-a:no-underline hover:prose-a:underline
+          prose-img:rounded-xl prose-img:shadow-md prose-img:border prose-img:border-[var(--color-border)]
+          prose-strong:text-[var(--color-text-main)]
+          prose-li:text-[var(--color-text-secondary)] prose-li:font-serif
+          prose-blockquote:border-[var(--color-accent)] prose-blockquote:bg-[var(--color-surface)] prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+          prose-code:text-[var(--color-accent)] prose-code:bg-[var(--color-surface)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+          prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-[var(--color-border)]">
+          <Content />
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="mt-auto py-8 border-t border-[var(--color-border)] text-center bg-[var(--color-surface)]">
+      <p class="text-xs font-mono text-[var(--color-text-muted)]">
+        &copy; {new Date().getFullYear()} César A. Ccoa Jota. Distributed under Creative Commons CC-BY 4.0.
+      </p>
+    </footer>
+
+    <!-- Floating Configuration Modal -->
+    <ConfigModal currentLang="es" client:load />
+  </body>
+</html>

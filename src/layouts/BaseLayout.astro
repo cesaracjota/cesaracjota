@@ -1,0 +1,164 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import PageLoader from '../components/PageLoader.astro';
+import CursorGlow from '../components/CursorGlow.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/translations';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/og-image.jpg',
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const siteTitle = title ? `${title} | César Ccoa Jota` : t('meta.title');
+const siteDesc  = description || t('meta.description');
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang} class="dark" transition:animate="none">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={siteDesc} />
+    <meta name="author" content="César Ccoa Jota" />
+    <meta name="keywords" content="Economía, Data Science, SQL, R, UNSA, Arequipa, Análisis de Datos, Econometría" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonical} />
+
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="es" href={new URL(Astro.url.pathname.replace(/^\/en/, ''), Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(`/en${Astro.url.pathname.replace(/^\/en/, '')}`, Astro.site)} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content={type} />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={siteTitle} />
+    <meta property="og:description" content={siteDesc} />
+    <meta property="og:image"       content={new URL(image, Astro.site)} />
+    <meta property="og:locale"      content={lang === 'es' ? 'es_PE' : 'en_US'} />
+    <meta property="og:site_name"   content="César Ccoa Jota" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={siteTitle} />
+    <meta name="twitter:description" content={siteDesc} />
+    <meta name="twitter:image"       content={new URL(image, Astro.site)} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "César A. Ccoa Jota",
+      "url": Astro.site,
+      "description": siteDesc,
+      "jobTitle": "Estudiante de Economía",
+      "alumniOf": {
+        "@type": "University",
+        "name": "Universidad Nacional de San Agustín",
+        "address": { "@type": "PostalAddress", "addressLocality": "Arequipa", "addressCountry": "PE" }
+      },
+      "knowsAbout": ["Economía", "Ciencia de Datos", "SQL", "R", "Econometría", "Análisis Estadístico"],
+      "sameAs": [
+        "https://github.com/cesaracjota",
+        "https://linkedin.com/in/cesaracjota"
+      ]
+    })} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Sitemap & RSS -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <ClientRouter />
+  </head>
+  <body class="noise">
+    <div id="scroll-progress"></div>
+    <PageLoader />
+    <CursorGlow />
+    <Navbar lang={lang} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <CommandPalette lang={lang} />
+
+    <!-- Global Scripts -->
+    <script>
+      // ── Theme Management ──────────────────────────────────
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const theme = stored || preferred;
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.classList.toggle('light', theme === 'light');
+      })();
+
+      // ── Scroll Progress Bar ───────────────────────────────
+      function updateScrollProgress() {
+        const el = document.getElementById('scroll-progress');
+        if (!el) return;
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        el.style.transform = `scaleX(${scrolled / total})`;
+      }
+      window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+      // ── Scroll Reveal ─────────────────────────────────────
+      function initReveal() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              const delay = entry.target.getAttribute('data-delay') || '0';
+              setTimeout(() => {
+                entry.target.classList.add('revealed');
+              }, parseInt(delay));
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+      }
+
+      document.addEventListener('astro:page-load', initReveal);
+      initReveal();
+    </script>
+  </body>
+</html>
