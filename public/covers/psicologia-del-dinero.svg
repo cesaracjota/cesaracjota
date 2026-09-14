@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-labelledby="title desc">
+  <title id="title">La psicología del dinero — Morgan Housel</title>
+  <desc id="desc">Portada editorial original creada para las notas de lectura de Cesar Acjota.</desc>
+  <rect width="480" height="640" rx="16" fill="#e8e2d4"/>
+  <rect x="24" y="24" width="432" height="592" rx="8" fill="none" stroke="#25272a" stroke-width="2"/>
+  <text x="54" y="76" fill="#55544f" font-family="Arial, sans-serif" font-size="14" letter-spacing="3">NOTAS DE LECTURA</text>
+  <text x="54" y="168" fill="#202225" font-family="Georgia, serif" font-size="46">
+    <tspan x="54" dy="0">La psicología</tspan>
+    <tspan x="54" dy="54">del dinero</tspan>
+  </text>
+  <circle cx="344" cy="371" r="86" fill="#bd6949"/>
+  <circle cx="344" cy="371" r="48" fill="#e8e2d4"/>
+  <path d="M54 327h181M54 363h145M54 399h181" stroke="#202225" stroke-width="5"/>
+  <path d="M269 496c29-26 57-39 84-39 28 0 53 13 76 39" fill="none" stroke="#202225" stroke-width="3"/>
+  <text x="54" y="563" fill="#202225" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">MORGAN HOUSEL</text>
+  <text x="54" y="590" fill="#68655e" font-family="Arial, sans-serif" font-size="11" letter-spacing="1.5">BIBLIOTECA PERSONAL · CA</text>
+</svg>
