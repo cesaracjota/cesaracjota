@@ -1,5 +1,3 @@
-import { languages } from '../i18n/ui';
-
 interface Props {
   currentLang: string;
 }

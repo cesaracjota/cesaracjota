@@ -1,0 +1,78 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResearchExamples from '../../components/ResearchExamples.astro';
+import { languages, useTranslations, type Lang } from '../../i18n/ui';
+import { identity, profiles } from '../../data/profile';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang }, props: { lang } }));
+}
+const { lang } = Astro.props as { lang: Lang };
+const p = profiles[lang];
+const t = useTranslations(lang);
+---
+<BaseLayout lang={lang} description={p.intro}>
+  <div class="page-shell">
+    <section class="introduction" id="about" aria-labelledby="intro-title">
+      <aside class="portrait">
+        <img src={identity.avatar} alt={identity.name} width="200" height="200" fetchpriority="high" />
+        <nav class="social-links" aria-label={lang === 'es' ? 'Redes y contacto' : 'Social and contact links'}>
+          <a href={identity.github} aria-label="GitHub"><Icon name="github" size="21" /></a>
+          <a href={identity.linkedin} aria-label="LinkedIn"><Icon name="linkedin" size="21" /></a>
+          <a href={`mailto:${identity.email}`} aria-label="Email"><Icon name="mail" size="21" /></a>
+        </nav>
+        <a class="cv-link" href="#experience">{p.experienceTitle} ↓</a>
+      </aside>
+      <div class="intro-copy">
+        <h1 id="intro-title">{p.greeting}</h1>
+        <p>{p.intro}</p>
+        <p>{p.description}</p>
+        <h2>{p.factsTitle}</h2>
+        <ul class="facts">
+          {p.facts.map((fact) => <li>{fact.text}<small>{fact.detail}</small></li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section" id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">{p.experienceTitle}</h2>
+      <div class="experience-list">
+        {p.experience.map((job) => <article class="experience-row">
+          <p class="period">{job.period}</p>
+          <div><h3>{job.role}</h3><p class="organization">{job.organization}</p><p>{job.description}</p></div>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="content-section" id="work" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">{p.projectTitle}</h2>
+      <article class="project-note">
+        <span class="project-symbol" aria-hidden="true"><Icon name="code" size="30" /></span>
+        <div><h3>{p.project.title}</h3><p class="organization">{p.project.organization}</p><p>{p.project.description}</p></div>
+      </article>
+    </section>
+
+    <section class="content-section" id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">{p.skillsTitle}</h2>
+      <dl class="skills-list">{p.skills.map((skill) => <div><dt>{skill.title}</dt><dd>{skill.value}</dd></div>)}</dl>
+    </section>
+
+    <section class="content-section" id="research" aria-labelledby="interests-heading">
+      <h2 id="interests-heading">{p.interestsTitle}</h2><p>{p.interests}</p>
+    </section>
+
+    <ResearchExamples lang={lang} />
+
+    <section class="content-section" id="courses" aria-labelledby="courses-heading">
+      <h2 id="courses-heading">{p.coursesTitle}</h2>
+      <ul class="course-list">{p.courses.map((course) => <li><span>{course.title}</span><small>{course.institution} · {course.detail}</small></li>)}</ul>
+    </section>
+
+    <section class="content-section contact-section" id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">{t('nav.contact')}</h2>
+      <p>{lang === 'es' ? 'Puedes escribirme para conversar sobre software, datos o proyectos de gestión de información.' : 'Get in touch to talk about software, data, or information management projects.'}</p>
+      <a href={`mailto:${identity.email}`}>{identity.email}</a><span class="contact-divider"> · </span><a href={identity.linkedin}>LinkedIn ↗</a>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components';
+import { identity } from '../data/profile';
+import { useTranslations, type Lang } from '../i18n/ui';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const youtubeUrl = 'https://www.youtube.com/@cesaracjota';
+---
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-top">
+      <div><a class="footer-name" href={`/${lang}/`}>{identity.name}</a><p>{lang === 'es' ? 'Economía, datos y herramientas digitales.' : 'Economics, data, and digital tools.'}</p></div>
+      <nav class="footer-socials" aria-label={lang === 'es' ? 'Redes sociales' : 'Social links'}>
+        <a href={identity.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size="19" aria-hidden="true" />LinkedIn<span class="sr-only"> ({lang === 'es' ? 'nueva pestaña' : 'new tab'})</span></a>
+        {youtubeUrl ? <a href={youtubeUrl} target="_blank" rel="noopener noreferrer"><svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" /><path d="m10 9 5 3-5 3Z" /></svg>YouTube</a> : <span class="social-pending" title={lang === 'es' ? 'Enlace del canal pendiente' : 'Channel link pending'}><svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" /><path d="m10 9 5 3-5 3Z" /></svg>YouTube<small>{lang === 'es' ? 'Próximamente' : 'Coming soon'}</small></span>}
+        <a href={identity.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size="19" aria-hidden="true" />GitHub<span class="sr-only"> ({lang === 'es' ? 'nueva pestaña' : 'new tab'})</span></a>
+      </nav>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} {identity.name}</span><span>{t('footer.built')}</span><a href="#main-content">{t('footer.back')} ↑</a></div>
+  </div>
+</footer>

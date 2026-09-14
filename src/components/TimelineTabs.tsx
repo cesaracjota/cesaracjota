@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, GraduationCap, BookOpen, Trophy, ArrowRight } from 'lucide-react';
+import { Briefcase, GraduationCap, BookOpen, Trophy } from 'lucide-react';
 
 interface Experience {
   role: string;
@@ -216,7 +216,7 @@ export default function TimelineTabs({ labels, experience, education, blogs, awa
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
-              {blogs.map((blog, idx) => (
+              {blogs.map((blog) => (
                 <a href={`/blog/${blog.id}`} key={blog.id} className="block group h-full">
                   <article className="p-5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl group-hover:border-[var(--color-border-hover)] transition-colors h-full flex flex-col">
                     <span className="text-[10px] font-mono text-[var(--color-text-secondary)] mb-2 block">

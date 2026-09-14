@@ -1,0 +1,17 @@
+---
+interface Props {
+  index: string;
+  title: string;
+  description?: string;
+}
+
+const { index, title, description } = Astro.props;
+---
+
+<div class="section-heading">
+  <div class="section-heading__title-row">
+    <span class="section-heading__index">{index}</span>
+    <h2>{title}</h2>
+  </div>
+  {description && <p>{description}</p>}
+</div>

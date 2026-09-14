@@ -8,8 +8,6 @@ export default function ThemeToggle() {
   useEffect(() => {
     // Check local storage or system preference on mount
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
     if (savedTheme) {
       setTheme(savedTheme as 'light' | 'dark');
       document.documentElement.classList.toggle('dark', savedTheme === 'dark');

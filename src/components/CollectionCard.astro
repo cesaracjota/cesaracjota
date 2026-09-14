@@ -1,0 +1,52 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+type Entry = CollectionEntry<'projects'> | CollectionEntry<'research'>;
+
+interface Props {
+  entry: Entry;
+  collection: 'projects' | 'research';
+  lang: Lang;
+  href?: string;
+}
+
+const { entry, collection, lang, href } = Astro.props;
+const t = useTranslations(lang);
+const data = entry.data;
+const repo = 'repo' in data ? data.repo : undefined;
+const destination = href ?? data.url ?? repo;
+const isExternal = destination?.startsWith('http') ?? false;
+const label = collection === 'research' ? t('card.read') : t('card.visit');
+---
+
+<article class="collection-card">
+  <div class="collection-card__topline">
+    <span class="collection-card__type">
+      <Icon name={collection === 'research' ? 'book' : 'code'} size="15" aria-hidden="true" />
+      {collection === 'research' ? t('card.research') : t('card.project')}
+    </span>
+    <time datetime={data.date.toISOString()}>{data.date.toLocaleDateString(lang === 'es' ? 'es-PE' : 'en-US', { year: 'numeric', month: 'short' })}</time>
+  </div>
+
+  <h3>{data.title}</h3>
+  <p>{data.description}</p>
+
+  <div class="collection-card__footer">
+    <div class="tag-list" aria-label="Tags">
+      {data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
+    </div>
+    {destination && destination !== '#' && (
+      <a
+        class="text-link"
+        href={destination}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noreferrer' : undefined}
+      >
+        {label}
+        <Icon name="arrow-up-right" size="14" aria-hidden="true" />
+      </a>
+    )}
+  </div>
+</article>

@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, type Lang } from '../../../i18n/ui';
+import { getLocalizedPath } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { lang: entry.data.lang, slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const lang = entry.data.lang as Lang;
+const t = useTranslations(lang);
+const { Content } = await render(entry);
+---
+
+<BaseLayout lang={lang} type="article" title={entry.data.title} description={entry.data.description}>
+  <div class="article-shell">
+    <a class="back-link" href={getLocalizedPath(lang) + '#research'}>← {t('section.research')}</a>
+    <article class="research-article">
+      <header class="research-article__header">
+        <p class="eyebrow">{t('card.research')} · {entry.data.date.toLocaleDateString(lang === 'es' ? 'es-PE' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <h1>{entry.data.title}</h1>
+        <p>{entry.data.description}</p>
+        <div class="tag-list">
+          {entry.data.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      </header>
+      <div class="article-prose"><Content /></div>
+    </article>
+  </div>
+</BaseLayout>

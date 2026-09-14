@@ -1,0 +1,37 @@
+---
+import type { Lang } from '../i18n/ui';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const es = lang === 'es';
+const cards = es ? [
+  { title: 'Datos para la gestión pública', category: 'Gestión pública', question: '¿Cómo mejorar la calidad de los registros administrativos?', method: 'Definir indicadores de completitud, consistencia y duplicidad; comparar registros antes y después de una limpieza.', tags: ['SQL', 'Calidad de datos'], kind: 'records' },
+  { title: 'Precios y comportamiento del consumidor', category: 'Microeconomía', question: '¿Cómo cambia la demanda cuando varían los precios?', method: 'Explorar una serie de precios y cantidades, visualizar tendencias y discutir las limitaciones de una estimación de elasticidad.', tags: ['R', 'Análisis exploratorio'], kind: 'chart' },
+  { title: 'Una mirada a la huella de carbono', category: 'Economía ambiental', question: '¿Qué actividades concentran las emisiones de una organización?', method: 'Delimitar las actividades, reunir datos de consumo y documentar factores de emisión e incertidumbre.', tags: ['Python', 'Indicadores'], kind: 'carbon' },
+] : [
+  { title: 'Data for public management', category: 'Public management', question: 'How can administrative record quality be improved?', method: 'Define completeness, consistency, and duplication indicators; compare records before and after cleaning.', tags: ['SQL', 'Data quality'], kind: 'records' },
+  { title: 'Prices and consumer behavior', category: 'Microeconomics', question: 'How does demand change when prices vary?', method: 'Explore price and quantity series, visualize trends, and discuss the limitations of an elasticity estimate.', tags: ['R', 'Exploratory analysis'], kind: 'chart' },
+  { title: 'Understanding carbon footprints', category: 'Environmental economics', question: 'Which activities account for an organization’s emissions?', method: 'Define activity boundaries, collect consumption data, and document emission factors and uncertainty.', tags: ['Python', 'Indicators'], kind: 'carbon' },
+];
+---
+<section class="content-section research-examples" id="research-examples" aria-labelledby="examples-heading">
+  <h2 id="examples-heading">{es ? 'Ideas de investigación' : 'Research ideas'}</h2>
+  <p class="section-intro">{es ? 'Tres ejemplos de cómo podría estructurarse una investigación. Son propuestas ilustrativas, no estudios realizados ni resultados publicados.' : 'Three examples of how a research project could be structured. These are illustrative proposals, not completed studies or published findings.'}</p>
+  <div class="research-grid">
+    {cards.map((card, index) => <article class="research-card">
+      <div class:list={['research-cover', card.kind]} aria-hidden="true">
+        <span class="cover-number">0{index + 1}</span>
+        <svg viewBox="0 0 240 110" fill="none">
+          {card.kind === 'records' ? <g stroke="currentColor"><rect x="45" y="20" width="150" height="72" rx="4"/><path d="M45 44h150M45 68h150M92 20v72M146 20v72"/><path d="m155 55 6 5 11-11" stroke-width="2"/></g> : card.kind === 'chart' ? <g stroke="currentColor"><path d="M40 18v76h165" opacity=".4"/><path d="m50 30 35 10 35 16 35 8 38 22" stroke-width="2"/><path d="m50 84 35-17 35-6 35-19 38-15" stroke-dasharray="4 5"/></g> : <g stroke="currentColor"><circle cx="120" cy="56" r="36" opacity=".35"/><path d="M120 20a36 36 0 0 1 34 48" stroke-width="10"/><path d="M120 92a36 36 0 0 1-34-48" stroke-width="5"/><path d="M107 56h26m-13-13v26"/></g>}
+        </svg>
+        <span class="cover-category">{card.category}</span>
+      </div>
+      <div class="research-card-body">
+        <span class="example-label">{es ? 'Ejemplo · propuesta' : 'Example · proposal'}</span>
+        <h3>{card.title}</h3>
+        <p>{card.question}</p>
+        <div class="research-tags">{card.tags.map(tag => <span>{tag}</span>)}</div>
+        <details><summary>{es ? 'Explorar enfoque' : 'Explore approach'} <span aria-hidden="true">+</span></summary><p>{card.method}</p></details>
+      </div>
+    </article>)}
+  </div>
+</section>
