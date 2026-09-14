@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { languages, useTranslations, type Lang } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t('talks.title')} description={t('talks.intro')}>
+  <div class="page-shell page-shell--inner">
+    <header class="page-heading">
+      <p class="eyebrow">{t('nav.talks')}</p>
+      <h1>{t('talks.title')}</h1>
+      <p>{t('talks.intro')}</p>
+    </header>
+
+    <section class="talks-empty" aria-labelledby="talks-status">
+      <span class="talks-empty__number">01</span>
+      <div><h2 id="talks-status">{t('talks.empty')}</h2><p>{t('talks.intro')}</p></div>
+    </section>
+  </div>
+</BaseLayout>

@@ -2,5 +2,12 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/es/",
+      "permanent": true
+    }
+  ]
 }

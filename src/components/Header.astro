@@ -1,32 +1,49 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import { languages, useTranslations, type Lang } from '../i18n/ui';
-import { getLocalizedPath } from '../i18n/utils';
+import { getLocalizedPath, getLocalizedPathFor } from '../i18n/utils';
 import { identity } from '../data/profile';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const home = getLocalizedPath(lang);
 const links = [
-  ['about', lang === 'es' ? 'Inicio' : 'Home'],
-  ['experience', lang === 'es' ? 'Experiencia' : 'Experience'],
-  ['work', lang === 'es' ? 'Proyectos' : 'Projects'],
-  ['research', lang === 'es' ? 'Intereses' : 'Interests'],
-  ['courses', lang === 'es' ? 'Formación' : 'Training'],
-  ['contact', t('nav.contact')],
+  [home, t('nav.home')],
+  [getLocalizedPath(lang, 'books'), t('nav.books')],
+  [getLocalizedPath(lang, 'projects'), t('nav.projects')],
+  [getLocalizedPath(lang, 'research'), t('nav.research')],
+  [getLocalizedPath(lang, 'talks'), t('nav.talks')],
+  [getLocalizedPath(lang, 'contact'), t('nav.contact')],
 ];
+const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
+const isActive = (href: string) => href === home ? currentPath === home : currentPath === href || currentPath.startsWith(href);
 ---
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="brand" href={home}><span class="brand__mark" aria-hidden="true">ca</span><span>{identity.name}</span></a>
-    <div class="header-actions">
-      <nav class="language-switcher" aria-label={t('nav.language')}>
-        {Object.entries(languages).map(([code, label], i) => <>{i > 0 && <span aria-hidden="true">|</span>}<a data-astro-reload href={getLocalizedPath(code as Lang)} lang={code} hreflang={code} aria-label={label} aria-current={code === lang ? 'page' : undefined}>{code.toUpperCase()}</a></>)}
-      </nav>
-      <ThemeToggle lang={lang} />
+    <div class="site-header__top">
+      <details class="mobile-menu">
+        <summary class="mobile-menu__summary" aria-label={t('nav.menu')}>
+          <span class="mobile-menu__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>{t('nav.menu')}</span>
+        </summary>
+        <div class="mobile-menu__panel">
+          <div class="mobile-menu__inner">
+            <nav class="mobile-menu__links" aria-label={lang === 'es' ? 'Menú móvil' : 'Mobile menu'}>
+              {links.map(([href, label]) => <a class:list={{ 'is-active': isActive(href) }} href={href} aria-current={isActive(href) ? 'page' : undefined}><span>{label}</span><span aria-hidden="true">↗</span></a>)}
+            </nav>
+          </div>
+        </div>
+      </details>
+      <a class="brand" href={home}>{identity.name}</a>
+      <div class="header-actions">
+        <nav class="language-switcher" aria-label={t('nav.language')}>
+          {Object.entries(languages).map(([code, label], i) => <>{i > 0 && <span aria-hidden="true">|</span>}<a data-astro-reload href={getLocalizedPathFor(Astro.url.pathname, code as Lang)} lang={code} hreflang={code} aria-label={label} aria-current={code === lang ? 'page' : undefined}>{code.toUpperCase()}</a></>)}
+        </nav>
+        <ThemeToggle lang={lang} />
+      </div>
     </div>
+    <nav class="site-nav" aria-label={lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
+      {links.map(([href, label]) => <a class:list={{ 'is-active': isActive(href) }} href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>)}
+    </nav>
   </div>
-  <nav class="site-nav" aria-label={lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
-    {links.map(([id, label]) => <a href={home + '#' + id}>{label}</a>)}
-  </nav>
 </header>

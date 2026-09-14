@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-labelledby="title desc">
+  <title id="title">Amar o depender</title>
+  <desc id="desc">Portada tipográfica de Amar o depender, de Walter Riso</desc>
+  <rect width="480" height="640" fill="#d5d9c7"/>
+  <rect x="28" y="28" width="424" height="584" fill="none" stroke="#252923" stroke-width="2"/>
+  <circle cx="370" cy="128" r="58" fill="#8b9a73" opacity=".8"/>
+  <path d="M76 468c78-84 122-119 190-119s107 35 138 119" fill="none" stroke="#252923" stroke-width="3"/>
+  <text x="62" y="92" fill="#252923" font-family="Georgia,serif" font-size="21" letter-spacing="3">LECTURA PERSONAL</text>
+  <text x="62" y="215" fill="#252923" font-family="Georgia,serif" font-size="53">Amar</text>
+  <text x="62" y="278" fill="#252923" font-family="Georgia,serif" font-size="53">o depender</text>
+  <text x="62" y="555" fill="#252923" font-family="Arial,sans-serif" font-size="19" letter-spacing="2">WALTER RISO</text>
+</svg>

@@ -27,7 +27,7 @@ const {
 
 const siteUrl = Astro.site ?? Astro.url;
 const siteName = identity.name;
-const siteTitle = title ? `${title} — ${siteName}` : siteName;
+const siteTitle = title ? `${title} — ${siteName}` : `${siteName} | ${lang === 'es' ? 'Economía, datos y software' : 'Economics, data & software'}`;
 const siteDescription = description ?? profiles[lang].intro;
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const structuredData = {
@@ -35,7 +35,7 @@ const structuredData = {
   '@type': 'Person',
   name: siteName,
   url: siteUrl.toString(),
-  description: siteDescription,
+  description: profiles[lang].intro,
   jobTitle: profiles[lang].role,
   address: {
     '@type': 'PostalAddress',
@@ -45,6 +45,7 @@ const structuredData = {
   sameAs: [
     'https://github.com/cesaracjota',
     'https://www.linkedin.com/in/cesaracjota/',
+    'https://www.youtube.com/@cesaracjota',
   ],
 };
 ---
@@ -75,7 +76,7 @@ const structuredData = {
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={siteDescription} />
     <meta name="twitter:image" content={new URL(image, siteUrl)} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/monogram.svg" type="image/svg+xml" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <!-- Apply the saved preference before the first paint to avoid a theme flash. -->

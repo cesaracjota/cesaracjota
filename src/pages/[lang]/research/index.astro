@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CollectionCard from '../../../components/CollectionCard.astro';
+import { languages, useTranslations, type Lang } from '../../../i18n/ui';
+import { getLocalizedPath } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const research = (await getCollection('research', ({ data }) => data.lang === lang && !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout lang={lang} title={t('research.title')} description={t('research.intro')}>
+  <div class="page-shell page-shell--inner">
+    <header class="page-heading">
+      <p class="eyebrow">{t('nav.research')}</p>
+      <h1>{t('research.title')}</h1>
+      <p>{t('research.intro')}</p>
+    </header>
+
+    <section class="research-methodology" aria-labelledby="methodology-title">
+      <div><p class="eyebrow">{t('research.methodology')}</p><h2 id="methodology-title">{t('research.methodologyText')}</h2></div>
+      <span aria-hidden="true">↘</span>
+    </section>
+
+    {research.length > 0 ? <div class="collection-grid">{research.map((entry) => <CollectionCard entry={entry} collection="research" lang={lang} href={getLocalizedPath(lang, `research/${entry.id}`)} />)}</div> : <p class="empty-state">{t('research.empty')}</p>}
+  </div>
+</BaseLayout>

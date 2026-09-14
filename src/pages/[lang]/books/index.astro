@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BookCard from '../../../components/BookCard.astro';
+import { languages, useTranslations, type Lang } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const books = (await getCollection('books', ({ data }) => data.lang === lang && !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout lang={lang} title={t('books.title')} description={t('books.intro')}>
+  <div class="page-shell page-shell--inner">
+    <header class="page-heading">
+      <p class="eyebrow">{t('nav.books')}</p>
+      <h1>{t('books.title')}</h1>
+      <p>{t('books.intro')}</p>
+    </header>
+
+    {books.length > 0 ? <div class="books-grid">{books.map((entry) => <BookCard entry={entry} lang={lang} />)}</div> : <p class="empty-state">{t('books.empty')}</p>}
+  </div>
+</BaseLayout>

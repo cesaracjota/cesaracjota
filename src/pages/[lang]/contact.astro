@@ -1,0 +1,30 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { identity } from '../../data/profile';
+import { languages, useTranslations, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t('contact.pageTitle')} description={t('contact.pageIntro')}>
+  <div class="page-shell page-shell--inner contact-page">
+    <header class="page-heading">
+      <p class="eyebrow">{t('nav.contact')}</p>
+      <h1>{t('contact.pageTitle')}</h1>
+      <p>{t('contact.pageIntro')}</p>
+    </header>
+
+    <div class="contact-links">
+      <a class="contact-link" href={`mailto:${identity.email}`}><Icon name="mail" size="22" /><span>{identity.email}</span><span aria-hidden="true">↗</span></a>
+      <a class="contact-link" href={identity.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size="22" /><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
+      <a class="contact-link" href={identity.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size="22" /><span>GitHub</span><span aria-hidden="true">↗</span></a>
+      <a class="contact-link" href="https://www.youtube.com/@cesaracjota" target="_blank" rel="noopener noreferrer"><span class="youtube-mark" aria-hidden="true">▶</span><span>YouTube</span><span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</BaseLayout>

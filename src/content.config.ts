@@ -22,7 +22,26 @@ const projects = defineCollection({
 
 const research = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/research' }),
-  schema: sharedSchema,
+  schema: sharedSchema.extend({
+    stage: z.enum(['proposal', 'working-paper', 'published']).default('proposal'),
+  }),
 });
 
-export const collections = { projects, research };
+const books = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/books' }),
+  schema: z.object({
+    lang: z.enum(['es', 'en']),
+    title: z.string(),
+    author: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    cover: z.string().optional(),
+    status: z.enum(['reading', 'finished', 'to-read']).default('finished'),
+    rating: z.number().min(0).max(5).optional(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    featured: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, research, books };

@@ -1,7 +1,9 @@
 ---
-import type { Lang } from '../i18n/ui';
+import { useTranslations, type Lang } from '../i18n/ui';
+import { getLocalizedPath } from '../i18n/utils';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
+const t = useTranslations(lang);
 const es = lang === 'es';
 const cards = es ? [
   { title: 'Datos para la gestión pública', category: 'Gestión pública', question: '¿Cómo mejorar la calidad de los registros administrativos?', method: 'Definir indicadores de completitud, consistencia y duplicidad; comparar registros antes y después de una limpieza.', tags: ['SQL', 'Calidad de datos'], kind: 'records' },
@@ -34,4 +36,5 @@ const cards = es ? [
       </div>
     </article>)}
   </div>
+  <a class="text-link research-examples__link" href={getLocalizedPath(lang, 'research')}>{t('research.viewAll')} <span aria-hidden="true">↗</span></a>
 </section>

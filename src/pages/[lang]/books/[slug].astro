@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, type Lang } from '../../../i18n/ui';
+import { getLocalizedPath } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('books', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { lang: entry.data.lang, slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const lang = entry.data.lang as Lang;
+const t = useTranslations(lang);
+const { Content } = await render(entry);
+const statusLabel = {
+  finished: t('books.status.finished'),
+  reading: t('books.status.reading'),
+  'to-read': t('books.status.toRead'),
+}[entry.data.status];
+---
+
+<BaseLayout lang={lang} type="article" title={entry.data.title} description={entry.data.description} image={entry.data.cover}>
+  <div class="page-shell page-shell--inner">
+    <a class="back-link" href={getLocalizedPath(lang, 'books')}>← {t('books.title')}</a>
+    <article class="book-article">
+      <header class="book-article__header">
+        <div class="book-article__cover">
+          {entry.data.cover ? <img src={entry.data.cover} alt={`Portada de ${entry.data.title}`} width="240" height="320" /> : <div class="book-cover-fallback"><span>{entry.data.title}</span><small>{entry.data.author}</small></div>}
+        </div>
+        <div>
+          <p class="eyebrow">{statusLabel} · {entry.data.author}</p>
+          <h1>{entry.data.title}</h1>
+          <p class="book-article__description">{entry.data.description}</p>
+          {entry.data.rating !== undefined && <p class="book-rating" aria-label={`Rating: ${entry.data.rating} de 5`}>{'★'.repeat(Math.round(entry.data.rating))}<span>{'☆'.repeat(5 - Math.round(entry.data.rating))}</span></p>}
+          <div class="tag-list">{entry.data.tags.map((tag) => <span>{tag}</span>)}</div>
+        </div>
+      </header>
+      <div class="article-prose"><Content /></div>
+    </article>
+  </div>
+</BaseLayout>

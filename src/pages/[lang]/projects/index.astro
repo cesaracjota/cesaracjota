@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CollectionCard from '../../../components/CollectionCard.astro';
+import { languages, useTranslations, type Lang } from '../../../i18n/ui';
+import { profiles } from '../../../data/profile';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const p = profiles[lang];
+const projects = (await getCollection('projects', ({ data }) => data.lang === lang && !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout lang={lang} title={t('projects.title')} description={t('projects.intro')}>
+  <div class="page-shell page-shell--inner">
+    <header class="page-heading">
+      <p class="eyebrow">{t('nav.projects')}</p>
+      <h1>{t('projects.title')}</h1>
+      <p>{t('projects.intro')}</p>
+    </header>
+
+    <div class="project-grid">
+      <article class="project-feature">
+        <p class="eyebrow">{t('card.project')}</p>
+        <h2>{p.project.title}</h2>
+        <p class="organization">{p.project.organization}</p>
+        <p>{p.project.description}</p>
+        <a class="text-link" href={p.project.organization.includes('Academia') ? 'mailto:cesaracjota@gmail.com' : `/${lang}/contact/`}>{t('contact.open')} <span aria-hidden="true">↗</span></a>
+      </article>
+      {projects.map((entry) => <CollectionCard entry={entry} collection="projects" lang={lang} />)}
+    </div>
+    {projects.length === 0 && <p class="collection-note">{t('projects.empty')}</p>}
+  </div>
+</BaseLayout>
